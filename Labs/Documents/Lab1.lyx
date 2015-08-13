@@ -395,7 +395,7 @@ leq
 \family typewriter
 x
 \family default
- and set all values larger or equal to 
+ and set all values larger than 
 \family typewriter
 leq
 \family default
@@ -727,7 +727,7 @@ new_mat <- cbind(mat, mat)
 
 \begin_layout Plain Layout
 
-calculate_elements(A = newmat)
+calculate_elements(A = new_mat)
 \end_layout
 
 \begin_layout Plain Layout
