@@ -9,6 +9,10 @@ tasks:
   filter_my_vector:
     url: 
       - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/filter_my_vector_tests.R
+  dot_prod:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/dot_prod_tests.R
+
 mandatory:
   url:
     - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/mandatory.R
