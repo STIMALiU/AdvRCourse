@@ -255,7 +255,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval=FALSE, echo=TRUE>>=
+<<eval=TRUE, echo=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -270,7 +270,7 @@ lab_path <-
 
 \begin_layout Plain Layout
 
-"https://raw.githubusercontent.com/MansMeg/KursRprgm/master/Labs/Tests/d1.yml"
+"https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/d1.yml"
 \end_layout
 
 \begin_layout Plain Layout

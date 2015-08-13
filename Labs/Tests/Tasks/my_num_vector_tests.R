@@ -1,4 +1,4 @@
-### Assignment : wordcount() ###
+### Assignment : my_num_vector() ###
 
 context("my_num_vector()")
 
