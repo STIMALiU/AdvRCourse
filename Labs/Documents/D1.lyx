@@ -1,0 +1,1444 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Programming i R}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Programming i R}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Computer lab 1
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "IntroPart1.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "mma_instructions.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Set you (local) path
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced
+ R programming/AdvRCourseTeacher/Labs/exercise_solutions/"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+for(sol_file in solution_files) source(file = paste0(solution_path, sol_file),
+ echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Lab assignments
+\end_layout
+
+\begin_layout Standard
+To use 
+\family typewriter
+\lang british
+markmyassignment
+\family default
+\lang english
+ run the following code:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE, echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(markmyassignment)
+\end_layout
+
+\begin_layout Plain Layout
+
+lab_path <-
+\end_layout
+
+\begin_layout Plain Layout
+
+"https://raw.githubusercontent.com/MansMeg/KursRprgm/master/Labs/Tests/d1.yml"
+\end_layout
+
+\begin_layout Plain Layout
+
+set_assignment(lab_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Vectors
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+\color black
+my_
+\color inherit
+num_vector()
+\end_layout
+
+\begin_layout Standard
+Create a function called 
+\family typewriter
+\color black
+my_num_vector()
+\family default
+\color inherit
+ 
+\series bold
+without 
+\series default
+parameters.
+ The function should do the following calculations and return the vector
+ below.
+ 
+\begin_inset Formula 
+\[
+\left(\log_{10}11,\cos\left(\frac{\pi}{5}\right),e^{\pi/3},(1173\mod7)/19\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the example the example below the values has been rounded to fewer decimals.
+ Your functions should return 
+\begin_inset Quotes eld
+\end_inset
+
+all
+\begin_inset Quotes erd
+\end_inset
+
+ decimals.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+my_num_vector()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+\color black
+filter_my_
+\color inherit
+vector(x, leq)
+\end_layout
+
+\begin_layout Standard
+Create a function called 
+\family typewriter
+\color black
+filter_my_vector()
+\family default
+\series bold
+\color inherit
+ 
+\series default
+with the argument 
+\family typewriter
+x
+\family default
+ and 
+\family typewriter
+leq
+\family default
+ (less or equal to).
+ The function should take a vector 
+\family typewriter
+x
+\family default
+ and set all values larger or equal to 
+\family typewriter
+leq
+\family default
+ to missing value (
+\family typewriter
+NA
+\family default
+).
+ 
+\end_layout
+
+\begin_layout Standard
+See an example below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+filter_my_vector(x = c(2, 9, 2, 4, 102), leq = 4)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+dot_prod(a, b)
+\end_layout
+
+\begin_layout Standard
+Create a function called 
+\family typewriter
+\color black
+dot_prod()
+\family default
+\color inherit
+ that computes the dot product between two vectors, 
+\family typewriter
+\color black
+a
+\family default
+\color inherit
+ and 
+\family typewriter
+\color black
+b
+\family default
+\color inherit
+.
+ The dot product is calculated in the following way: 
+\begin_inset Formula 
+\[
+\mathbf{a}\cdot\mathbf{b}=\sum_{i=1}^{n}a_{i}b_{i}=a_{1}b_{1}+a_{2}b_{2}+\dots+a_{n}b_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This should be done using only vector arithmetics and statistical functions.
+ More information on the dot product can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://en.wikipedia.org/wiki/Dot_product#Algebraic_definition"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+dot_prod(a = c(3,1,12,2,4), b = c(1,2,3,4,5))
+\end_layout
+
+\begin_layout Plain Layout
+
+dot_prod(a = c(-1,3), b = c(-3,-1))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+approx_e(N)
+\end_layout
+
+\begin_layout Standard
+The constant 
+\begin_inset Formula $e$
+\end_inset
+
+ can be described with the following infinite series:
+\begin_inset Formula 
+\[
+e=\sum_{n=0}^{\infty}\frac{1}{n!}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We use this series to approximate 
+\begin_inset Formula $e$
+\end_inset
+
+ by taking an arbitrarily large value 
+\begin_inset Formula $N$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+e=\sum_{n=0}^{N}\frac{1}{n!}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Create a function called 
+\family typewriter
+approx_e()
+\family default
+ with the parameter 
+\family typewriter
+\color black
+N
+\family default
+\color inherit
+ to approximate 
+\begin_inset Formula $e$
+\end_inset
+
+.
+ Test how large 
+\family typewriter
+N
+\family default
+ need to be to approximate 
+\begin_inset Formula $e$
+\end_inset
+
+ to the fifth decimal place.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+approx_e(N = 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+approx_e(N = 4)
+\end_layout
+
+\begin_layout Plain Layout
+
+exp(1)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Matrices
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+my_magic_matrix()
+\end_layout
+
+\begin_layout Standard
+Create a function called 
+\family typewriter
+my_magic_matrix()
+\family default
+ without any parameters that creates and returns the following magic matrix.
+\begin_inset Formula 
+\[
+\left(\begin{array}{ccc}
+4 & 9 & 2\\
+3 & 5 & 7\\
+8 & 1 & 6
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Can you see what's magic about it?
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+my_magic_matrix()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+calculate_elements(A)
+\end_layout
+
+\begin_layout Standard
+Create a function called 
+\family typewriter
+calculate_elements(A)
+\family default
+ that can take a matrix of an arbitrary size and calculate the number of
+ elements in the matrix.
+ 
+\end_layout
+
+\begin_layout Standard
+See examples below:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+mat <- my_magic_matrix()
+\end_layout
+
+\begin_layout Plain Layout
+
+calculate_elements(A = mat)
+\end_layout
+
+\begin_layout Plain Layout
+
+new_mat <- cbind(mat, mat)
+\end_layout
+
+\begin_layout Plain Layout
+
+calculate_elements(A = newmat)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+row_to_zero(A, i)
+\end_layout
+
+\begin_layout Standard
+Create a function called 
+\family typewriter
+row_to_zero(A, i)
+\family default
+ that can take a matrix of an arbitrary size and set the row indexed with
+ 
+\family typewriter
+i
+\family default
+ to zero.
+ 
+\end_layout
+
+\begin_layout Standard
+See examples below:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+mat <- my_magic_matrix()
+\end_layout
+
+\begin_layout Plain Layout
+
+row_to_zero(A = mat, i = 3)
+\end_layout
+
+\begin_layout Plain Layout
+
+row_to_zero(A = mat, i = 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+add_elements_to_matrix(A, x, i, j)
+\end_layout
+
+\begin_layout Standard
+Create a function called 
+\family typewriter
+add_elements_to_matrix(i)
+\family default
+ with parameters 
+\family typewriter
+A
+\family default
+, 
+\family typewriter
+x
+\family default
+, 
+\family typewriter
+i
+\family default
+, 
+\family typewriter
+j
+\family default
+ .
+ The function should take a matrix 
+\family typewriter
+A
+\family default
+ of an arbitrary size and add the value 
+\family typewriter
+x
+\family default
+ to the parts of 
+\family typewriter
+A
+\family default
+ indexed by 
+\family typewriter
+i
+\family default
+ and 
+\family typewriter
+j
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+See an example below:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+mat <- my_magic_matrix()
+\end_layout
+
+\begin_layout Plain Layout
+
+add_elements_to_matrix(A = mat, x = 10, i = 2, j = 3)
+\end_layout
+
+\begin_layout Plain Layout
+
+add_elements_to_matrix(A = mat, x = -2, i = 1:3, j = 2:3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Lists
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+my_magic_list()
+\end_layout
+
+\begin_layout Standard
+Create a function called 
+\family typewriter
+my_magic_list()
+\family default
+ without parameters that creates and returns a list with three list elements.
+ The first should contain a text element with the text 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+my own list
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+.
+ The second element should be the vector generated by the function 
+\family typewriter
+my_num_vector()
+\family default
+ above and the third element should be the matrix generated by 
+\family typewriter
+my_magic_matrix()
+\family default
+ above.
+\end_layout
+
+\begin_layout Standard
+The first list element should be named 
+\family typewriter
+info
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+This is how the list should look.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+my_magic_list()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+change_info(x, text)
+\end_layout
+
+\begin_layout Standard
+Create a function that will take a list 
+\family typewriter
+x
+\family default
+ (that must contain one element with name 
+\family typewriter
+info
+\family default
+) and change this element to the text argument given by 
+\family typewriter
+text
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+See an example below:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+a_list <- my_magic_list()
+\end_layout
+
+\begin_layout Plain Layout
+
+change_info(x = a_list, text = "Some new info")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+add_note(x, note)
+\end_layout
+
+\begin_layout Standard
+Create a function that will take a list 
+\family typewriter
+x
+\family default
+ and add a new list element with the name 
+\family typewriter
+note
+\family default
+.
+ This new element should contain text from the 
+\family typewriter
+note
+\family default
+ parameter.
+\end_layout
+
+\begin_layout Standard
+See an example below:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+a_list <- my_magic_list()
+\end_layout
+
+\begin_layout Plain Layout
+
+add_note(x = a_list, note = "This is a magic list!")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+sum_numeric_parts(x)
+\end_layout
+
+\begin_layout Standard
+Create a function called 
+\family typewriter
+sum_numeric_parts()
+\family default
+ that will take a list 
+\family typewriter
+x
+\family default
+ and sum together all numeric elements in this list.
+ In a simple implementation you will get warning messages seen below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+a_list <- my_magic_list()
+\end_layout
+
+\begin_layout Plain Layout
+
+sum_numeric_parts(x = a_list)
+\end_layout
+
+\begin_layout Plain Layout
+
+sum_numeric_parts(x = a_list[2])
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+data.frames
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+my_data.frame()
+\end_layout
+
+\begin_layout Standard
+Create a function that generates a data.frame that has the following variables
+ and elements.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+my_data.frame()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+sort_head(df, var.name, n)
+\end_layout
+
+\begin_layout Standard
+Create a function called 
+\family typewriter
+sort_head
+\family default
+() that takes a 
+\family typewriter
+data.frame 
+\family default
+as parameter 
+\family typewriter
+df
+\family default
+ and returns the 
+\family typewriter
+n
+\family default
+ largest values for the given variable 
+\family typewriter
+var.name
+\family default
+.
+ All variables should be returned.
+\end_layout
+
+\begin_layout Standard
+Se below for an example of the function.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+sort_head(df = iris, var.name = "Petal.Length", n = 5) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+add_median_variable(df, j)
+\end_layout
+
+\begin_layout Standard
+Create a function called 
+\family typewriter
+add_median_variable()
+\family default
+ should take a 
+\family typewriter
+data.frame
+\family default
+ and a column id 
+\family typewriter
+j
+\family default
+.
+ The function should compute the median for this variable and create a new
+ variable called 
+\family typewriter
+compared_to_median
+\family default
+ in the 
+\family typewriter
+data.frame
+\family default
+.
+ All values that are greater than the median should have the text label
+ 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+Greater
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+, the values that are smaller should have the label 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+Smaller
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+.
+ The element that is the median (can happen) should have the label 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+Median
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Below is an example using the dataset 
+\family typewriter
+faithful
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(faithful)
+\end_layout
+
+\begin_layout Plain Layout
+
+head(add_median_variable(df = faithful, 1))
+\end_layout
+
+\begin_layout Plain Layout
+
+tail(add_median_variable(df = faithful, 2))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+analyze_columns(df, j)
+\end_layout
+
+\begin_layout Standard
+Create a function you call analyze_columns that should take a 
+\family typewriter
+data.frame
+\family default
+ called 
+\family typewriter
+df
+\family default
+ and two column ids in a vector 
+\family typewriter
+j
+\family default
+ of length 2.
+ These two columns should be analyzed and the results should be returned
+ as a list with three elements.
+ The first two should contained a named vector with the mean, median and
+ the sd for each of the variables.
+ The third element should contain the correlation matrix between the two
+ columns.
+\end_layout
+
+\begin_layout Standard
+The list should be named with the variable names (first two list elements)
+ and the last element should be called 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+correlation_matrix
+\begin_inset Quotes erd
+\end_inset
+
+.
+
+\family default
+ Below is a couple of examples:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(faithful)
+\end_layout
+
+\begin_layout Plain Layout
+
+analyze_columns(df = faithful, 1:2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+analyze_columns(df = iris, c(1,3))
+\end_layout
+
+\begin_layout Plain Layout
+
+analyze_columns(df = iris, c(4,1))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
