@@ -12,6 +12,9 @@ tasks:
   dot_prod:
     url: 
       - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/dot_prod_tests.R
+  approx_e:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/approx_e_tests.R
 
 mandatory:
   url:
