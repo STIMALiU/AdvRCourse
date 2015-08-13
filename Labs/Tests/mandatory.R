@@ -1,6 +1,6 @@
 ### Assignment structure ###
 
-context("Mandatoy objects")
+context("Mandatory objects")
 
 test_that("Mandatory objects", {
   expect_true(exists("name"), info = "'name' is missing.")

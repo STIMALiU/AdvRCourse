@@ -6,6 +6,9 @@ tasks:
   my_num_vector:
     url: 
       - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/my_num_vector_tests.R
+  filter_my_vector:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/filter_my_vector_tests.R
 mandatory:
   url:
     - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/mandatory.R
