@@ -1,0 +1,11 @@
+# Assignment D1
+name  : Lab1
+description : "Advanced R programming: Computer lab 1"
+reporter : student
+tasks:
+  my_num_vector:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/my_num_vector.R
+mandatory:
+  url:
+    - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/master/Labs/Tests/mandatory.R
