@@ -8,4 +8,4 @@ tasks:
       - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/my_num_vector_tests.R
 mandatory:
   url:
-    - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/master/Labs/Tests/mandatory.R
+    - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/mandatory.R
