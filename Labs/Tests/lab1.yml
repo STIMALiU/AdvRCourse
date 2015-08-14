@@ -15,7 +15,18 @@ tasks:
   approx_e:
     url: 
       - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/approx_e_tests.R
-
+  my_magic_matrix:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/my_magic_matrix_tests.R
+  calculate_elements:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/calculate_elements_tests.R
+  row_to_zero:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/row_to_zero_tests.R
+  add_elements_to_matrix:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/add_elements_to_matrix_tests.R
 mandatory:
   url:
     - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/mandatory.R
