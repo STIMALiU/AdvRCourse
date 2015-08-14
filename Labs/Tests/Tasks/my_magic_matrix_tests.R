@@ -24,8 +24,6 @@ test_that("Assignment: my_magic_matrix()", {
   # Expect to run
   expect_that(my_magic_matrix(), condition = not(throws_error()), 
               info = "'my_magic_matrix()' throws an error.")
-  expect_that(my_magic_matrix(x = x2, leq = leq2), condition = not(throws_error()), 
-              info = "'my_magic_matrix()' throws an error.")
   
   # Run functions
   test_res1 <- my_magic_matrix()
