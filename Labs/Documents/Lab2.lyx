@@ -1,0 +1,1404 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Programming i R}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Programming i R}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Computer lab 2
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "IntroPart1.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "mma_instructions.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Set you (local) path
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced
+ R programming/AdvRCourseTeacher/Labs/exercise_solutions/"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+for(sol_file in solution_files) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	source(file = paste0(solution_path, sol_file), echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Lab assignments
+\end_layout
+
+\begin_layout Standard
+To use 
+\family typewriter
+\lang british
+markmyassignment
+\family default
+\lang english
+ run the following code:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE, echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(markmyassignment)
+\end_layout
+
+\begin_layout Plain Layout
+
+lab_path <-
+\end_layout
+
+\begin_layout Plain Layout
+
+"https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/lab2.yml"
+\end_layout
+
+\begin_layout Plain Layout
+
+set_assignment(lab_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conditional statements
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+sheldon_game(player1, player2)
+\end_layout
+
+\begin_layout Standard
+In the series The big bang theory the character Sheldon comes up with a
+ new version the game Rock-paper-scissors, called Rock-paper-scissors-lizard-spo
+ck.
+ The detailed rules of the game can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://bigbangtheory.wikia.com/wiki/Rock_Paper_Scissors_Lizard_Spock"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Standard
+Create a function you call 
+\family typewriter
+sheldon_game()
+\family default
+ that should take two arguments, 
+\family typewriter
+player1
+\family default
+ and 
+\family typewriter
+player2
+\family default
+.
+ Each player should choose one of the choices 
+\family typewriter
+rock
+\family default
+, 
+\family typewriter
+paper
+\family default
+, 
+\family typewriter
+scissors
+\family default
+, 
+\family typewriter
+lizard
+\family default
+ or 
+\family typewriter
+spock
+\family default
+.
+ If another choice is made, the function should be stopped (with the 
+\family typewriter
+stop()
+\family default
+ function).
+\end_layout
+
+\begin_layout Standard
+The function should return either 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+Player 1 wins!
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+, 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+Player 2 wins!
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+ or 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+Draw!
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Tip!
+\series default
+ This can be solved by using the cyclical structure of the game and the
+ modulus operator.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+sheldon_game("lizard", "spock")
+\end_layout
+
+\begin_layout Plain Layout
+
+sheldon_game("rock", "paper")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+for
+\family default
+ loops
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+my_moving_median()
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:my_moving_median()"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Create a function that will create a rolling median from a given numeric
+ vector.
+ Call the function 
+\family typewriter
+my_moving_median().
+
+\family default
+ The functions should accept a given vector 
+\family typewriter
+x
+\family default
+, and an argument 
+\family typewriter
+n
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+It should check if the arguments are a numeric vector (x) and a numeric
+ scalar (n) and if not, it should stop the function.
+ Otherwise the function should return the following vector:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y_{t}=\mbox{median}(x_{t}+\cdots+x_{t-n})
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ is the 
+\begin_inset Formula $t$
+\end_inset
+
+th elementet.
+ It should also be possible to send argument to the 
+\family typewriter
+median()
+\family default
+ function (as 
+\family typewriter
+na.rm
+\family default
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+my_moving_median(x = 1:10, n=2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+my_moving_median(x = 5:15, n=4)
+\end_layout
+
+\begin_layout Plain Layout
+
+my_moving_median(x = c(5,1,2,NA,2,5,6,8,9,9), n=2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+for_mult_table()
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:for_multiplication_table()"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Write a function called 
+\family typewriter
+for_mult_table()
+\family default
+ with arguments 
+\family typewriter
+from
+\family default
+ and 
+\family typewriter
+to
+\family default
+.
+ Both arguments can be assumed to be positive integers.
+ The function should return a multiplication table as a matrix from the
+ argument 
+\family typewriter
+from
+\family default
+ to the argument 
+\family typewriter
+to
+\family default
+.
+ The column names and row names should contain the factors specified by
+ the arguments.
+ 
+\end_layout
+
+\begin_layout Standard
+The function should stop (using 
+\family typewriter
+stop()
+\family default
+) if the arguments is not numeric scalars.
+\end_layout
+
+\begin_layout Standard
+See an example below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+for_mult_table(from = 1, to = 5) 
+\end_layout
+
+\begin_layout Plain Layout
+
+for_mult_table(from = 10, to = 12)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+* cor_matrix()
+\end_layout
+
+\begin_layout Standard
+Create a function called 
+\family typewriter
+cor_matrix()
+\family default
+.
+ It should take a numeric 
+\family typewriter
+data.frame
+\family default
+ with numerical variables of an arbitrary size as an argument 
+\family typewriter
+X
+\family default
+ and calculate the correlation matrix for the given variables.
+\end_layout
+
+\begin_layout Standard
+In this exercise you are not allowed to use the functions 
+\family typewriter
+var()
+\family default
+, 
+\family typewriter
+sd()
+\family default
+ or 
+\family typewriter
+cor()
+\family default
+ in your function.
+\end_layout
+
+\begin_layout Standard
+See an example below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+cor_matrix(iris[1:4])
+\end_layout
+
+\begin_layout Plain Layout
+
+cor_matrix(iris[3:4])
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+while
+\family default
+ loops
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+find_cumsum()
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:find_cumsum()"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Create a functions that takes two arguments 
+\family typewriter
+x
+\family default
+ and 
+\family typewriter
+find_sum
+\family default
+.
+ The function should calculate the cumulative sum of the numeric vector
+ 
+\family typewriter
+x
+\family default
+ and stop when the cumulative sume is greater than 
+\family typewriter
+find_sum
+\family default
+ or if the vector 
+\family typewriter
+x
+\family default
+ is traversed and return this value.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+find_cumsum(x=1:100, find_sum=500)
+\end_layout
+
+\begin_layout Plain Layout
+
+find_cumsum(x=1:10, find_sum=1000)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+while_mult_table()
+\end_layout
+
+\begin_layout Standard
+Create a functions that calulates a given mutiplication table similar to
+ the exercise 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:for_multiplication_table()"
+
+\end_inset
+
+ but now you shoul use a (nested) while loop instead of a for-loop.
+ The result should be identical in all other respect.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+while_mult_table(from = 3, to = 5) 
+\end_layout
+
+\begin_layout Plain Layout
+
+while_mult_table(from = 7, to = 12)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+* trial_division_factorization()
+\end_layout
+
+\begin_layout Standard
+Write a function that can factorize any integer number x inte its prime
+ components.
+ The function should return a vector of all the prime factors as a numeric
+ vector.
+ The idea is to simply test all integers (or prime numbers) from 2 to 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+.
+ For more detailed information on how to factorize primes using the trial
+ division algorithm can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://en.wikipedia.org/wiki/Trial_division"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+trial_division_factorization(x = 2^3 * 13 * 17 * 31)
+\end_layout
+
+\begin_layout Plain Layout
+
+trial_division_factorization(x = 47 * 91 * 97)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+repeat
+\family default
+ and loop controls
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+repeat_find_cumsum()
+\end_layout
+
+\begin_layout Standard
+Implement a function similar to 
+\family typewriter
+find_cumsum()
+\family default
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:find_cumsum()"
+
+\end_inset
+
+ but using 
+\family typewriter
+repeat{}
+\family default
+ instead of a 
+\family typewriter
+while
+\family default
+ loop.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+repeat_find_cumsum(x=1:100, find_sum=500)
+\end_layout
+
+\begin_layout Plain Layout
+
+repeat_find_cumsum(x=1:10, find_sum=1000)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+repeat_my_moving_median()
+\end_layout
+
+\begin_layout Standard
+Implement a function similar to 
+\family typewriter
+my_moving_average()
+\family default
+ in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:find_cumsum()"
+
+\end_inset
+
+ but using 
+\family typewriter
+repeat{}
+\family default
+ instead of a 
+\family typewriter
+while
+\family default
+ loop.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+repeat_my_moving_median(x = 1:10, n=2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+repeat_my_moving_median(x = 5:15, n=4)
+\end_layout
+
+\begin_layout Plain Layout
+
+repeat_my_moving_median(x = c(5,1,2,NA,2,5,6,8,9,9), n=2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Environment
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+in_environment()
+\end_layout
+
+\begin_layout Standard
+Create a function called 
+\family typewriter
+in_environment()
+\family default
+ that return the contents of an environment as a text vector.
+ The function shoulde take the argument 
+\family typewriter
+env
+\family default
+ that takes an environment name as a text element.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+env <- search()[length(search())]
+\end_layout
+
+\begin_layout Plain Layout
+
+env
+\end_layout
+
+\begin_layout Plain Layout
+
+funs <- in_environment(env)
+\end_layout
+
+\begin_layout Plain Layout
+
+funs[1:5]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+* where()
+\end_layout
+
+\begin_layout Standard
+This function is similar to the where() function described in Advanced R.
+ But unlike the implementation in the book you are not allowed to use 
+\family typewriter
+parent.env()
+\family default
+ to traverse the search path.
+ The function should take a name and return the name of the environment
+ where the object is found by following the search path.
+\end_layout
+
+\begin_layout Standard
+If the function is not found, the function should return the text element
+ 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+[fun] not found!
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+where(fun = "sd")
+\end_layout
+
+\begin_layout Plain Layout
+
+where(fun = "read.table")
+\end_layout
+
+\begin_layout Plain Layout
+
+where(fun = "non_existant_function")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Functionals
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+cov()
+\end_layout
+
+\begin_layout Standard
+This exercise is taken from the Advanced R book.
+ Use 
+\family typewriter
+lapply()
+\family default
+ and an anonymous function to find the coefficient of variation (the standard
+ deviation divided by the mean) for all columns in a given 
+\family typewriter
+data.frame
+\family default
+.
+ The function should return a vector of the coefficients of variation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+cov(iris[1:4])
+\end_layout
+
+\begin_layout Plain Layout
+
+cov(iris[3:4])
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Clojures
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+moment()
+\end_layout
+
+\begin_layout Standard
+This exercise has been taken from the Advanced R book.
+ Create a function that creates a function for the ith central moment for
+ a given variable.
+ Definitions of the central moments can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://en.wikipedia.org/wiki/Central_moment"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+m1 <- moment(i=1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+m2 <- moment(i=2)
+\end_layout
+
+\begin_layout Plain Layout
+
+m1(1:100)
+\end_layout
+
+\begin_layout Plain Layout
+
+m2(1:100)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\family typewriter
+* mcmc_counter_factory()
+\end_layout
+
+\begin_layout Standard
+In markov chain monte carlo methods we often want to use counters for the
+ sampling algorithms.
+ Create a counter factory that creats a clojure with a counter.
+ The factory should take two arguments, thin and burnin.
+ Each counter should contain three objects:
+\end_layout
+
+\begin_layout Itemize
+iteration (numeric) scalar
+\end_layout
+
+\begin_layout Itemize
+store_sample (boolean) scalar
+\end_layout
+
+\begin_layout Itemize
+samples (numeric) scalar
+\end_layout
+
+\begin_layout Standard
+Assume that the counter is called in each iteration so in each call of the
+ counter (without argument) should bump up the iterations object.
+ 
+\end_layout
+
+\begin_layout Standard
+The store_sample boolean indicates whether the current iterations should
+ be stored.
+ Iterations after the number of burnin iterations should be stored every
+ thin iteration.
+ So if we run 20 iterations with burnin = 10 and thin = 3 we would store
+ iteration {13, 16, 19}.
+ The samples scalar should keep track of the number of stored iterations
+ (three as the example).
+ In each iteration the values should be returned as a list.
+\end_layout
+
+\begin_layout Standard
+Below is an example.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+mcmccnt <- mcmc_counter_factory(burnin = 3, thin = 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+mcmccnt()
+\end_layout
+
+\begin_layout Plain Layout
+
+mcmccnt()
+\end_layout
+
+\begin_layout Plain Layout
+
+mcmccnt()
+\end_layout
+
+\begin_layout Plain Layout
+
+mcmccnt()
+\end_layout
+
+\begin_layout Plain Layout
+
+mcmccnt()
+\end_layout
+
+\begin_layout Plain Layout
+
+mcmccnt()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+.
+\end_layout
+
+\end_body
+\end_document
