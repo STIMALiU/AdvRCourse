@@ -63,7 +63,7 @@ test_that("Assignment: my_moving_median()", {
 
   # Expect dimensions
   for (i in seq_along(test_res)){
-    expect_true(length(test_res1) == 98, 
+    expect_true(length(test_res[[i]]) == 98, 
                 info = "'my_moving_median()' do not return an object with correct dimensions.")
   }
   
