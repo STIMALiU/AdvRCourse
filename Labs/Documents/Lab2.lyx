@@ -367,6 +367,10 @@ spock
 \family typewriter
 stop()
 \family default
+ or 
+\family typewriter
+stopifnot()
+\family default
  function).
 \end_layout
 
