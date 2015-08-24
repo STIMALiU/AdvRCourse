@@ -1,0 +1,50 @@
+# Assignment D1
+name  : Lab2
+description : "Advanced R programming, computer lab 2"
+reporter : student
+tasks:
+  sheldon_game:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/sheldon_game_tests.R
+  my_moving_median:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/my_moving_median_tests.R
+  for_mult_table:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/for_mult_table_tests.R
+  cor_matrix:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/cor_matrix_tests.R
+  find_cumsum:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/find_cumsum_tests.R
+  while_mult_table:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/while_mult_table_tests.R
+  trial_division_factorization:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/trial_division_factorization_tests.R
+  repeat_find_cumsum:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/repeat_find_cumsum_tests.R
+  repeat_my_moving_median:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/repeat_my_moving_median_tests.R
+  in_environment:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/in_environment_tests.R
+  where:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/where_tests.R
+  cov:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/cov_tests.R
+  moment:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/moment_tests.R
+  mcmc_counter_factory:
+    url: 
+      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/mcmc_counter_factory_tests.R
+mandatory:
+  url:
+    - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/mandatory.R
