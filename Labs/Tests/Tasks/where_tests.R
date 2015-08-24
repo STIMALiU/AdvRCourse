@@ -12,7 +12,7 @@ test_that("Assignment: where()", {
             info = "Object 'where' is not a function.")
 
   # Expect arguments
-  exp_args <- c("env")
+  exp_args <- c("fun")
   expect_function_arguments(where, expected = exp_args,
                             info = paste0("The function arguments are not named correctly (",  
                                           paste(paste0("'",exp_args,"'"),collapse = ", "),
