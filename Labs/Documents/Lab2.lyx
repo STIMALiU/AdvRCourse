@@ -482,11 +482,11 @@ Create a function that will create a rolling median from a given numeric
 my_moving_median().
 
 \family default
- The functions should accept a given vector 
+ The functions should accept a given numeric vector 
 \family typewriter
 x
 \family default
-, and an argument 
+, and a numeric scalar 
 \family typewriter
 n
 \family default
@@ -495,8 +495,23 @@ n
 \end_layout
 
 \begin_layout Standard
-It should check if the arguments are a numeric vector (x) and a numeric
- scalar (n) and if not, it should stop the function.
+The function should check if the arguments is a numeric vector (
+\family typewriter
+x
+\family default
+) and a numeric scalar (
+\family typewriter
+n
+\family default
+) and if not, it should stop the function (with the 
+\family typewriter
+stop()
+\family default
+ or 
+\family typewriter
+stopifnot()
+\family default
+ function).
  Otherwise the function should return the following vector:
 \end_layout
 
@@ -550,6 +565,11 @@ my_moving_median(x = 5:15, n=4)
 \begin_layout Plain Layout
 
 my_moving_median(x = c(5,1,2,NA,2,5,6,8,9,9), n=2)
+\end_layout
+
+\begin_layout Plain Layout
+
+my_moving_median(x = c(5,1,2,NA,2,5,6,8,9,9), n=2, na.rm=TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -667,6 +687,8 @@ data.frame
 X
 \family default
  and calculate the correlation matrix for the given variables.
+ If another object than an data.frame is used as argument, the function should
+ return an error.
 \end_layout
 
 \begin_layout Standard
@@ -705,12 +727,17 @@ data(iris)
 
 \begin_layout Plain Layout
 
-cor_matrix(iris[1:4])
+cor_matrix(iris[,1:4])
 \end_layout
 
 \begin_layout Plain Layout
 
-cor_matrix(iris[3:4])
+data(faithful)
+\end_layout
+
+\begin_layout Plain Layout
+
+cor_matrix(faithful)
 \end_layout
 
 \begin_layout Plain Layout
@@ -768,6 +795,16 @@ find_sum
 x
 \family default
  is traversed and return this value.
+ The function should assert that x is a numeric vector and is a numeric
+ scaler (with stop() or stopifnot()).
+\end_layout
+
+\begin_layout Standard
+It is not allowed to use a 
+\family typewriter
+for
+\family default
+ loop in this assignment.
 \end_layout
 
 \begin_layout Standard
@@ -1136,6 +1173,14 @@ If the function is not found, the function should return the text element
 \end_layout
 
 \begin_layout Standard
+Assert that 
+\family typewriter
+fun
+\family default
+ is a character vector of length 1.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -1195,6 +1240,16 @@ data.frame
 \end_layout
 
 \begin_layout Standard
+Assert that 
+\family typewriter
+X
+\family default
+ is a 
+\family typewriter
+data.frame.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -1210,12 +1265,12 @@ data(iris)
 
 \begin_layout Plain Layout
 
-cov(iris[1:4])
+cov(X = iris[1:4])
 \end_layout
 
 \begin_layout Plain Layout
 
-cov(iris[3:4])
+cov(X = iris[3:4])
 \end_layout
 
 \begin_layout Plain Layout
@@ -1340,6 +1395,18 @@ The store_sample boolean indicates whether the current iterations should
  The samples scalar should keep track of the number of stored iterations
  (three as the example).
  In each iteration the values should be returned as a list.
+\end_layout
+
+\begin_layout Standard
+Assert that 
+\family typewriter
+burnin
+\family default
+ is a nonnegative value and that 
+\family typewriter
+thin
+\family default
+ is a positive value.
 \end_layout
 
 \begin_layout Standard
