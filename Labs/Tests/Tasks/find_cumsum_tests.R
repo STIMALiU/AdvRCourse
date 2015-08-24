@@ -22,7 +22,7 @@ test_that("Assignment: find_cumsum()", {
                         info = "'find_cumsum' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function
-  not_allowed <- c("for")
+  not_allowed <- c("for", "repeat")
   for (not_ok in not_allowed){
     expect_that(find_cumsum, not(function_code(not_ok)), 
                 info = paste0("'find_cumsum' contains the code '", not_ok, "' that is not allowed."))

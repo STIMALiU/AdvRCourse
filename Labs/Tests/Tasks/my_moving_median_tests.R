@@ -22,9 +22,9 @@ test_that("Assignment: my_moving_median()", {
                         info = "'my_moving_median' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function
-  #not_allowed <- "%*%"
-  #expect_that(my_moving_median, not(function_code(not_allowed)), 
-  #            info = paste0("'my_moving_median' contains the code '", not_allowed, "' that is not allowed."))
+  not_allowed <- "repeat"
+  expect_that(my_moving_median, not(function_code(not_allowed)), 
+              info = paste0("'my_moving_median' contains the code '", not_allowed, "' that is not allowed."))
 
   # Test cases (arguments)
   set.seed(42)
@@ -62,8 +62,9 @@ test_that("Assignment: my_moving_median()", {
   }
 
   # Expect dimensions
+  dim_true <- c(98,95,98)
   for (i in seq_along(test_res)){
-    expect_true(length(test_res[[i]]) == 98, 
+    expect_true(length(test_res[[i]]) == dim_true[i], 
                 info = "'my_moving_median()' do not return an object with correct dimensions.")
   }
   
