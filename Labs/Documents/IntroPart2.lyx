@@ -85,52 +85,50 @@ height "1pt"
 \align center
 
 \series bold
-Instruktioner
+Instructions
 \series default
  
 \end_layout
 
 \begin_layout Itemize
-Denna laboration ska göras i grupper om 
+This lab should be conducted by students 
 \series bold
-två och två
+two by two
 \series default
 .
- Det är viktigt för gruppindelningen att inte ändre grupper.
+ 
 \end_layout
 
 \begin_layout Itemize
-En av ska vara 
-\series bold
-navigatör
-\series default
- och den andra 
-\series bold
-programmerar
-\series default
-.
- Navigatörens ansvar är att ha ett helhetsperspektiv över koden.
- Byt position var 30:e minut.
+The lab constists of writing a package that is version controlled on github.com
+ with a published release.
+ 
 \end_layout
 
 \begin_layout Itemize
-Det är tillåtet att diskutera med andra grupper, men att plagiera eller
- skriva kod åt varandra är 
+Both student should 
 \series bold
-inte tillåtet
+contribute equally much
 \series default
-.
+ to the package.
+ 
 \end_layout
 
 \begin_layout Itemize
-Utgå från laborationsfilen som går att ladda ned 
+In the lab some functions can be marked with an *.
+ These parts is only mandatory for students taking the advanced course or
+ students working together in groups of three.
+\end_layout
+
+\begin_layout Itemize
+The deadline for the lab can be found on the 
 \series bold
 \color blue
 
 \begin_inset CommandInset href
 LatexCommand href
-name "här"
-target "https://github.com/MansMeg/KursRprgm"
+name "webpage"
+target "http://www.ida.liu.se/~732A50/"
 
 \end_inset
 
@@ -138,37 +136,14 @@ target "https://github.com/MansMeg/KursRprgm"
 \end_layout
 
 \begin_layout Itemize
-Laborationen består av två delar:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Datorlaborationen
-\end_layout
-
-\begin_layout Itemize
-Inlämningsuppgifter
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-I laborationen finns det extrauppgifter markerade med *.
- Dessa kan hoppas över.
-\end_layout
-
-\begin_layout Itemize
-Deadline för labben framgår på 
+The lab should be turned in as a url to the repository containing the package
+ on github using 
 \series bold
-\color blue
-
-\begin_inset CommandInset href
-LatexCommand href
-name "kurshemsidan"
-target "http://www.ida.liu.se/~732G33/timetable/index.sv.shtml"
-
-\end_inset
-
-
+LISAM
+\series default
+.
+ This should also include name, github user names and liuid of the students
+ behind the project.
 \end_layout
 
 \begin_layout Standard
