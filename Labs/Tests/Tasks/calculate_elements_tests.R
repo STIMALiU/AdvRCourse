@@ -35,9 +35,9 @@ test_that("Assignment: calculate_elements()", {
     
   ## Expect results
   # Expect class
-  expect_is(test_res1, "numeric", 
+  expect_true(is.numeric(test_res1) | is.integer(test_res1), 
             info = "'calculate_elements()' do not return a correct object.")
-  expect_is(test_res2, "numeric", 
+  expect_true(is.numeric(test_res2) | is.integer(test_res2), 
             info = "'calculate_elements()' do not return a correct object.")
   
   # Expect dimensions
