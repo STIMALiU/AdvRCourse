@@ -285,6 +285,10 @@ Implement the calculations using ordinary linear algebra or (*) using the
 Implement the results as an S3 class or (*) a RC class object
 \end_layout
 
+\begin_layout Enumerate
+Implement a ggtheme() for the graphical profile of Linköping University
+\end_layout
+
 \begin_layout Standard
 Students that take the advanced course must choose to use one of the advanced
  implementations (ie either using QR decomposition or using RC classes).
@@ -786,7 +790,63 @@ key "wickham2015r"
 
 \end_inset
 
+.
+\end_layout
 
+\begin_layout Section
+(*) Create a 
+\family typewriter
+ggtheme()
+\family default
+ for Linköping university
+\end_layout
+
+\begin_layout Standard
+It is common that different companies have a graphical profile and that
+ all graphs created should follow this graphical profile.
+ To solve this problem using 
+\family typewriter
+ggplot2
+\family default
+ we have what is called 
+\family typewriter
+theme()
+\family default
+ that containes all graphical information and that you simply 
+\begin_inset Quotes eld
+\end_inset
+
+add
+\begin_inset Quotes erd
+\end_inset
+
+ to your ggplot to follow the graphical profile.
+\end_layout
+
+\begin_layout Standard
+Create a 
+\family typewriter
+theme()
+\family default
+ for Linköping university.
+ The guidelines can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://www.liu.se/insidan/kommunikationsstod/grafiskprofil/start/1.635075/LiU_Grafisk_manual_150520.pdf"
+
+\end_inset
+
+
+\series default
+\color inherit
+ (unfortunately only in Swedish).
+ You can implement as much as you like (adding logotype, typesetting etc.)
+ but as a minimum the colors should be used that are the colors mentioned
+ in the graphical manual.
 \end_layout
 
 \begin_layout Section
