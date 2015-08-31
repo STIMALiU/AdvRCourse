@@ -52,7 +52,7 @@ test_that("Assignment: find_cumsum()", {
   ## Expect results
   # Expect class
   for (i in seq_along(test_res)){
-    expect_is(test_res[[i]], "numeric", 
+    expect_true(is.numeric(test_res[[i]]) | is.integer(test_res[[i]]), 
               info = "'find_cumsum()' do not return a correct object.")
   }
 
