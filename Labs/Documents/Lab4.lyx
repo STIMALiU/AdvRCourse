@@ -1,0 +1,840 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    STIMA\\
+    Department of computer and information sciences
+  }
+  \fancyhead[R]{Advanced R programming}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Advanced R programming}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Computer lab 4
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "IntroPart2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+A linear regression package in R
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Set you (local) path
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced
+ R programming/AdvRCourseTeacher/Labs/exercise_solutions/"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+for(sol_file in solution_files) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	source(file = paste0(solution_path, sol_file), echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this lab we will will create a package to handle linear regression models.
+ We will use linear algebra to create the most basic functionality in the
+ R package.
+ We will also implement an object oriented system to handle special functions
+ such as 
+\family typewriter
+print()
+\family default
+, 
+\family typewriter
+plot()
+\family default
+, 
+\family typewriter
+resid()
+\family default
+, 
+\family typewriter
+pred()
+\family default
+, 
+\family typewriter
+coef()
+\family default
+ and 
+\family typewriter
+summary()
+\family default
+.
+ We will finish the package up by writing a vignette on how the package
+ can be used to conduct a simple regression analysis using a dataset included
+ in the package.
+\end_layout
+
+\begin_layout Standard
+There are different design choices to make with different levels of complexity.
+\end_layout
+
+\begin_layout Enumerate
+Implement the calculations using ordinary linear algebra or (*) using the
+ QR decomposition 
+\end_layout
+
+\begin_layout Enumerate
+Implement the results as an S3 class or (*) a RC class object
+\end_layout
+
+\begin_layout Standard
+Students that take the advanced course must choose to use one of the advanced
+ implementations (ie either using QR decomposition or using RC classes).
+\end_layout
+
+\begin_layout Standard
+Remember to commit your changes continously to github during the lab.
+\end_layout
+
+\begin_layout Section
+Create a package and write unit tests 
+\end_layout
+
+\begin_layout Standard
+Start out by creating your new package on github.
+ As a first step implement tests for your (not yet) written function 
+\family typewriter
+linreg()
+\family default
+ and the methods 
+\family typewriter
+coefficients()
+\family default
+, 
+\family typewriter
+resid()
+\family default
+ and 
+\family typewriter
+pred()
+\family default
+.
+ Use a well known dataset (such as iris or fathful) and use the 
+\family typewriter
+lm()
+\family default
+ function to fit a linear model and create unit tests that check that your
+ function return the same values as 
+\family typewriter
+lm()
+\family default
+.
+\end_layout
+
+\begin_layout Section
+Write the R code
+\end_layout
+
+\begin_layout Standard
+In this R package we will write the code for a multiple regression model.
+ The function should be called 
+\family typewriter
+linreg()
+\family default
+ and have the two arguments formula and data.
+ The function should return an object with of class 
+\family typewriter
+linreg
+\family default
+ either as an S3 class or an RC class.
+ 
+\end_layout
+
+\begin_layout Standard
+The formula argument should take a formula object.
+ The first step in the function is to use the function 
+\family typewriter
+model.matrix()
+\family default
+ to create the matrix 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+ (independent variables) and the pick out the dependent variable 
+\series bold
+
+\begin_inset Formula $\mathbf{y}$
+\end_inset
+
+ 
+\series default
+using 
+\family typewriter
+all.vars()
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Computations using ordinary least squares
+\end_layout
+
+\begin_layout Standard
+The simple way to calculate the different is to use ordinary linear algebra
+ and calculate: 
+\end_layout
+
+\begin_layout Paragraph
+Regressions coefficients: 
+\begin_inset Formula 
+\[
+\hat{\beta}=\left(\mathbf{X}^{\mbox{T}}\mathbf{X}\right)^{-1}\mathbf{X}^{\mbox{T}}\mathbf{y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+The fitted values: 
+\begin_inset Formula 
+\[
+\hat{\mathbf{y}}=\mathbf{X}\hat{\beta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+The residuals: 
+\begin_inset Formula 
+\[
+\hat{\mathbf{e}}=\mathbf{y}-\mathbf{\hat{y}}=\mathbf{y}-\mathbf{X}\hat{\beta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+The degrees of freedom:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+df=n-p
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+The residual variance: 
+\begin_inset Formula 
+\[
+\hat{\sigma}^{2}=\frac{\mathbf{e}^{\mbox{T}}\mathbf{e}}{df}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $n$
+\end_inset
+
+ is the number of observations and 
+\begin_inset Formula $p$
+\end_inset
+
+ is the number of parameters in the model.
+\end_layout
+
+\begin_layout Paragraph
+The variance of the regression coefficients: 
+\begin_inset Formula 
+\[
+\hat{\mbox{Var}}(\hat{\beta})=\hat{\sigma}^{2}(\mathbf{X}^{\mbox{T}}\mathbf{X})^{-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+The t-values for each coefficient:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+t_{\beta}=\frac{\hat{\beta}}{\sqrt{Var(\hat{\beta})}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using the function 
+\family typewriter
+pt()
+\family default
+ it is then possible to calculate the p-values for each regression coefficient.
+\end_layout
+
+\begin_layout Standard
+Calculate these statistics and store it in an object of class 
+\family typewriter
+linreg
+\family default
+.
+ Document your function 
+\family typewriter
+linreg()
+\family default
+ using 
+\family typewriter
+roxygen2
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+(*) Using the QR decomposition 
+\end_layout
+
+\begin_layout Standard
+In statistical software we use the QR decomposition to do the estimation.
+ This is due to the fact that QR decomposition is faster and more robust
+ than the more straight-forward way of the linear algebra computations.
+\end_layout
+
+\begin_layout Standard
+Your job is to compute the 
+\begin_inset Formula $\hat{\beta}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mbox{Var}(\hat{\beta})$
+\end_inset
+
+ using a QR decomposition of 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+.
+ See 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://www.stats.ox.ac.uk/~konis/Rcourse/qr.pdf"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://sites.stat.psu.edu/~jls/stat511/lectures/lec17.pdf"
+
+\end_inset
+
+ for detailed information how to estimate 
+\begin_inset Formula $\hat{\beta}$
+\end_inset
+
+.
+ You may have to derive yourself how to use the QR decomposition to calculate
+ 
+\begin_inset Formula $\mbox{Var}(\hat{\beta})$
+\end_inset
+
+.
+ Remember that 
+\begin_inset Formula $Q$
+\end_inset
+
+ is an orthogonal matrix, and 
+\begin_inset Formula $R$
+\end_inset
+
+ is a triangular matrix.
+\end_layout
+
+\begin_layout Section
+Implementing methods for your class
+\end_layout
+
+\begin_layout Standard
+You now have done the calculations and stored them in an object with class
+ 
+\family typewriter
+linreg
+\family default
+.
+ The next step is to implement differnt 
+\begin_inset Quotes eld
+\end_inset
+
+methods
+\begin_inset Quotes erd
+\end_inset
+
+ for your object.
+ These implementations can be don in either the S3 object oriented system
+ or (*) the RC objected oriented system.
+\end_layout
+
+\begin_layout Standard
+The following methods should be implemented and be documented using 
+\family typewriter
+roxygen2
+\family default
+.
+\end_layout
+
+\begin_layout Paragraph
+print()
+\end_layout
+
+\begin_layout Standard
+should 
+\series bold
+print
+\series default
+ 
+\series bold
+out
+\series default
+ the coefficients and coefficient names, similar as done by the lm class.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+mod_object <- lm(Petal.Length~Species, data = iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(mod_object) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+plot()
+\end_layout
+
+\begin_layout Standard
+should plot the following two plots using 
+\family typewriter
+ggplot2
+\family default
+.
+ Remember to include 
+\family typewriter
+ggplot2
+\family default
+ in your package.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=FALSE, fig.height=4, fig.width=4, fig.align='center'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(mod_object,1)
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(mod_object,3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+resid()
+\end_layout
+
+\begin_layout Standard
+should return the vector of residuals 
+\begin_inset Formula $\mathbf{e}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+pred() 
+\end_layout
+
+\begin_layout Standard
+should return the predicted values 
+\begin_inset Formula $\hat{\mathbf{y}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+coef()
+\end_layout
+
+\begin_layout Standard
+should return the coefficients as a 
+\series bold
+named
+\series default
+ vector.
+\end_layout
+
+\begin_layout Paragraph
+summary()
+\end_layout
+
+\begin_layout Standard
+should return a similar printout as printed for lm objects, but you only
+ need to present the coefficients with their standard error, t-value and
+ p-value as well as the estimate of 
+\begin_inset Formula $\hat{\sigma}$
+\end_inset
+
+ and the degrees of freedom in the model.
+\end_layout
+
+\begin_layout Section
+Write a vignette on how to use your package
+\end_layout
+
+\begin_layout Standard
+Write a vignette that describes your function and how to use it on a well
+ known dataset such as iris or faithful.
+ A vignette should be included and be possible to read using the 
+\family typewriter
+vignette(
+\begin_inset Quotes eld
+\end_inset
+
+[yourpackagenamehere]
+\begin_inset Quotes erd
+\end_inset
+
+)
+\family default
+ command and show a simple walkthrough of your package showing how to use
+ the function linreg together with all the implemented methods.
+ For more information on how to write a vignette and include them in your
+ package see 
+\begin_inset Quotes eld
+\end_inset
+
+Vignettes
+\begin_inset Quotes erd
+\end_inset
+
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wickham2015r"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Seminar and examination
+\end_layout
+
+\begin_layout Standard
+During the seminar you will bring your own computer and demonstrate your
+ package and what you found difficult in the project.
+ 
+\end_layout
+
+\begin_layout Standard
+We will present as many packages as possible during the seminar and you
+ should
+\end_layout
+
+\begin_layout Enumerate
+Show that the package can be built using R Studio and that all unit tests
+ is passing.
+\end_layout
+
+\begin_layout Enumerate
+Present the unit tests you've written.
+\end_layout
+
+\begin_layout Enumerate
+Show your vignette/run the examples live.
+\end_layout
+
+\begin_layout Subsection
+Examination
+\end_layout
+
+\begin_layout Standard
+Turn in a the adress to your github repo with the package using LISAM.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced R programming/AdvRCourse/Litterature/courselitterature"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
