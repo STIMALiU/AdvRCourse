@@ -518,7 +518,7 @@ stopifnot()
 \begin_layout Standard
 \begin_inset Formula 
 \[
-y_{t}=\mbox{median}(x_{t}+\cdots+x_{t-n})
+y_{t}=\mbox{median}(x_{t},\cdots,x_{t-n})
 \]
 
 \end_inset
