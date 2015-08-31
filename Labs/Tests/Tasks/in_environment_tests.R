@@ -27,7 +27,7 @@ test_that("Assignment: in_environment()", {
 #              info = paste0("'in_environment' contains the code '", not_allowed, "' that is not allowed."))
 
   # Test cases (arguments)
-  testenv <- search()[length(search())]
+  testenv <- baseenv()
 
   # Expect to run
   expect_that(in_environment(env=testenv), 
@@ -65,9 +65,9 @@ test_that("Assignment: in_environment()", {
 #               info = "'in_environment()' do not return an object with correct (ordered) variable names.")
   
   # Expect results
-  result_list1 <- list(c("-.POSIXt",":"))
+  result_list1 <- list(c("sqrt", "log"))
   for (i in seq_along(test_res)){
-    expect_true(all(test_res[[i]][3:4] == result_list1[[i]]), 
+    expect_true(all(result_list1[[i]] %in% test_res[[i]]), 
                 info = "'in_environment()' returns erroneous results.")
   }
 })
