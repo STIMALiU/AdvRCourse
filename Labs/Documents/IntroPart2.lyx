@@ -100,9 +100,7 @@ two by two
 \end_layout
 
 \begin_layout Itemize
-The lab constists of writing a package that is version controlled on github.com
- with a published release.
- 
+The lab constists of writing a package that is version controlled on github.com.
 \end_layout
 
 \begin_layout Itemize
@@ -111,7 +109,15 @@ Both student should
 contribute equally much
 \series default
  to the package.
- 
+\end_layout
+
+\begin_layout Itemize
+Commit continously your addition and changes.
+\end_layout
+
+\begin_layout Itemize
+Collaborations should be done using github (ie you should commit using your
+ own github account).
 \end_layout
 
 \begin_layout Itemize

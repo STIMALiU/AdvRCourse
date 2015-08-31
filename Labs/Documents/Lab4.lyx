@@ -286,7 +286,11 @@ Implement the results as an S3 class or (*) a RC class object
 \end_layout
 
 \begin_layout Enumerate
-Implement a ggtheme() for the graphical profile of Linköping University
+(*) Implement a 
+\family typewriter
+theme()
+\family default
+ for the graphical profile of Linköping University
 \end_layout
 
 \begin_layout Standard
@@ -796,7 +800,7 @@ key "wickham2015r"
 \begin_layout Section
 (*) Create a 
 \family typewriter
-ggtheme()
+theme()
 \family default
  for Linköping university
 \end_layout

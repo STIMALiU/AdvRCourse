@@ -516,12 +516,19 @@ To create a package can be done in many different ways.
 \begin_layout Enumerate
 Create a new repository at GitHub (username is needed) and invite your collabora
 tors to this repository.
- Initialize the repo with a README.md file (otherwise R-Studio will have
- a problem of cloning the repo).
+ Initialize the repo with a 
+\family typewriter
+README.md
+\family default
+ file (otherwise R-Studio will have a problem of cloning the repo).
 \end_layout
 
 \begin_layout Enumerate
-Open the .gitignore file and add 
+Open the 
+\family typewriter
+.gitignore
+\family default
+ file and add 
 \family typewriter
 *.Rproj
 \family default
@@ -602,7 +609,11 @@ Choose the package directory (ie the directory the package skeleton created)
 \end_layout
 
 \begin_layout Enumerate
-Click that ROxygen should be used (fill in all subalternatives)
+Click that 
+\family typewriter
+roxygen2
+\family default
+ should be used (fill in all subalternatives)
 \end_layout
 
 \end_deeper
@@ -638,10 +649,18 @@ roxygen2
 \end_layout
 
 \begin_layout Standard
-The next step is to document the functions and the data using ROxygen.
- ROxygen makes it easy to include documentation in direct connection to
- the functions, making it much easier to both document and read the documentatio
-n when you inspect the code.
+The next step is to document the functions and the data using 
+\family typewriter
+roxygen2
+\family default
+.
+ 
+\family typewriter
+roxygen2
+\family default
+ makes it easy to include documentation in direct connection to the functions,
+ making it much easier to both document and read the documentation when
+ you inspect the code.
  See chapter 
 \begin_inset Quotes eld
 \end_inset
@@ -687,7 +706,7 @@ A reference to the wikipedia page of each algorithm.
 Document the package
 \end_layout
 
-\begin_layout Standard
+\begin_layout Enumerate
 Commit the documentation to github.
 \end_layout
 
@@ -700,8 +719,11 @@ wiki_graph
 \end_layout
 
 \begin_layout Standard
-The next step is to include the dataset wiki_graph created above as dataset
- in the package.
+The next step is to include the dataset 
+\family typewriter
+wiki_graph
+\family default
+ created above as dataset in the package.
  See 
 \begin_inset Quotes eld
 \end_inset
@@ -722,11 +744,17 @@ key "wickham2015r"
 \end_layout
 
 \begin_layout Standard
-Document the dataset using ROxygen
+Document the dataset using 
+\family typewriter
+roxygen2
+\family default
+:
 \end_layout
 
 \begin_layout Enumerate
-The variables in the data.frame
+The variables in the 
+\family typewriter
+data.frame
 \end_layout
 
 \begin_layout Enumerate
