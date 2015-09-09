@@ -89,14 +89,19 @@ Måns Magnusson
 \end_layout
 
 \begin_layout Standard
-Below are som API projects that there exist a reported interest to use and
- handle.
- Under each API there is a short description and some indicator on difficult
- the API can be from one star (simplest) to three starts (most difficult).
+Below are some API that can be used as a part of the assignment to implement
+ an R package to connect to an API.
+ In connection to each API there is a short description and the difficulty
+ of implementation is indicated using one, two or three stars with one star
+ (simpler) to three stars (difficult).
+ Some projects is about implementing XML parsers for more complex XML files
+ of interest.
 \end_layout
 
 \begin_layout Standard
-In general there exist many different web API:s in what is called 
+In general there exist many different web API:s and you can choose any API
+ you may find interesting.
+ Most web API:s in Sweden can be found in 
 \series bold
 \color blue
 
@@ -111,14 +116,9 @@ target "http://apikatalogen.se/api"
 \series default
 \color inherit
 .
- There you can find a lot of differnt API:s to connect to.
- But if you choose any of these you need to confirm your choice with the
- teacher, you can also choose an international API as long as there do not
- already exists an R package that do this connection.
-\end_layout
-
-\begin_layout Standard
-Unfortunately many of those example API:s are in Swedish.
+ If you choose any of these other than the ones listed below you need to
+ confirm your choice with the teacher, the only restriction is that the
+ API should not already have an R package.
 \end_layout
 
 \begin_layout Paragraph
@@ -293,7 +293,7 @@ target " https://github.com/rotsee/protokollen/blob/master/README-database-api.m
 \end_layout
 
 \begin_layout Paragraph*
-** Språkbanken
+** Språkbanken XML
 \end_layout
 
 \begin_layout Standard
