@@ -1,0 +1,527 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    STIMA\\
+    Department of computer and information sciences
+  }
+  \fancyhead[R]{Advanced R programming}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Advanced R programming}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Computer lab 5
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "IntroPart2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+A package connecting to a web API
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Set you (local) path
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced
+ R programming/AdvRCourseTeacher/Labs/exercise_solutions/"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+for(sol_file in solution_files) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	source(file = paste0(solution_path, sol_file), echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this lab we will will create a package to connect to a web API using
+ R.
+ The purpose of this lab is to start the work with a API package you will
+ use and develop further during the course.
+ You can choose a connection to any API you find to have interesting data
+ to analyze as well (you may use this data in a machine learning project
+ in the last lab).
+ If the project is good enough you will be able to submit this package to
+ CRAN during the last week.
+\end_layout
+
+\begin_layout Standard
+The API needs to be accepted by the teacher before you start.
+ In 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "this document"
+target "https://github.com/MansMeg/AdvRCourse/blob/master/Labs/Documents/API_projects.pdf"
+
+\end_inset
+
+
+\series default
+\color inherit
+ you can find API:s suggestions to implement as an R package.
+\end_layout
+
+\begin_layout Standard
+Master students will also implement a simple Shiny application using the
+ package to connect to the API.
+\end_layout
+
+\begin_layout Section
+Create a package
+\end_layout
+
+\begin_layout Standard
+Start out by creating a new package on github see lab 3 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://github.com/MansMeg/AdvRCourse/raw/master/Labs/Documents/Lab3.pdf"
+
+\end_inset
+
+
+\series default
+\color inherit
+ for details on how to setup a package.
+ Think about the naming of your package.
+ 
+\end_layout
+
+\begin_layout Standard
+Read about the package and discuss whcih functions you should have to access
+ the data in the API.
+ There are often limits and configurations for a given API you need to access.
+ 
+\end_layout
+
+\begin_layout Standard
+In genreal it is good to have as few functions as possible theat are exported
+ in the package.
+ But behind these functions you may need to have more functionality not
+ accessed by the users of your package.
+ 
+\end_layout
+
+\begin_layout Subsection
+Write the R code and unit tests
+\end_layout
+
+\begin_layout Standard
+Implement functions to connect to the API and download data to the R session.
+ Do also write a unit test suite for your public functions in the package.
+ Examples of test can be:
+\end_layout
+
+\begin_layout Enumerate
+Downloading a big query
+\end_layout
+
+\begin_layout Enumerate
+Testing the limits of the API configuration
+\end_layout
+
+\begin_layout Enumerate
+Testing the inputs and outputs of your functions
+\end_layout
+
+\begin_layout Enumerate
+Testing that the function allways return a given value for a specific set
+ of inputs.
+\end_layout
+
+\begin_layout Standard
+See chapter 
+\begin_inset Quotes eld
+\end_inset
+
+Testing
+\begin_inset Quotes erd
+\end_inset
+
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wickham2015r"
+
+\end_inset
+
+ or 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "testthat"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\begin_layout Subsection
+Documentation and vignettes
+\end_layout
+
+\begin_layout Standard
+Write a vignette that describes your package and how to use it with examples.
+ For more information on how to write a vignette and include them in your
+ package see 
+\begin_inset Quotes eld
+\end_inset
+
+Vignettes
+\begin_inset Quotes erd
+\end_inset
+
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wickham2015r"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Document all public functions using 
+\family typewriter
+roxygen2
+\family default
+.
+ See chapter 
+\begin_inset Quotes eld
+\end_inset
+
+Object documentation
+\begin_inset Quotes erd
+\end_inset
+
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wickham2015r"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\begin_layout Section
+* Create a Shiny application using your package
+\end_layout
+
+\begin_layout Standard
+Create a new repository on github for a Shiny application.
+ Create a simple Shiny application that makes it possible to interactively
+ analyze data using your API package.
+ At least one interactive widget should be used.
+ See 
+\begin_inset Quotes eld
+\end_inset
+
+Lesson 6
+\begin_inset Quotes erd
+\end_inset
+
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "shiny"
+
+\end_inset
+
+ for information on how to handle the situation of reactive programming
+ in Shiny when 
+\begin_inset Quotes eld
+\end_inset
+
+slow
+\begin_inset Quotes erd
+\end_inset
+
+ data is used.
+\end_layout
+
+\begin_layout Standard
+It should be possible to run your shiny app out using the 
+\family typewriter
+runGitHub()
+\family default
+ function.
+\end_layout
+
+\begin_layout Section
+Seminar and examination
+\end_layout
+
+\begin_layout Standard
+During the seminar you will bring your own computer and demonstrate your
+ package and what you found difficult in the project.
+ 
+\end_layout
+
+\begin_layout Standard
+We will present as many packages as possible during the seminar and you
+ should
+\end_layout
+
+\begin_layout Enumerate
+Show that the package can be built using R Studio and that all unit tests
+ is passing.
+\end_layout
+
+\begin_layout Enumerate
+Discuss why you implemented the functions as you did.
+\end_layout
+
+\begin_layout Enumerate
+Give a short presentation of the testsuite.
+\end_layout
+
+\begin_layout Enumerate
+Show your vignette/run the examples live.
+\end_layout
+
+\begin_layout Enumerate
+* Present your Shiny application.
+\end_layout
+
+\begin_layout Subsection
+Examination
+\end_layout
+
+\begin_layout Standard
+Turn in a the adress to your github repo with the package (and Shiny application
+) using LISAM.
+ 
+\end_layout
+
+\begin_layout Standard
+The packages will be assigned to other groups to try your package out and
+ return eventual problems as bugs using the issue tracker.
+ The teacher will the decide if there are any bugs or corrections that is
+ needed to correct to get the lab to pass.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced R programming/AdvRCourse/Litterature/courselitterature"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
