@@ -1,0 +1,350 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+API R projects 
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Standard
+Below are som API projects that there exist a reported interest to use and
+ handle.
+ Under each API there is a short description and some indicator on difficult
+ the API can be from one star (simplest) to three starts (most difficult).
+\end_layout
+
+\begin_layout Standard
+In general there exist many different web API:s in what is called 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "API-katalogen"
+target "http://apikatalogen.se/api"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+ There you can find a lot of differnt API:s to connect to.
+ But if you choose any of these you need to confirm your choice with the
+ teacher, you can also choose an international API as long as there do not
+ already exists an R package that do this connection.
+\end_layout
+
+\begin_layout Standard
+Unfortunately many of those example API:s are in Swedish.
+\end_layout
+
+\begin_layout Paragraph
+* Valmyndigheten XML
+\end_layout
+
+\begin_layout Standard
+After each election the Swedish election agency (Valmyndigheten) release
+ a detailed file with all election resuls in an XML format.
+ Implement a package to get the election data (that is published as excel
+ files) out of these files direct.
+ 
+\end_layout
+
+\begin_layout Standard
+More information can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://www.val.se/val/val2014/statistik/index.html"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Paragraph*
+* Google geocode API 
+\end_layout
+
+\begin_layout Standard
+is used to do simple convertions of geodata between coordinates and adresses/zip
+ codes.
+ This is a relative straightforward API.
+ More information can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://developers.google.com/maps/documentation/geocoding/intro"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Paragraph*
+* Kolada API
+\end_layout
+
+\begin_layout Standard
+is an API to the Kolada database that contains key indicators regarding
+ the Swedish municipalities.
+ More information can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://www.kolada.se/appspecific/rka/download/api/Kolada-API-test.html"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Paragraph*
+** Riksdagen
+\end_layout
+
+\begin_layout Standard
+or the Swedish parliment have an API to get documents, debates and information
+ about members of parliment.
+ Information about the API can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://data.riksdagen.se/"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The data is mainly textual data so the R package should convert the data
+ to the datastructures used in the 
+\family typewriter
+tm
+\family default
+ R package.
+ 
+\end_layout
+
+\begin_layout Paragraph
+** Protokollen.net
+\end_layout
+
+\begin_layout Standard
+is an API to get all the meting protocols from Swedish municipalities using
+ elastic search queries (more information 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://en.wikipedia.org/wiki/Elasticsearch"
+
+\end_inset
+
+
+\series default
+\color inherit
+).
+ As with the Riksdagen API the documents need to be stored in the 
+\family typewriter
+tm
+\family default
+ package format.
+ More information can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://www.protokollen.net/#/"
+
+\end_inset
+
+
+\series default
+\color inherit
+ and api information can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target " https://github.com/rotsee/protokollen/blob/master/README-database-api.md"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Paragraph*
+** Språkbanken
+\end_layout
+
+\begin_layout Standard
+is a web resource with corpuses in XML format.
+ As with the other textual resources the purpose with this corpus is to
+ read any XML file into R as a 
+\family typewriter
+tm
+\family default
+ type corpus object with all textual metadata included.
+ The corpuses can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://spraakbanken.gu.se/swe/resurser/corpus"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Paragraph*
+*** Thenmaps
+\end_layout
+
+\begin_layout Standard
+Historical map in geoJSON format.
+ Need to handle spatial data, see spatial.ly form more information on geographica
+l data.
+ More information can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://www.thenmap.net/"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\end_body
+\end_document
