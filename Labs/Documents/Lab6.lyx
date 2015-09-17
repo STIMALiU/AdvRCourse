@@ -1,0 +1,921 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    STIMA\\
+    Department of computer and information sciences
+  }
+  \fancyhead[R]{Advanced R programming}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Advanced R programming}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Computer lab 6
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "IntroPart2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Writing fast R code
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Set you (local) path
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced
+ R programming/AdvRCourseTeacher/Labs/exercise_solutions/"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+for(sol_file in solution_files) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	source(file = paste0(solution_path, sol_file), echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this lab we will will create a package to study the effects of algorithms
+ with different computional complexity and how to speedup R code.
+\end_layout
+
+\begin_layout Standard
+Master students should implement one of the exercises marked with (*).
+ 
+\end_layout
+
+\begin_layout Section
+The knapsack package
+\end_layout
+
+\begin_layout Standard
+Start out by creating a new package on github, see lab 3 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://github.com/MansMeg/AdvRCourse/raw/master/Labs/Documents/Lab3.pdf"
+
+\end_inset
+
+
+\series default
+\color inherit
+ for details on how to setup a package.
+ 
+\end_layout
+
+\begin_layout Standard
+The package will contain three different functions for solving what is called
+ the knapsack problem.
+ The knapsack problem is a discrete optimization problem where we have a
+ knapsack that can take a limited weight 
+\begin_inset Formula $W$
+\end_inset
+
+ and we want to fill this knapsack with a number of items 
+\begin_inset Formula $i=1,...,n$
+\end_inset
+
+, each with a weight 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ and a value 
+\begin_inset Formula $v_{i}$
+\end_inset
+
+.
+ The goal is to find the knapsack with the largest value of the elements
+ added to the knapsack.
+ To solve this problem is NP which means that (most researchers belive)
+ there are no polynomial time algorithm to solve this problem.
+\end_layout
+
+\begin_layout Standard
+For a more detailed background of the knapsack problem see 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "this page"
+target "https://en.wikipedia.org/wiki/Knapsack_problem"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Standard
+The data we will use is generated in the following way.
+ To create larger datasets, just set 
+\family typewriter
+n
+\family default
+ to a larger number.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(42) 
+\end_layout
+
+\begin_layout Plain Layout
+
+n <- 2000
+\end_layout
+
+\begin_layout Plain Layout
+
+knapsack_objects <- 
+\end_layout
+
+\begin_layout Plain Layout
+
+data.frame(
+\end_layout
+
+\begin_layout Plain Layout
+
+w=sample(1:4000, size = n, replace = TRUE), 
+\end_layout
+
+\begin_layout Plain Layout
+
+v=runif(n = n, 0, 10000)
+\end_layout
+
+\begin_layout Plain Layout
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+The package vignette
+\end_layout
+
+\begin_layout Standard
+The package vignette will be your lab report together with the functions
+ in you package.
+ The vignette should contain the answers to all the questions put below.
+ This vignette should be included with the package and be viewed with 
+\family typewriter
+vignette(
+\begin_inset Quotes eld
+\end_inset
+
+lab_report_knapsack
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Brute force search
+\end_layout
+
+\begin_layout Standard
+The only solution that is guaranteed to give a correct answer in all situations
+ for the knapsack problem is using brute-force search, i.e.
+ going through all possible alternatives and return the maximum value found.
+ This approach is of complexity 
+\begin_inset Formula $O(2^{n})$
+\end_inset
+
+ since all possible combinations 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+ needs to be evaluated.
+ 
+\end_layout
+
+\begin_layout Standard
+Implement a function you call 
+\family typewriter
+knapsack_brute_force(x, W)
+\family default
+ that takes a 
+\family typewriter
+data.frame
+\family default
+ 
+\family typewriter
+cx
+\family default
+ with two variables 
+\family typewriter
+v
+\family default
+ and 
+\family typewriter
+w
+\family default
+ and returns the maximum knapsack value and which elements (rows in the
+ 
+\family typewriter
+data.frame
+\family default
+).
+ The variable 
+\family typewriter
+W
+\family default
+ is the knapsack size.
+\end_layout
+
+\begin_layout Standard
+The function should check that the inputs are correct (i.e.
+ a 
+\family typewriter
+data.frame
+\family default
+ with two variables 
+\family typewriter
+v
+\family default
+ and 
+\family typewriter
+w
+\family default
+) with only positive values.
+\end_layout
+
+\begin_layout Standard
+The easiest way to enumerate all different combinations is using a binary
+ representation of the numbers 
+\begin_inset Formula $1$
+\end_inset
+
+ to 
+\begin_inset Formula $2^{n}$
+\end_inset
+
+ and include all elements of that is equal to 1 in the binary representation.
+ A function that can do this for you in R is 
+\family typewriter
+intToBits()
+\family default
+.
+ Below is how the function should work (observe that only the first couple
+ of objects are studied).
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+brute_force_knapsack(x = knapsack_objects[1:8,], W = 3500)
+\end_layout
+
+\begin_layout Plain Layout
+
+brute_force_knapsack(x = knapsack_objects[1:12,], W = 3500)
+\end_layout
+
+\begin_layout Plain Layout
+
+brute_force_knapsack(x = knapsack_objects[1:8,], W = 2000)
+\end_layout
+
+\begin_layout Plain Layout
+
+brute_force_knapsack(x = knapsack_objects[1:12,], W = 2000)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Question
+\end_layout
+
+\begin_layout Standard
+How long time does it takes to run the algorithm for 
+\begin_inset Formula $n=16$
+\end_inset
+
+ objects?
+\end_layout
+
+\begin_layout Subsection
+Dynamic programming
+\end_layout
+
+\begin_layout Standard
+We will now take another approach to the problem.
+ If the weights are actually discrete values (as in our example) we can
+ use this to create an algorithm that can solve the knapsack problem exact
+ by iterating over all possible values of 
+\family typewriter
+w
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The pseudocode for this algorithm can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://en.wikipedia.org/wiki/Knapsack_problem#0.2F1_knapsack_problem"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+ Implement this function as 
+\family typewriter
+knapsack_dynamic(x, W)
+\family default
+.
+ This function should return the same results as the brute force algorithm,
+ but unlike the brute force it should scale much better since the algorithm
+ will run in 
+\begin_inset Formula $O(Wn)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Question
+\end_layout
+
+\begin_layout Standard
+How long time does it takes to run the algorithm for 
+\begin_inset Formula $n=500$
+\end_inset
+
+ objects?
+\end_layout
+
+\begin_layout Subsection
+Greedy heuristic
+\end_layout
+
+\begin_layout Standard
+A last approach is to use the a heuristic or approximation for the problem.
+ This algorithm will not give an exact result (but it can be shown that
+ it will return at least 50% of the true maximum value), but it will reduce
+ the computational complexity considerably (actually to 
+\begin_inset Formula $O(n\log n)$
+\end_inset
+
+ due to the sorting part of the algorithm).
+ A short description on how to implement the greedy approach can be found
+ 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://en.wikipedia.org/wiki/Knapsack_problem#Greedy_approximation_algorithm"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+ Below is an example on how the function should work.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+greedy_knapsack(x = knapsack_objects[1:800,], W = 3500)
+\end_layout
+
+\begin_layout Plain Layout
+
+greedy_knapsack(x = knapsack_objects[1:1200,], W = 2000)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Question
+\end_layout
+
+\begin_layout Standard
+How long time does it takes to run the algorithm for 
+\begin_inset Formula $n=1000000$
+\end_inset
+
+ objects?
+\end_layout
+
+\begin_layout Subsection
+Implement test suite for your functions
+\end_layout
+
+\begin_layout Standard
+Implement a test suite for your functions so that you now know that is working
+ correctly.
+ 
+\end_layout
+
+\begin_layout Subsection
+Profile your code and optimize your code
+\end_layout
+
+\begin_layout Standard
+Now profile and optimize your code to see if you can increase the speed
+ in any way using any of the techniques described in the lectures and 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://adv-r.had.co.nz/Profiling.html"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+ Use the package 
+\family typewriter
+lineprof
+\family default
+ to identify bottlenecks, see if you can write this code any faster.
+\end_layout
+
+\begin_layout Paragraph
+Question
+\end_layout
+
+\begin_layout Standard
+How large performance gain could you get by trying to improving your code?
+\end_layout
+
+\begin_layout Subsection
+(*) Implentation in 
+\family typewriter
+Rcpp
+\end_layout
+
+\begin_layout Standard
+Another way of improving your code would be to run some parts of the code
+ using 
+\family typewriter
+Rcpp
+\family default
+ and writing this part of the code using C++.
+ More details on how to use 
+\family typewriter
+Rcpp
+\family default
+ can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://adv-r.had.co.nz/Rcpp.html"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Standard
+In the function you choose to improve by adding the logical argument 
+\family typewriter
+fast
+\family default
+.
+ The argument should be 
+\family typewriter
+FALSE
+\family default
+ by default (so it works with the test suite where we have not specified
+ the argument 
+\family typewriter
+fast
+\family default
+).
+ Implement the fast version of the function using 
+\family typewriter
+Rcpp
+\family default
+.
+\end_layout
+
+\begin_layout Paragraph
+Question
+\end_layout
+
+\begin_layout Standard
+How large performance gain could you get by using 
+\family typewriter
+Rcpp
+\family default
+ and C++?
+\end_layout
+
+\begin_layout Subsection
+(*) Parallelize brute force search
+\end_layout
+
+\begin_layout Standard
+The brute force algorithm is straight forward to parallelize for computers
+ with multiple cores.
+ Implement an argument 
+\family typewriter
+parallel
+\family default
+ in 
+\family typewriter
+brute_force_knapsack()
+\family default
+ that is 
+\family typewriter
+FALSE
+\family default
+ by default (so it works with the test suite where we have not specified
+ the argument 
+\family typewriter
+parallel
+\family default
+).
+ If set to 
+\family typewriter
+TRUE
+\family default
+, the function should parallelize over the detected cores.
+\end_layout
+
+\begin_layout Paragraph
+Note! 
+\end_layout
+
+\begin_layout Standard
+Your implementation will be platform dependent and only work with MacOS/Linux
+ or Windows.
+\end_layout
+
+\begin_layout Paragraph
+Question
+\end_layout
+
+\begin_layout Standard
+How large performance gain could you get by parallelizing brute force search?
+\end_layout
+
+\begin_layout Subsection
+Document your package using 
+\family typewriter
+roxygen2
+\end_layout
+
+\begin_layout Standard
+Document all your function and package using 
+\family typewriter
+roxygen2
+\family default
+.
+\end_layout
+
+\begin_layout Section
+(*) Profile and improve your existing API package
+\end_layout
+
+\begin_layout Standard
+Use the package lineprof to identify the bottlenecks in your code from last
+ week.
+ Try to improve this as much as you can, run your test suite continously
+ to check that you do not introduce any new bugs.
+\end_layout
+
+\begin_layout Section
+Seminar and examination
+\end_layout
+
+\begin_layout Standard
+During the seminar you will bring your own computer and demonstrate your
+ package and what you found difficult in the project.
+ 
+\end_layout
+
+\begin_layout Standard
+We will present as many packages as possible during the seminar and you
+ should
+\end_layout
+
+\begin_layout Enumerate
+Show that the package can be built using R Studio and that all unit tests
+ is passing.
+\end_layout
+
+\begin_layout Enumerate
+Show your vignette/run the examples live.
+\end_layout
+
+\begin_layout Enumerate
+Present the speed of your different algorithms.
+ 
+\end_layout
+
+\begin_layout Subsection
+Examination
+\end_layout
+
+\begin_layout Standard
+Turn in a the adress to your github repo with the package using LISAM.
+ 
+\end_layout
+
+\begin_layout Standard
+The packages will be assigned to other groups to try your package out and
+ return eventual problems as bugs using the issue tracker.
+ The teacher will the decide if there are any bugs or corrections that is
+ needed to correct to get the lab to pass.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced R programming/AdvRCourse/Litterature/courselitterature"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
