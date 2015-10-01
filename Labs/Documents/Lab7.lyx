@@ -1,0 +1,827 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    STIMA\\
+    Department of computer and information sciences
+  }
+  \fancyhead[R]{Advanced R programming}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Advanced R programming}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Computer lab 7
+\end_layout
+
+\begin_layout Author
+Måns Magnusson
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "IntroPart2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduction to machine learning in R
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Set you (local) path
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced
+ R programming/AdvRCourseTeacher/Labs/exercise_solutions/"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+for(sol_file in solution_files) {
+\end_layout
+
+\begin_layout Plain Layout
+
+	source(file = paste0(solution_path, sol_file), echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this lab we will continue to improve our 
+\family typewriter
+linreg
+\family default
+ package by including a similar function for ridge regression.
+\end_layout
+
+\begin_layout Standard
+Master students should implement one of the exercises marked with (*).
+ 
+\end_layout
+
+\begin_layout Section
+Ridge regression
+\end_layout
+
+\begin_layout Standard
+You should add a new function in your 
+\family typewriter
+linreg
+\family default
+ package that you call 
+\family typewriter
+ridgereg()
+\family default
+.
+ As with the 
+\family typewriter
+linreg()
+\family default
+ function it should take a formula object as well as a dataset and return
+ a 
+\family typewriter
+ridgereg
+\family default
+ object.
+\end_layout
+
+\begin_layout Standard
+Ridge regression can be a good alternative when we have a lot of covariates
+ (when 
+\begin_inset Formula $p>n$
+\end_inset
+
+) or in the situation of multicollinearity.
+ More information on ridge regression can be found in chapter 3.4.1 in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "friedman2001elements"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The hyperparameter that we will tune to find the best model is the 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ parameters.
+ Unlike the linear regression situation, the different scaling of the covariates
+ in 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+ will affect the results.
+ So normalize all covariates before you do the analysis.
+ 
+\begin_inset Formula 
+\[
+\mathbf{x}_{\mbox{norm}}=\frac{\mathbf{x}-\bar{\mathbf{x}}}{\sqrt{V(\mathbf{x})}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Computations using ordinary least squares
+\end_layout
+
+\begin_layout Standard
+The simple way to calculate the different is to use ordinary linear algebra
+ and calculate: 
+\end_layout
+
+\begin_layout Paragraph
+Regressions coefficients: 
+\begin_inset Formula 
+\[
+\hat{\beta}^{\mbox{ridge}}=\left(\mathbf{X}^{\mbox{T}}\mathbf{X}+\lambda\mathbf{I}\right)^{-1}\mathbf{X}^{\mbox{T}}\mathbf{y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+The fitted values: 
+\begin_inset Formula 
+\[
+\hat{\mathbf{y}}=\mathbf{X}\hat{\beta}^{\mbox{ridge}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Calculate these statistics and store it in an object of class 
+\family typewriter
+ridgereg
+\family default
+.
+ You can use either S3 objects or RC objects.
+ 
+\end_layout
+
+\begin_layout Standard
+Document your function 
+\family typewriter
+ridgereg()
+\family default
+ using 
+\family typewriter
+roxygen2
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+(*) Ridge regression using the QR decomposition 
+\end_layout
+
+\begin_layout Standard
+As in the situation with linear regression we can do the calculations using
+ the 
+\begin_inset Formula $QR$
+\end_inset
+
+ decomposition.
+ It is a little bit trickier that in the linear situation, some hints can
+ be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://math.stackexchange.com/questions/299481/qr-factorization-for-ridge-regression"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Subsection
+Implementing methods
+\end_layout
+
+\begin_layout Standard
+As with the 
+\family typewriter
+linreg()
+\family default
+ function you should implement some methods for your object.
+\end_layout
+
+\begin_layout Standard
+The following methods should be implemented and be documented using 
+\family typewriter
+roxygen2
+\family default
+.
+\end_layout
+
+\begin_layout Subparagraph
+
+\family typewriter
+print()
+\end_layout
+
+\begin_layout Standard
+should 
+\series bold
+print
+\series default
+ 
+\series bold
+out
+\series default
+ the coefficients and coefficient names, similar as done by the 
+\family typewriter
+lm
+\family default
+ class.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+mod_object <- lm(Petal.Length~Species, data = iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(mod_object) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph
+
+\family typewriter
+predict() 
+\end_layout
+
+\begin_layout Standard
+should return the predicted values 
+\begin_inset Formula $\hat{\mathbf{y}}$
+\end_inset
+
+, it should be able to predict for new dataset similar to the 
+\family typewriter
+predict()
+\family default
+ function for the 
+\family typewriter
+lm()
+\family default
+ package.
+\end_layout
+
+\begin_layout Subparagraph
+
+\family typewriter
+coef() 
+\end_layout
+
+\begin_layout Standard
+should return the ridge regression coefficients 
+\begin_inset Formula $\hat{\beta}^{\mbox{ridge}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Handling large datasets with 
+\family typewriter
+dplyr
+\end_layout
+
+\begin_layout Standard
+Create a function you call 
+\family typewriter
+visualize_airport_delays()
+\family default
+ without any arguments that creates a plot that visualizes the mean delay
+ of flights for different airports by longitude and latitude using 
+\family typewriter
+ggplot2
+\family default
+.
+ The datasets can be found in the 
+\family typewriter
+nycflights13
+\family default
+ package.
+\end_layout
+
+\begin_layout Standard
+The data handling should be done using 
+\family typewriter
+dplyr
+\family default
+ verbs as much as possible.
+ See the cheat sheet 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf"
+
+\end_inset
+
+
+\series default
+\color inherit
+ for more information how to data munge using 
+\family typewriter
+dplyr
+\family default
+.
+ Remember that 
+\family typewriter
+delays
+\family default
+ is a variable in the 
+\family typewriter
+flights
+\family default
+ dataset and airport information is in the 
+\family typewriter
+airports
+\family default
+ dataset.
+\end_layout
+
+\begin_layout Subsection
+Write a test suite
+\end_layout
+
+\begin_layout Standard
+Write a simple test suite for your 
+\family typewriter
+ridgereg()
+\family default
+ and associated methods.
+ 
+\end_layout
+
+\begin_layout Section
+Create a vignettes for ridgereg, dplyr and the caret package
+\end_layout
+
+\begin_layout Standard
+Create a vignette called 
+\family typewriter
+ridgereg
+\family default
+ where you show how to do a simple prediction problem using your own 
+\family typewriter
+ridgereg()
+\family default
+ function.
+\end_layout
+
+\begin_layout Standard
+Use the caret package and your 
+\family typewriter
+ridgereg()
+\family default
+ function to create a predictive model for the 
+\family typewriter
+BostonHousing
+\family default
+ data found in the 
+\family typewriter
+mlbench
+\family default
+ package or (*) data from your own API.
+\end_layout
+
+\begin_layout Standard
+The vignette should include the following:
+\end_layout
+
+\begin_layout Enumerate
+Divide the 
+\family typewriter
+BostonHousing
+\family default
+ data (or your own API data) into a test and training dataset using the
+ 
+\family typewriter
+caret
+\family default
+ package.
+\end_layout
+
+\begin_layout Enumerate
+Fit a linear regression model and a fit a linear regression model with forward
+ selection of covariates on the training dataset.
+ Information on linear regression models in the caret package can be found
+ 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://topepo.github.io/caret/Linear_Regression.html"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Enumerate
+Evaluate the performance of these two models on the training dataset.
+\end_layout
+
+\begin_layout Enumerate
+Fit a ridge regression model using your 
+\family typewriter
+ridgereg()
+\family default
+ function to the training dataset.
+ How to include custom models in caret is described 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://topepo.github.io/caret/custom_models.html"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+ Find the best hyperparameter value for 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ using 10-fold cross-validation.
+\end_layout
+
+\begin_layout Enumerate
+Evaluate the performance on the training dataset.
+\end_layout
+
+\begin_layout Enumerate
+Evaluate the performance of all three models on the test dataset and write
+ some concluding comments.
+\end_layout
+
+\begin_layout Subsection
+(*) Predictive modeling of flight delays using ridgereg()
+\end_layout
+
+\begin_layout Standard
+Create a new vignette called flight_delay where you try to predict the delay
+ of each flight using your own 
+\family typewriter
+ridgereg()
+\family default
+ function.
+ If the data is to large, you can scale it down a bit, but the purpose is
+ to try to do predictions using larger datasets.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Read in the weather dataset and the flights dataset from the 
+\family typewriter
+nycflights13
+\family default
+ package and remove eventual variables you do not believe to have a predictive
+ value.
+\end_layout
+
+\begin_layout Enumerate
+Add extra weather data from the weather dataset and create interaction effects
+ you think can be of interest for the prediction.
+\end_layout
+
+\begin_layout Enumerate
+Use the caret package to divide the flight dataset into three sets: test,
+ train and validation (with the proportions 5%, 80% and 15%.
+\end_layout
+
+\begin_layout Enumerate
+Train ridge regressions models for different values of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ and evaluate the root mean squared error (see 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "https://heuristically.wordpress.com/2013/07/12/calculate-rmse-and-mae-in-r-and-sas/"
+
+\end_inset
+
+
+\series default
+\color inherit
+) on the validation set.
+ Try to find a optimal value for 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+When you found a good value for 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, use this to predict the test set and report the RMSE of your predicted
+ model.
+\end_layout
+
+\begin_layout Section
+Seminar and examination
+\end_layout
+
+\begin_layout Standard
+During the seminar you will bring your own computer and demonstrate your
+ package and what you found difficult in the project.
+ 
+\end_layout
+
+\begin_layout Standard
+We will present as many packages as possible during the seminar and you
+ should
+\end_layout
+
+\begin_layout Enumerate
+Show that the package can be built using R Studio and that all unit tests
+ is passing.
+\end_layout
+
+\begin_layout Enumerate
+Show your vignette/analysis.
+\end_layout
+
+\begin_layout Subsection
+Examination
+\end_layout
+
+\begin_layout Standard
+Turn in a the adress to your github repo with the package using LISAM.
+ 
+\end_layout
+
+\begin_layout Standard
+The packages will be assigned to other groups to try your package out and
+ return eventual problems as bugs using the issue tracker.
+ The teacher will the decide if there are any bugs or corrections that is
+ needed to correct to get the lab to pass.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced R programming/AdvRCourse/Litterature/courselitterature"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
