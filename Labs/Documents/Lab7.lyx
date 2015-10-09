@@ -261,7 +261,7 @@ linreg
 \family default
  package that you call 
 \family typewriter
-ridgereg()
+ridgereg(formula, data, lambda)
 \family default
 .
  As with the 
@@ -274,6 +274,19 @@ linreg()
 ridgereg
 \family default
  object.
+ The 
+\family typewriter
+ridgereg()
+\family default
+ function should also have the argument 
+\family typewriter
+lambda
+\family default
+ to specify 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -317,8 +330,22 @@ The hyperparameter that we will tune to find the best model is the
 
 \end_layout
 
+\begin_layout Standard
+If you want to compare the results you can compare with 
+\family typewriter
+lm.ridge()
+\family default
+ in the 
+\family typewriter
+MASS
+\family default
+ package that is parametrized in the same way.
+ But it uses SVD decomposition so there can be small differences in the
+ results.
+\end_layout
+
 \begin_layout Subsection
-Computations using ordinary least squares
+Computations using least squares
 \end_layout
 
 \begin_layout Standard
@@ -514,6 +541,19 @@ should return the ridge regression coefficients
 \end_layout
 
 \begin_layout Subsection
+Write a test suite
+\end_layout
+
+\begin_layout Standard
+Write a simple test suite for your 
+\family typewriter
+ridgereg()
+\family default
+ and associated methods.
+ 
+\end_layout
+
+\begin_layout Subsection
 Handling large datasets with 
 \family typewriter
 dplyr
@@ -577,21 +617,20 @@ airports
  dataset.
 \end_layout
 
-\begin_layout Subsection
-Write a test suite
-\end_layout
-
-\begin_layout Standard
-Write a simple test suite for your 
+\begin_layout Section
+Create a vignettes for 
 \family typewriter
 ridgereg()
 \family default
- and associated methods.
- 
-\end_layout
-
-\begin_layout Section
-Create a vignettes for ridgereg, dplyr and the caret package
+, 
+\family typewriter
+dplyr
+\family default
+ and the 
+\family typewriter
+caret
+\family default
+ package
 \end_layout
 
 \begin_layout Standard
@@ -642,8 +681,11 @@ caret
 \begin_layout Enumerate
 Fit a linear regression model and a fit a linear regression model with forward
  selection of covariates on the training dataset.
- Information on linear regression models in the caret package can be found
- 
+ Information on linear regression models in the 
+\family typewriter
+caret
+\family default
+ package can be found 
 \series bold
 \color blue
 
@@ -661,7 +703,7 @@ target "http://topepo.github.io/caret/Linear_Regression.html"
 \end_layout
 
 \begin_layout Enumerate
-Evaluate the performance of these two models on the training dataset.
+Evaluate the performance of this model on the training dataset.
 \end_layout
 
 \begin_layout Enumerate
@@ -669,7 +711,11 @@ Fit a ridge regression model using your
 \family typewriter
 ridgereg()
 \family default
- function to the training dataset.
+ function to the training dataset for different values of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+.
  How to include custom models in caret is described 
 \series bold
 \color blue
@@ -685,15 +731,48 @@ target "http://topepo.github.io/caret/custom_models.html"
 \series default
 \color inherit
 .
- Find the best hyperparameter value for 
-\begin_inset Formula $\lambda$
-\end_inset
-
- using 10-fold cross-validation.
+ 
 \end_layout
 
 \begin_layout Enumerate
-Evaluate the performance on the training dataset.
+Find the best hyperparameter value for 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ using 10-fold cross-validation on the training set.
+ More information how to use the 
+\family typewriter
+caret
+\family default
+ package for training can be found 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "6. https://cran.r-project.org/web/packages/caret/vignettes/caret.pdf"
+
+\end_inset
+
+
+\series default
+\color inherit
+ and 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "here"
+target "http://topepo.github.io/caret/training.html"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -702,7 +781,9 @@ Evaluate the performance of all three models on the test dataset and write
 \end_layout
 
 \begin_layout Subsection
-(*) Predictive modeling of flight delays using ridgereg()
+(*) Predictive modeling of flight delays using 
+\family typewriter
+ridgereg()
 \end_layout
 
 \begin_layout Standard
