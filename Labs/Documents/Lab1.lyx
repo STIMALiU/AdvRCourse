@@ -809,7 +809,7 @@ add_elements_to_matrix(A, x, i, j)
 \begin_layout Standard
 Create a function called 
 \family typewriter
-add_elements_to_matrix(i)
+add_elements_to_matrix()
 \family default
  with parameters 
 \family typewriter
