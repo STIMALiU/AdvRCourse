@@ -34,18 +34,8 @@ test_that("Assignment: repeat_my_moving_median()", {
 
   # Expect to run
   expect_silent(suppressWarnings(suppressMessages(repeat_my_moving_median(x=x, n=n[1]))))
-  expect_that(repeat_my_moving_median(x=x, n=n[1]), 
-              condition = not(throws_error()), 
-              info = "'repeat_my_moving_median()' throws an error.")
   expect_silent(suppressWarnings(suppressMessages(repeat_my_moving_median(x=x, n=n[2]))))
-  expect_that(repeat_my_moving_median(x=x, n=n[2]), 
-              condition = not(throws_error()), 
-              info = "'repeat_my_moving_median()' throws an error.")
   expect_silent(suppressWarnings(suppressMessages(repeat_my_moving_median(x=x, n=n[1], na.rm=TRUE))))
-  expect_that(repeat_my_moving_median(x=x, n=n[1], na.rm=TRUE), 
-              condition = not(throws_error()), 
-              info = "'repeat_my_moving_median()' throws an error.")
-
   
   # Expect assertions
   expect_error(repeat_my_moving_median(x="hello", n="world"), 
