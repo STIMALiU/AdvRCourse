@@ -18,7 +18,7 @@ test_that("Assignment: trial_division_factorization()", {
                                           paste(paste0("'",exp_args,"'"),collapse = ", "),
                                           ")."))
   # Expect self contained
-  expect_self_contained(trial_division_factorization, 
+  expect_function_self_contained(trial_division_factorization, 
                         info = "'trial_division_factorization' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function
@@ -33,9 +33,7 @@ test_that("Assignment: trial_division_factorization()", {
 
   # Expect to run
   for(i in seq_along(x)){
-    expect_that(trial_division_factorization(x=x[[i]]), 
-                condition = not(throws_error()), 
-                info = "'trial_division_factorization()' throws an error.")
+    expect_silent(suppressWarnings(suppressMessages(trial_division_factorization(x=x[[i]]))))
   }
 
   # Expect assertions
