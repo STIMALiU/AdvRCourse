@@ -18,7 +18,7 @@ test_that("Assignment: sheldon_game()", {
                                           paste(paste0("'",exp_args,"'"),collapse = ", "),
                                           ")."))
   # Expect self contained
-  expect_self_contained(sheldon_game, 
+  expect_function_self_contained(sheldon_game, 
                         info = "'sheldon_game' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function

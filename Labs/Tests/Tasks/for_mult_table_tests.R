@@ -18,7 +18,7 @@ test_that("Assignment: for_mult_table()", {
                                           paste(paste0("'",exp_args,"'"),collapse = ", "),
                                           ")."))
   # Expect self contained
-  expect_self_contained(for_mult_table, 
+  expect_function_self_contained(for_mult_table, 
                         info = "'for_mult_table' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function

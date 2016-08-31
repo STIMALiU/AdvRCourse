@@ -18,7 +18,7 @@ test_that("Assignment: cor_matrix()", {
                                           paste(paste0("'",exp_args,"'"),collapse = ", "),
                                           ")."))
   # Expect self contained
-  expect_self_contained(cor_matrix, 
+  expect_function_self_contained(cor_matrix, 
                         info = "'cor_matrix' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function

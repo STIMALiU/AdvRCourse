@@ -18,7 +18,7 @@ test_that("Assignment: my_moving_median()", {
                                           paste(paste0("'",exp_args,"'"),collapse = ", "),
                                           ")."))
   # Expect self contained
-  expect_self_contained(my_moving_median, 
+  expect_function_self_contained(my_moving_median, 
                         info = "'my_moving_median' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function
