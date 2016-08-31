@@ -18,7 +18,7 @@ test_that("Assignment: in_environment()", {
                                           paste(paste0("'",exp_args,"'"),collapse = ", "),
                                           ")."))
   # Expect self contained
-  expect_self_contained(in_environment, 
+  expect_function_self_contained(in_environment, 
                         info = "'in_environment' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function
@@ -30,9 +30,7 @@ test_that("Assignment: in_environment()", {
   testenv <- baseenv()
 
   # Expect to run
-  expect_that(in_environment(env=testenv), 
-              condition = not(throws_error()), 
-              info = "'in_environment()' throws an error.")
+  expect_silent(suppressWarnings(suppressMessages(in_environment(env=testenv))))
   
   # Expect assertions
   expect_error(in_environment(x="hello", n="world"), 
