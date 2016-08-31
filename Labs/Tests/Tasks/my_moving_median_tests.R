@@ -23,7 +23,7 @@ test_that("Assignment: my_moving_median()", {
   
   # Expect not folowing code in function
   not_allowed <- "repeat"
-  expect_that(my_moving_median, not(function_code(not_allowed)), 
+  expect_that(my_moving_median, not(expect_function_code(not_allowed)), 
               info = paste0("'my_moving_median' contains the code '", not_allowed, "' that is not allowed."))
 
   # Test cases (arguments)
