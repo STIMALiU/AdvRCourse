@@ -33,15 +33,9 @@ test_that("Assignment: my_moving_median()", {
   n <- c(2, 5)
 
   # Expect to run
-  expect_that(my_moving_median(x=x, n=n[1]), 
-              condition = not(throws_error()), 
-              info = "'my_moving_median()' throws an error.")
-  expect_that(my_moving_median(x=x, n=n[2]), 
-              condition = not(throws_error()), 
-              info = "'my_moving_median()' throws an error.")
-  expect_that(my_moving_median(x=x, n=n[1], na.rm=TRUE), 
-              condition = not(throws_error()), 
-              info = "'my_moving_median()' throws an error.")
+  expect_silent(suppressWarnings(suppressMessages(my_moving_median(x="apa", n=n[1]))))
+  expect_silent(suppressWarnings(suppressMessages(my_moving_median(x=x, n=n[2]))))
+  expect_silent(suppressWarnings(suppressMessages(my_moving_median(x=x, n=n[1], na.rm=TRUE))))
 
   
   # Expect assertions
