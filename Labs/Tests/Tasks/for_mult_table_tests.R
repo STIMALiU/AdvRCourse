@@ -31,12 +31,8 @@ test_that("Assignment: for_mult_table()", {
   to <- c(8, 58)
   
   # Expect to run
-  expect_that(for_mult_table(from = from[1], to=to[1]), 
-              condition = not(throws_error()), 
-              info = "'for_mult_table()' throws an error.")
-  expect_that(for_mult_table(from = from[2], to=to[2]), 
-              condition = not(throws_error()), 
-              info = "'for_mult_table()' throws an error.")
+  expect_silent(suppressWarnings(suppressMessages(for_mult_table(from = from[1], to=to[1]))))
+  expect_silent(suppressWarnings(suppressMessages(for_mult_table(from = from[2], to=to[2]))))
 
   
   # Expect assertions
