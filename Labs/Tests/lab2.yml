@@ -1,7 +1,6 @@
 # Assignment D1
 name  : Lab2
 description : "Advanced R programming, computer lab 2"
-reporter : student
 tasks:
   sheldon_game:
     url: 
