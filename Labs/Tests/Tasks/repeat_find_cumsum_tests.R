@@ -18,15 +18,15 @@ test_that("Assignment: repeat_find_cumsum()", {
                                           paste(paste0("'",exp_args,"'"),collapse = ", "),
                                           ")."))
   # Expect self contained
-  expect_self_contained(repeat_find_cumsum, 
+  expect_function_self_contained(repeat_find_cumsum, 
                         info = "'repeat_find_cumsum' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function
-  not_allowed <- c("for", "while")
-  for (not_ok in not_allowed){
-    expect_that(repeat_find_cumsum, not(function_code(not_ok)), 
-                info = paste0("'repeat_find_cumsum' contains the code '", not_ok, "' that is not allowed."))
-  }
+  #not_allowed <- c("for", "while")
+  #for (not_ok in not_allowed){
+  #  expect_that(repeat_find_cumsum, not(function_code(not_ok)), 
+  #              info = paste0("'repeat_find_cumsum' contains the code '", not_ok, "' that is not allowed."))
+  #}
   
   
   # Test cases (arguments)
@@ -34,13 +34,9 @@ test_that("Assignment: repeat_find_cumsum()", {
   find_sum <- list(2000, 166)
 
   # Expect to run
-  expect_that(repeat_find_cumsum(x=x[[1]], find_sum=find_sum[[1]]), 
-              condition = not(throws_error()), 
-              info = "'repeat_find_cumsum()' throws an error.")
-  expect_that(repeat_find_cumsum(x=x[[2]], find_sum=find_sum[[2]]), 
-              condition = not(throws_error()), 
-              info = "'repeat_find_cumsum()' throws an error.")
-  
+  expect_silent(suppressWarnings(suppressMessages(repeat_find_cumsum(x=x[[1]], find_sum=find_sum[[1]]))))
+  expect_silent(suppressWarnings(suppressMessages(repeat_find_cumsum(x=x[[2]], find_sum=find_sum[[2]]))))
+
   # Expect assertions
   expect_error(repeat_find_cumsum(x=1:4, n=c(4,5)),
               info = "'repeat_find_cumsum()' do not throw an error with erroneous inputs.")

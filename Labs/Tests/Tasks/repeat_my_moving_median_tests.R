@@ -18,13 +18,13 @@ test_that("Assignment: repeat_my_moving_median()", {
                                           paste(paste0("'",exp_args,"'"),collapse = ", "),
                                           ")."))
   # Expect self contained
-  expect_self_contained(repeat_my_moving_median, 
+  expect_function_self_contained(repeat_my_moving_median, 
                         info = "'repeat_my_moving_median' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function
-  not_allowed <- "for"
-  expect_that(repeat_my_moving_median, not(function_code(not_allowed)), 
-              info = paste0("'repeat_my_moving_median' contains the code '", not_allowed, "' that is not allowed."))
+  #not_allowed <- "for"
+  #expect_that(repeat_my_moving_median, not(function_code(not_allowed)), 
+  #            info = paste0("'repeat_my_moving_median' contains the code '", not_allowed, "' that is not allowed."))
 
   # Test cases (arguments)
   set.seed(42)
@@ -33,12 +33,15 @@ test_that("Assignment: repeat_my_moving_median()", {
   n <- c(2, 5)
 
   # Expect to run
+  expect_silent(suppressWarnings(suppressMessages(repeat_my_moving_median(x=x, n=n[1]))))
   expect_that(repeat_my_moving_median(x=x, n=n[1]), 
               condition = not(throws_error()), 
               info = "'repeat_my_moving_median()' throws an error.")
+  expect_silent(suppressWarnings(suppressMessages(repeat_my_moving_median(x=x, n=n[2]))))
   expect_that(repeat_my_moving_median(x=x, n=n[2]), 
               condition = not(throws_error()), 
               info = "'repeat_my_moving_median()' throws an error.")
+  expect_silent(suppressWarnings(suppressMessages(repeat_my_moving_median(x=x, n=n[1], na.rm=TRUE))))
   expect_that(repeat_my_moving_median(x=x, n=n[1], na.rm=TRUE), 
               condition = not(throws_error()), 
               info = "'repeat_my_moving_median()' throws an error.")
