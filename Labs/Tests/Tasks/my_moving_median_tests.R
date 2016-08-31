@@ -22,9 +22,9 @@ test_that("Assignment: my_moving_median()", {
                         info = "'my_moving_median' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function
-  not_allowed <- "repeat"
-  expect_that(my_moving_median, not(expect_function_code(my_moving_median,not_allowed)), 
-              info = paste0("'my_moving_median' contains the code '", not_allowed, "' that is not allowed."))
+#  not_allowed <- "repeat"
+#  expect_that(my_moving_median, not(expect_function_code(my_moving_median,not_allowed)), 
+#              info = paste0("'my_moving_median' contains the code '", not_allowed, "' that is not allowed."))
 
   # Test cases (arguments)
   set.seed(42)
