@@ -33,7 +33,7 @@ test_that("Assignment: my_moving_median()", {
   n <- c(2, 5)
 
   # Expect to run
-  expect_silent(suppressWarnings(suppressMessages(my_moving_median(x="apa", n=n[1]))))
+  expect_silent(suppressWarnings(suppressMessages(my_moving_median(x=x, n=n[1]))))
   expect_silent(suppressWarnings(suppressMessages(my_moving_median(x=x, n=n[2]))))
   expect_silent(suppressWarnings(suppressMessages(my_moving_median(x=x, n=n[1], na.rm=TRUE))))
 
