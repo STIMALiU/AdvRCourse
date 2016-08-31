@@ -18,25 +18,21 @@ test_that("Assignment: while_mult_table()", {
                                           paste(paste0("'",exp_args,"'"),collapse = ", "),
                                           ")."))
   # Expect self contained
-  expect_self_contained(while_mult_table, 
+  expect_function_self_contained(while_mult_table, 
                         info = "'while_mult_table' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function
-  not_allowed <- "for"
-  expect_that(while_mult_table, not(function_code(not_allowed)), 
-              info = paste0("'while_mult_table' contains the code '", not_allowed, "' that is not allowed."))
+  #not_allowed <- "for"
+  #expect_that(while_mult_table, not(function_code(not_allowed)), 
+  #            info = paste0("'while_mult_table' contains the code '", not_allowed, "' that is not allowed."))
 
   # Test cases (arguments)
   from <- c(7, 56)
   to <- c(8, 58)
   
   # Expect to run
-  expect_that(while_mult_table(from = from[1], to=to[1]), 
-              condition = not(throws_error()), 
-              info = "'while_mult_table()' throws an error.")
-  expect_that(while_mult_table(from = from[2], to=to[2]), 
-              condition = not(throws_error()), 
-              info = "'while_mult_table()' throws an error.")
+  expect_silent(suppressWarnings(suppressMessages(while_mult_table(from = from[1], to=to[1]))))
+  expect_silent(suppressWarnings(suppressMessages(while_mult_table(from = from[2], to=to[2]))))
 
   
   # Expect assertions
