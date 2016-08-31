@@ -22,9 +22,9 @@ test_that("Assignment: for_mult_table()", {
                         info = "'for_mult_table' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function
-  not_allowed <- "while"
-  expect_that(for_mult_table, not(function_code(not_allowed)), 
-              info = paste0("'for_mult_table' contains the code '", not_allowed, "' that is not allowed."))
+  #not_allowed <- "while"
+  #expect_that(for_mult_table, not(function_code(not_allowed)), 
+  #            info = paste0("'for_mult_table' contains the code '", not_allowed, "' that is not allowed."))
 
   # Test cases (arguments)
   from <- c(7, 56)
