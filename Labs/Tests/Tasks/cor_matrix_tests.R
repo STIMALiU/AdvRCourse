@@ -33,9 +33,8 @@ test_that("Assignment: cor_matrix()", {
   X <- iris[2:4]
   
   # Expect to run
-  expect_that(cor_matrix(X=X), 
-              condition = not(throws_error()), 
-              info = "'cor_matrix()' throws an error.")
+  expect_silent(suppressWarnings(suppressMessages(cor_matrix(X=X))))
+  
   
   # Expect assertions
   expect_error(cor_matrix(X=as.matrix(X)),
