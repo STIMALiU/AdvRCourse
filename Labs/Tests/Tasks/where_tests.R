@@ -18,7 +18,7 @@ test_that("Assignment: where()", {
                                           paste(paste0("'",exp_args,"'"),collapse = ", "),
                                           ")."))
   # Expect self contained
-  expect_self_contained(where, 
+  expect_function_self_contained(where, 
                         info = "'where' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function
@@ -31,9 +31,7 @@ test_that("Assignment: where()", {
 
   # Expect to run
   for(i in seq_along(testfun)){
-    expect_that(where(fun=testfun[i]), 
-                condition = not(throws_error()), 
-                info = "'where()' throws an error.")
+    expect_silent(suppressWarnings(suppressMessages(where(fun=testfun[i]))))
   }
 
   # Expect assertions
