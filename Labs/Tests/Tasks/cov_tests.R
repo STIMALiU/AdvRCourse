@@ -18,13 +18,13 @@ test_that("Assignment: cov()", {
                                           paste(paste0("'",exp_args,"'"),collapse = ", "),
                                           ")."))
   # Expect self contained
-  expect_self_contained(cov, 
+  expect_function_self_contained(cov, 
                         info = "'cov' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function
-  not_allowed <- "for"
-  expect_that(cov, not(function_code(not_allowed)), 
-              info = paste0("'cov' contains the code '", not_allowed, "' that is not allowed."))
+  #not_allowed <- "for"
+  #expect_that(cov, not(function_code(not_allowed)), 
+  #            info = paste0("'cov' contains the code '", not_allowed, "' that is not allowed."))
 
   # Test cases (arguments)
   data(iris)
@@ -32,9 +32,7 @@ test_that("Assignment: cov()", {
 
   # Expect to run
   for(i in seq_along(X)){
-    expect_that(cov(X=X[[i]]), 
-                condition = not(throws_error()), 
-                info = "'cov()' throws an error.")
+    expect_silent(suppressWarnings(suppressMessages(cov(X=X[[i]]))))
   }
 
   # Expect assertions
