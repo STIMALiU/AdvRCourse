@@ -31,12 +31,8 @@ test_that("Assignment: sheldon_game()", {
   player2 <- c("lizard", "spock")
 
   # Expect to run
-  expect_that(sheldon_game(player1 = player1[1], player2 = player2[1]), 
-              condition = not(throws_error()), 
-              info = "'sheldon_game()' throws an error.")
-  expect_that(sheldon_game(player1 = player1[2], player2 = player2[2]), 
-              condition = not(throws_error()), 
-              info = "'sheldon_game()' throws an error.")
+  expect_silent(suppressWarnings(suppressMessages(sheldon_game(player1 = player1[1], player2 = player2[1]))))
+  expect_silent(suppressWarnings(suppressMessages(sheldon_game(player1 = player1[2], player2 = player2[2]))))
   
   # Expect assertions
   expect_error(sheldon_game(player1 = 1, player2 = 3), 
