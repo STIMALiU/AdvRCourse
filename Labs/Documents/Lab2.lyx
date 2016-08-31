@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass report
 \begin_preamble
 \usepackage{fancyhdr}%The first page setting
@@ -32,16 +34,16 @@ knitr
 \language_package auto
 \inputencoding auto
 \fontencoding default
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -101,7 +103,7 @@ Computer lab 2
 \end_layout
 
 \begin_layout Author
-Måns Magnusson
+Leif Jonsson
 \end_layout
 
 \begin_layout Standard
@@ -205,8 +207,8 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced
- R programming/AdvRCourseTeacher/Labs/exercise_solutions/"
+solution_path <- "/Users/eralljn/workspace/AdvRCourseTeacher/Labs/exercise_solut
+ions/"
 \end_layout
 
 \begin_layout Plain Layout
@@ -467,7 +469,7 @@ for
 my_moving_median()
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:my_moving_median()"
+name "subsec:my_moving_median()"
 
 \end_inset
 
@@ -518,7 +520,7 @@ stopifnot()
 \begin_layout Standard
 \begin_inset Formula 
 \[
-y_{t}=\mbox{median}(x_{t},\cdots,x_{t-n})
+y_{t}=\mbox{median}(x_{t},\cdots,x_{t+n})
 \]
 
 \end_inset
@@ -588,7 +590,7 @@ my_moving_median(x = c(5,1,2,NA,2,5,6,8,9,9), n=2, na.rm=TRUE)
 for_mult_table()
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:for_multiplication_table()"
+name "subsec:for_multiplication_table()"
 
 \end_inset
 
@@ -670,6 +672,10 @@ for_mult_table(from = 10, to = 12)
 
 \family typewriter
 * cor_matrix()
+\end_layout
+
+\begin_layout Standard
+(NOTE: This task is Optional!)
 \end_layout
 
 \begin_layout Standard
@@ -764,7 +770,7 @@ while
 find_cumsum()
 \begin_inset CommandInset label
 LatexCommand label
-name "sub:find_cumsum()"
+name "subsec:find_cumsum()"
 
 \end_inset
 
@@ -796,7 +802,7 @@ x
 \family default
  is traversed and return this value.
  The function should assert that x is a numeric vector and is a numeric
- scaler (with stop() or stopifnot()).
+ scalar (with stop() or stopifnot()).
 \end_layout
 
 \begin_layout Standard
@@ -847,12 +853,12 @@ Create a functions that calulates a given mutiplication table similar to
  the exercise 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:for_multiplication_table()"
+reference "subsec:for_multiplication_table()"
 
 \end_inset
 
- but now you shoul use a (nested) while loop instead of a for-loop.
- The result should be identical in all other respect.
+ but now you should use a (nested) while loop instead of a for-loop.
+ The result should be identical in all other respects.
 \end_layout
 
 \begin_layout Standard
@@ -891,12 +897,16 @@ while_mult_table(from = 7, to = 12)
 \end_layout
 
 \begin_layout Standard
-Write a function that can factorize any integer number x inte its prime
+(NOTE: This task is Optional!)
+\end_layout
+
+\begin_layout Standard
+Write a function that can factorize any integer number x into its prime
  components.
  The function should return a vector of all the prime factors as a numeric
  vector.
  The idea is to simply test all integers (or prime numbers) from 2 to 
-\begin_inset Formula $\sqrt{n}$
+\begin_inset Formula $\sqrt{x}$
 \end_inset
 
 .
@@ -969,7 +979,7 @@ find_cumsum()
  in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:find_cumsum()"
+reference "subsec:find_cumsum()"
 
 \end_inset
 
@@ -1022,12 +1032,12 @@ repeat_my_moving_median()
 \begin_layout Standard
 Implement a function similar to 
 \family typewriter
-my_moving_average()
+my_moving_median()
 \family default
  in 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sub:find_cumsum()"
+reference "subsec:my_moving_median()"
 
 \end_inset
 
@@ -1091,8 +1101,8 @@ Create a function called
 \family typewriter
 in_environment()
 \family default
- that return the contents of an environment as a text vector.
- The function shoulde take the argument 
+ that returns the contents of an environment as a text vector.
+ The function should take the argument 
 \family typewriter
 env
 \family default
@@ -1142,6 +1152,10 @@ funs[1:5]
 
 \family typewriter
 * where()
+\end_layout
+
+\begin_layout Standard
+(NOTE: This task is Optional!)
 \end_layout
 
 \begin_layout Standard
@@ -1284,7 +1298,7 @@ cov(X = iris[3:4])
 \end_layout
 
 \begin_layout Section
-Clojures
+Closures
 \end_layout
 
 \begin_layout Subsection
@@ -1360,9 +1374,13 @@ m2(1:100)
 \end_layout
 
 \begin_layout Standard
+(NOTE: This task is Optional!)
+\end_layout
+
+\begin_layout Standard
 In markov chain monte carlo methods we often want to use counters for the
  sampling algorithms.
- Create a counter factory that creats a clojure with a counter.
+ Create a counter factory that creats a closure with a counter.
  The factory should take two arguments, thin and burnin.
  Each counter should contain three objects:
 \end_layout
