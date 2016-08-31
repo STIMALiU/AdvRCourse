@@ -1,7 +1,6 @@
 # Assignment D1
 name  : Lab1
 description : "Advanced R programming, computer lab 1"
-reporter : student
 tasks:
   my_num_vector:
     url: 
