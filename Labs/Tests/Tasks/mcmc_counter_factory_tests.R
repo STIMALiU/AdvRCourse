@@ -18,7 +18,7 @@ test_that("Assignment: mcmc_counter_factory()", {
                                           paste(paste0("'",exp_args,"'"),collapse = ", "),
                                           ")."))
   # Expect self contained
-  expect_self_contained(mcmc_counter_factory, 
+  expect_function_self_contained(mcmc_counter_factory, 
                         info = "'mcmc_counter_factory' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function
@@ -32,9 +32,7 @@ test_that("Assignment: mcmc_counter_factory()", {
 
   # Expect to run
   for(i in seq_along(burnin)){
-    expect_that(mcmc_counter_factory(burnin = burnin[[i]], thin = thin[[i]]), 
-                condition = not(throws_error()), 
-                info = "'mcmc_counter_factory()' throws an error.")
+    expect_silent(suppressWarnings(suppressMessages(mcmc_counter_factory(burnin = burnin[[i]], thin = thin[[i]]))))
   }
 
   # Expect assertions

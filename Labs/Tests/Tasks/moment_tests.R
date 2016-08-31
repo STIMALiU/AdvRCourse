@@ -18,7 +18,7 @@ test_that("Assignment: moment()", {
                                           paste(paste0("'",exp_args,"'"),collapse = ", "),
                                           ")."))
   # Expect self contained
-  expect_self_contained(moment, 
+  expect_function_self_contained(moment, 
                         info = "'moment' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function
@@ -31,9 +31,7 @@ test_that("Assignment: moment()", {
 
   # Expect to run
   for(i in seq_along(mom)){
-    expect_that(moment(i=mom[[i]]), 
-                condition = not(throws_error()), 
-                info = "'moment()' throws an error.")
+    expect_silent(suppressWarnings(suppressMessages(moment(i=mom[[i]]))))
   }
 
   # Expect assertions
