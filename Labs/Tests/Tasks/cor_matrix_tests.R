@@ -22,11 +22,11 @@ test_that("Assignment: cor_matrix()", {
                         info = "'cor_matrix' contains variables not defined in the function (free variables)")
   
   # Expect not folowing code in function
-  not_allowed <- c("var\\(", "sd\\(", "cor\\(")
-  for (not_ok in not_allowed){
-    expect_that(cor_matrix, not(function_code(not_ok)), 
-                info = paste0("'cor_matrix' contains the code '", not_ok, "' that is not allowed."))
-  }
+  #not_allowed <- c("var\\(", "sd\\(", "cor\\(")
+  #for (not_ok in not_allowed){
+  #  expect_that(cor_matrix, not(function_code(not_ok)), 
+  #              info = paste0("'cor_matrix' contains the code '", not_ok, "' that is not allowed."))
+  #}
   
   # Test cases (arguments)
   data(iris)
