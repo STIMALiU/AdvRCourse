@@ -1,0 +1,707 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in 
+%tables
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{subfig}
+\usepackage[export]{adjustbox}
+\usepackage{wrapfig}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Lecture 4]{Advanced R Programming - Lecture 4} % The short title 
+%appears at the bottom of every slide, the full title is only on the title page
+
+\author{Leif Jonsson} % Your name
+\institute[STIMA LiU] % Your institution as it will appear on the bottom of 
+%every 
+%slide, may be shorthand to save space
+{
+Link\"{o}ping University \\ % Your institution for the title page
+\medskip
+\textit{leif.jonsson@ericsson.com\\leif.r.jonsson@liu.se} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Today} % Table of contents slide, comment this block out to remove 
+%it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\Huge{\centerline{Questions since last time?}}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Big Bang Theory!}
+	\begin{center}
+		\begin{figure}[!ht]
+			\includegraphics[scale=0.40]{figures/sheldon-game}
+			\caption{Rock-paper-scissors according to Sheldon!}
+			\label{fig:pkgns}
+		\end{figure}
+	\end{center}
+\end{frame}
+
+\defverbatim[colored]\lstSheldon{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{red},
+	basicstyle=\small]
+sheldon_game <- function(player1, player2){
+	alt <- c("rock", "lizard", "spock", "scissors", "paper")
+	stopifnot(player1 %in% alt, player2 %in% alt)
+	alt1 <- which(alt %in% player1)
+	alt2 <- which(alt %in% player2)
+	
+	if(any((alt1 + c(1,3)) %% 5 == alt2)) {
+		return("Player 1 wins!")
+	} else {
+		return("Player 2 wins!")
+	}
+	return("Draw!")
+}
+\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{sheldon\_game}
+	\lstSheldon
+\end{frame}
+
+
+%------------------------------------------------
+\section{Linear algebra using R}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Why unit testing?}
+	\begin{center}
+	Basics in base \\~\\
+	
+	Uses LINPACK or LAPACK \\~\\
+	
+	Extra functionality : Matrix package \\
+	(extra LAPACK functionality) \\
+	\end{center}
+\end{frame}
+
+\defverbatim[colored]\lstLinAlgI{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
+	basicstyle=\small]
+	# Create matrix
+	A <- matrix(1:9,ncol=3)
+	
+	# Block matrices
+	cbind(A,A)
+	rbind(A,A)
+	
+	# Transpose
+	t(A)
+	
+	# Addition and subtraction
+	A + A
+	A - A
+	
+	# Matrix multiplication
+	A%*%A
+	
+	# Matrix inversion
+	solve(A)
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{Linear algebra}
+	\lstLinAlgI
+\end{frame}
+
+
+\defverbatim[colored]\lstLinAlgII{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
+	basicstyle=\small]
+	# Eigenvalues
+	eigen(A)
+	
+	# Determinants
+	det(A)
+	
+	# Matrix factorization
+	svd(A)
+	qr(A)
+	
+	# Cholesky decomposition
+	chol(A)
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{Linear algebra}
+	\lstLinAlgII
+\end{frame}
+
+%------------------------------------------------
+\section{Dynamic reporting with knitr and R-markdown}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Donald E. Knuth, Literate Programming, 1984}
+Let us change our traditional attitude to the construction of programs: Instead 
+of imagining that our main task is to instruct a computer what to do, let us 
+concentrate rather on explaining to humans what we want the computer to do.\\
+- Donald E. Knuth, Literate Programming, 1984
+\end{frame}
+
+\begin{frame}
+	\frametitle{Background}
+	\begin{center}
+		Reproducible research \\~\\
+		
+		Literate programming \\~\\
+		
+		Dynamic (repeated) reports \\~\\
+		
+		(Tutorials)
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{markdown}
+	\begin{center}
+		\begin{figure}[!ht]
+			\includegraphics[scale=0.05]{figures/Markdown-mark}
+			\label{fig:M}
+		\end{figure}
+	\end{center}
+	\begin{center}
+		simple markup language \\~\\
+		
+		alternative to HTML (and LaTeX) \\~\\
+		
+		developed further by R-studio  \\
+		(see coursepage)
+	\end{center}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{knitr + md = rmd}
+	Add R to markdown
+\end{frame}
+
+\begin{frame}
+	\frametitle{knitr + md = rmd}
+	Add R to markdown
+	\begin{figure}
+		\subfloat[.rmd]{\includegraphics[scale=0.05,valign=m]{figures/rmd}}\qquad
+		\caption{Flow}
+		\label{fig:1}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{knitr + md = rmd}
+	Add R to markdown
+	\begin{figure}
+		\subfloat[.rmd]{\includegraphics[scale=0.05,valign=m]{figures/rmd}}\qquad
+		\subfloat[knitr]{\includegraphics[scale=0.6,valign=m]{figures/right-arrow}}\qquad
+		\caption{Flow}
+		\label{fig:1}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{knitr + md = rmd}
+	Add R to markdown
+	\begin{figure}
+		\subfloat[.rmd]{\includegraphics[scale=0.05,valign=m]{figures/rmd}}\qquad
+		\subfloat[knitr]{\includegraphics[scale=0.6,valign=m]{figures/right-arrow}}\qquad
+		\subfloat[markdown]{\includegraphics[scale=0.03,valign=m]{figures/Markdown-mark}}\qquad
+		\caption{Flow}
+		\label{fig:1}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{knitr + md = rmd}
+	Add R to markdown
+	\begin{figure}
+		\subfloat[.rmd]{\includegraphics[scale=0.05,valign=m]{figures/rmd}}\qquad
+		\subfloat[knitr]{\includegraphics[scale=0.6,valign=m]{figures/right-arrow}}\qquad
+		\subfloat[markdown]{\includegraphics[scale=0.03,valign=m]{figures/Markdown-mark}}\qquad
+		\subfloat[pandoc]{\includegraphics[scale=0.4,valign=m]{figures/multi-formats}}\qquad
+		\caption{Flow}
+		\label{fig:1}
+	\end{figure}
+\end{frame}
+
+%------------------------------------------------
+\section{ggplot2}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Background}
+	\begin{center}
+		popular visualization package \\~\\
+		
+		"The grammar of graphics" \\
+		- the language of visualization \\~\\
+		
+		flexible \\~\\
+		
+		\href{http://shiny.stat.ubc.ca/r-graph-catalog/}{ggplot examples}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Background}
+	\begin{center}
+		Create a graph layer by layer \\~\\
+		
+		Store as object (print to plot) \\~\\
+		
+		Three (main) parts: \\~\\
+		
+	\begin{table}
+		\begin{tabular}{l l}
+			\texttt{data} & The data to visualize (data.frame) \\
+			\texttt{geom} & The geometric representation of data \\
+			\texttt{aes} & The mapping of colors/shape to data \\
+		\end{tabular}
+	\end{table}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{geom}
+	\begin{center}
+		\begin{table}
+			\begin{tabular}{l l}
+				\texttt{geom\_point} & Scatterplots \\
+				\texttt{geom\_line} & Lineplots \\
+				\texttt{geom\_boxplot} & Boxplot \\
+				\texttt{geom\_histogram} & Histograms \\
+				\texttt{geom\_bar} & Barchart \\
+			\end{tabular}
+		\end{table}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{aes}
+	\begin{center}
+		\begin{table}
+			\begin{tabular}{c}
+				\texttt{x} \\
+				\texttt{y} \\
+				\texttt{size} \\
+				\texttt{color} \\
+				\texttt{shape} \\
+			\end{tabular}
+		\end{table}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Special \texttt{aes}}
+	\begin{center}
+		\begin{table}
+			\begin{tabular}{l l}
+				\texttt{geom} & Special \texttt{aes} \\
+				\texttt{geom\_point} & point shape, point size \\
+				\texttt{geom\_line} & line type, line size \\
+				\texttt{geom\_bar} & y min, y max, fill color, outline color \\
+			\end{tabular}
+		\end{table}
+	\end{center}
+\end{frame}
+
+\defverbatim[colored]\lstGGPlotI{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
+	basicstyle=\small]
+	library(ggplot2)
+	
+	# Preprocessing
+	data(Nile)
+	Nile <- as.data.frame(Nile) 
+	colnames(Nile) <- "level"
+	Nile$years <- 1871:1970
+	Nile$period <- "- 1900" 
+	Nile$period[Nile$years >= 1900] <- "1900 - 1945"
+	Nile$period[Nile$years > 1945] <- "1945 + " 
+	Nile$period <- as.factor(Nile$period)
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{GGPlot2: Example}
+	\lstGGPlotI
+\end{frame}
+
+\defverbatim[colored]\lstGGPlotII{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
+	basicstyle=\small]
+	pl <- 
+		ggplot(data=Nile) + 
+		aes(x=years, y=level) + 
+		geom_point()
+	pl
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{GGPlot2: geom\_point}
+	\lstGGPlotII
+	\begin{center}
+		\begin{figure}[!ht]
+			\includegraphics[scale=0.40]{figures/Rplot1}
+			\label{fig:gg1}
+		\end{figure}
+	\end{center}
+\end{frame}
+
+\defverbatim[colored]\lstGGPlotIII{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
+	basicstyle=\small]
+	pl <- 
+		ggplot(data=Nile) + 
+		aes(x=years, y=level) + 
+		geom_line()
+	pl
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{GGPlot2: geom\_line}
+	\lstGGPlotIII
+	\begin{center}
+		\begin{figure}[!ht]
+			\includegraphics[scale=0.40]{figures/Rplot2}
+			\label{fig:gg2}
+		\end{figure}
+	\end{center}
+\end{frame}
+
+\defverbatim[colored]\lstGGPlotIV{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
+	basicstyle=\small]
+	pl <- 
+		ggplot(data=Nile) + 
+		aes(x=years, y=level, color=period) + 
+		geom_line(aes(type=period)) + 
+		geom_point(aes(shape=period))
+	pl
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{GGPlot2: geom\_line + geom\_line + colors!}
+	\lstGGPlotIV
+	\begin{center}
+		\begin{figure}[!ht]
+			\includegraphics[scale=0.40]{figures/Rplot3}
+			\label{fig:gg3}
+		\end{figure}
+	\end{center}
+\end{frame}
+
+\defverbatim[colored]\lstGGPlotIV{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
+	basicstyle=\small]
+	pl + theme_bw()
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{GGPlot2: use BW theme}
+	\lstGGPlotIV
+	\begin{center}
+		\begin{figure}[!ht]
+			\includegraphics[scale=0.40]{figures/Rplot4}
+			\label{fig:gg3}
+		\end{figure}
+	\end{center}
+\end{frame}
+
+%------------------------------------------------
+\section{Object orientation}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Object orientation}
+	\begin{center}
+		Programming paradigm \\~\\
+		
+		Mutable states \\~\\
+		
+		Key abstraction is "an object" \\~\\
+		
+		R is \textit{not} purely object oriented \\~\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Object orientation}
+
+	\begin{figure}
+		\subfloat{\includegraphics[scale=0.4,valign=m]{figures/class}}\qquad
+		\subfloat{\includegraphics[scale=0.4,valign=m]{figures/constructor}}\qquad
+		\subfloat{\includegraphics[scale=0.4,valign=m]{figures/instance}}\qquad
+		\subfloat{\includegraphics[scale=0.4,valign=m]{figures/methods}}\qquad
+		\label{fig:1}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Object orientation}
+	\textbf{Fields} \\
+	currency (12/24) : class variable \\
+	current\_amount : object variable \\
+	no\_withdraws : object variable \\~\\
+	
+	\textbf{Methods} \\
+	insert() \\
+	withdraw()
+\end{frame}
+
+\begin{frame}
+	\frametitle{Inheritance}
+	
+	\begin{figure}
+		\subfloat{\includegraphics[scale=0.4,valign=m]{figures/savings-account}}\qquad
+		\subfloat{\includegraphics[scale=0.4,valign=m]{figures/inherit}}\qquad
+		\subfloat{\includegraphics[scale=0.42,valign=m]{figures/account}}\qquad
+		\label{fig:1}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Object orientation in R}
+	\begin{center}
+		\begin{table}
+			\begin{tabular}{p{3cm} p{3cm} p{3cm}}
+				S3 &  &  \\
+				\hline
+				\hline
+				Simple &  &  \\
+				\hline
+				Methods belongs to functions &  & \\
+				\hline
+			\end{tabular}
+		\end{table}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Object orientation in R}
+	\begin{center}
+		\begin{table}
+			\begin{tabular}{p{3cm} p{3cm} p{3cm}}
+				S3 & S4 &  \\
+				\hline
+				\hline
+				Simple & More formal &  \\
+				\hline
+				Methods belongs to functions & Methods belongs to functions & 
+				 \\
+				\hline
+				& @Fields & \\
+				\hline
+				& Parents & \\
+			\end{tabular}
+		\end{table}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Object orientation in R}
+	\begin{center}
+		\begin{table}
+			\begin{tabular}{p{3cm} p{3cm} p{3cm}}
+				S3 & S4 & RC \\
+				\hline
+				\hline
+				Simple & More formal & Latest (R 2.12) \\
+				\hline
+				Methods belongs to functions & Methods belongs to functions & 
+				no copy-on-modify \\
+				\hline
+				& @Fields & Methods belongs to objects \\
+				\hline
+				& Parents & Objects have Fields and methods \$ \\
+			\end{tabular}
+		\end{table}
+	\end{center}
+\end{frame}
+
+\defverbatim[colored]\lstSIIII{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
+	basicstyle=\small]
+	# Create object
+	x <- 1:100
+	class(x) <- "my_numeric"
+	\end{lstlisting}
+}
+
+\defverbatim[colored]\lstSIIIII{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
+	basicstyle=\small]
+	# Create generic function
+	f <- function(x) UseMethod("f")
+	\end{lstlisting}
+}
+
+\defverbatim[colored]\lstSIIIIII{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
+	basicstyle=\small]
+	# Create method
+	print.my_numeric <- function(x, ...){
+		cat("This is my numeric vector.")
+	}
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{S3}
+	\lstSIIII
+\end{frame}
+
+\begin{frame}
+	\frametitle{S3}
+	\lstSIIII
+	\lstSIIIII
+\end{frame}
+
+\begin{frame}
+	\frametitle{S3}
+	\lstSIIII
+	\lstSIIIII
+	\lstSIIIIII
+\end{frame}
+
+\defverbatim[colored]\lstRC{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
+	basicstyle=\small]
+# Create object with fields and methods
+Account <- setRefClass("Account",
+	fields = list(balance = "numeric"),
+	methods = list(
+		withdraw = function(x) {
+			balance <<- balance - x
+		},
+		deposit = function(x) {
+			balance <<- balance + x
+		}
+	)
+)
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{RC}
+	\lstRC
+	\texttt{object\$copy()}
+\end{frame}
+
+
+
+%------------------- THE END ---------------------------------------------------
+
+\begin{frame}
+\Huge{\centerline{The End... for today.}}
+\Huge{\centerline{Questions?}}
+\Huge{\centerline{See you next time!}}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\end{document} 
