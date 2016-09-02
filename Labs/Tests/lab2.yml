@@ -11,18 +11,18 @@ tasks:
   for_mult_table:
     url: 
       - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/for_mult_table_tests.R
-  cor_matrix:
-    url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/cor_matrix_tests.R
+#  cor_matrix:
+#    url: 
+#      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/cor_matrix_tests.R
   find_cumsum:
     url: 
       - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/find_cumsum_tests.R
   while_mult_table:
     url: 
       - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/while_mult_table_tests.R
-  trial_division_factorization:
-    url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/trial_division_factorization_tests.R
+#  trial_division_factorization:
+#    url: 
+#      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/trial_division_factorization_tests.R
   repeat_find_cumsum:
     url: 
       - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/repeat_find_cumsum_tests.R
@@ -32,18 +32,18 @@ tasks:
   in_environment:
     url: 
       - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/in_environment_tests.R
-  where:
-    url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/where_tests.R
+#  where:
+#    url: 
+#      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/where_tests.R
   cov:
     url: 
       - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/cov_tests.R
   moment:
     url: 
       - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/moment_tests.R
-  mcmc_counter_factory:
-    url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/mcmc_counter_factory_tests.R
+#  mcmc_counter_factory:
+#    url: 
+#      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/mcmc_counter_factory_tests.R
 mandatory:
   url:
     - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/mandatory.R
