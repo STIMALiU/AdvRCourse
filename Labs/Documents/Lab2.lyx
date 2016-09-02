@@ -327,7 +327,7 @@ target "http://bigbangtheory.wikia.com/wiki/Rock_Paper_Scissors_Lizard_Spock"
 
 \series default
 \color inherit
-.
+ (http://bigbangtheory.wikia.com/wiki/Rock_Paper_Scissors_Lizard_Spock).
 \end_layout
 
 \begin_layout Standard
@@ -925,7 +925,7 @@ target "https://en.wikipedia.org/wiki/Trial_division"
 
 \series default
 \color inherit
-.
+ (https://en.wikipedia.org/wiki/Trial_division).
 \end_layout
 
 \begin_layout Standard
@@ -1325,7 +1325,7 @@ target "https://en.wikipedia.org/wiki/Central_moment"
 
 \series default
 \color inherit
-.
+ (https://en.wikipedia.org/wiki/Central_moment).
 \end_layout
 
 \begin_layout Standard
