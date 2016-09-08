@@ -99,6 +99,9 @@ Link\"{o}ping University \\ % Your institution for the title page
 }
 \date{\today} % Date, can be changed to a custom date
 
+\addtobeamertemplate{navigation symbols}{}{ \hspace{1em}    
+	\usebeamerfont{footline}%
+	\insertframenumber / \inserttotalframenumber }
 \begin{document}
 
 \begin{frame}
@@ -519,8 +522,7 @@ Seminar \\
 %------------------------------------------------
 
 \defverbatim[colored]\lstI{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{red},
-	 basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{red}]
 	vect <- c(6,7,8,9)
 	> vect[vect>7]
 	[1] 8 9
@@ -548,8 +550,7 @@ Seminar \\
 \end{frame}
 
 \defverbatim[colored]\lstII{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{red},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{red}]
 	> mat <- matrix(c(1,2,3,4,5,6),nrow=2)
 	> mat
 	      [,1] [,2] [,3]
@@ -584,8 +585,7 @@ Seminar \\
 \end{frame}
 
 \defverbatim[colored]\lstIII{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{red},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{red}]
 > lst <- list(a=47,b=11)
 > lst[1]
 $a
@@ -634,8 +634,7 @@ $a
 \end{frame}
 
 \defverbatim[colored]\lstIIII{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{red},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{red}]
 > mat
       [,1] [,2] [,3]
 [1,]    1    3    5
@@ -658,8 +657,7 @@ $a
 %------------------------------------------------
 
 \defverbatim[colored]\lstV{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
 	my_function_name <- function(x, y){
 		z <- x^2 + y^2
 		return(z)
