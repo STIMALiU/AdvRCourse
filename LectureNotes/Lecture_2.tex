@@ -99,6 +99,10 @@ Link\"{o}ping University \\ % Your institution for the title page
 }
 \date{\today} % Date, can be changed to a custom date
 
+\addtobeamertemplate{navigation symbols}{}{ \hspace{1em}    
+	\usebeamerfont{footline}%
+	\insertframenumber / \inserttotalframenumber }
+
 \begin{document}
 
 \begin{frame}
@@ -136,14 +140,13 @@ See also extra video on program control on course page
 \end{frame}
 
 \defverbatim[colored]\lstCond{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{red},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{red}]
 	if(boolean expression) {
-	# commands
+	# statements
 	} else if (boolean expression) {
-	# commands
+	# statements
 	} else {
-	# commands
+	# statements
 	}
 	\end{lstlisting}
 }
@@ -164,8 +167,7 @@ See also extra video on program control on course page
 \end{frame}
 
 \defverbatim[colored]\lstFor{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{red},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{red}]
 	for (name in vector){
 	# statements
 	}
@@ -178,8 +180,7 @@ See also extra video on program control on course page
 \end{frame}
 
 \defverbatim[colored]\lstWhile{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{red},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{red}]
 	while (boolean expression){
 	# statements
 	}
@@ -192,8 +193,7 @@ See also extra video on program control on course page
 \end{frame}
 
 \defverbatim[colored]\lstRepeat{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{red},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{red}]
 	repeat {
 	# statements
 	}
@@ -219,8 +219,7 @@ See also extra video on program control on course page
 %------------------------------------------------
 
 \defverbatim[colored]\lstFun{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
 	my_function_name <- function(x, y){
 	  z <- x^2 + y^2
 	  return(z)
@@ -273,8 +272,7 @@ See also extra video on program control on course page
 \end{frame}
 
 \defverbatim[colored]\lstEnvI{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
 	e <- new.env()
 	e$a <- FALSE
 	e$b <- "a"
@@ -460,8 +458,7 @@ See also extra video on program control on course page
 \end{frame}
 
 \defverbatim[colored]\lstClosure{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
 	counter_factory <- function(){
 	  i <- 0
 	  f <- function(){
