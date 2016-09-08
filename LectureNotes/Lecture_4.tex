@@ -139,20 +139,19 @@ Link\"{o}ping University \\ % Your institution for the title page
 \end{frame}
 
 \defverbatim[colored]\lstSheldon{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{red},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\footnotesize,keywordstyle=\color{red}]
 sheldon_game <- function(player1, player2){
-	alt <- c("rock", "lizard", "spock", "scissors", "paper")
-	stopifnot(player1 %in% alt, player2 %in% alt)
-	alt1 <- which(alt %in% player1)
-	alt2 <- which(alt %in% player2)
-	
-	if(any((alt1 + c(1,3)) %% 5 == alt2)) {
-		return("Player 1 wins!")
-	} else {
-		return("Player 2 wins!")
-	}
-	return("Draw!")
+  alt <- c("rock", "lizard", "spock", "scissors", "paper")
+  stopifnot(player1 %in% alt, player2 %in% alt)
+  alt1 <- which(alt %in% player1)
+  alt2 <- which(alt %in% player2)
+
+  if(any((alt1 + c(1,3)) %% 5 == alt2)) {
+	return("Player 1 wins!")
+  } else {
+	return("Player 2 wins!")
+  }
+  return("Draw!")
 }
 \end{lstlisting}
 }
@@ -180,8 +179,7 @@ sheldon_game <- function(player1, player2){
 \end{frame}
 
 \defverbatim[colored]\lstLinAlgI{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
 	# Create matrix
 	A <- matrix(1:9,ncol=3)
 	
@@ -211,8 +209,7 @@ sheldon_game <- function(player1, player2){
 
 
 \defverbatim[colored]\lstLinAlgII{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
 	# Eigenvalues
 	eigen(A)
 	
@@ -410,8 +407,7 @@ concentrate rather on explaining to humans what we want the computer to do.\\
 \end{frame}
 
 \defverbatim[colored]\lstGGPlotI{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
 	library(ggplot2)
 	
 	# Preprocessing
@@ -432,8 +428,7 @@ concentrate rather on explaining to humans what we want the computer to do.\\
 \end{frame}
 
 \defverbatim[colored]\lstGGPlotII{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
 	pl <- 
 		ggplot(data=Nile) + 
 		aes(x=years, y=level) + 
@@ -454,8 +449,7 @@ concentrate rather on explaining to humans what we want the computer to do.\\
 \end{frame}
 
 \defverbatim[colored]\lstGGPlotIII{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
 	pl <- 
 		ggplot(data=Nile) + 
 		aes(x=years, y=level) + 
@@ -476,8 +470,7 @@ concentrate rather on explaining to humans what we want the computer to do.\\
 \end{frame}
 
 \defverbatim[colored]\lstGGPlotIV{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
 	pl <- 
 		ggplot(data=Nile) + 
 		aes(x=years, y=level, color=period) + 
@@ -499,8 +492,7 @@ concentrate rather on explaining to humans what we want the computer to do.\\
 \end{frame}
 
 \defverbatim[colored]\lstGGPlotIV{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
 	pl + theme_bw()
 	\end{lstlisting}
 }
@@ -628,8 +620,7 @@ concentrate rather on explaining to humans what we want the computer to do.\\
 \end{frame}
 
 \defverbatim[colored]\lstSIIII{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
 	# Create object
 	x <- 1:100
 	class(x) <- "my_numeric"
@@ -637,16 +628,14 @@ concentrate rather on explaining to humans what we want the computer to do.\\
 }
 
 \defverbatim[colored]\lstSIIIII{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
 	# Create generic function
 	f <- function(x) UseMethod("f")
 	\end{lstlisting}
 }
 
 \defverbatim[colored]\lstSIIIIII{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
 	# Create method
 	print.my_numeric <- function(x, ...){
 		cat("This is my numeric vector.")
@@ -673,8 +662,7 @@ concentrate rather on explaining to humans what we want the computer to do.\\
 \end{frame}
 
 \defverbatim[colored]\lstRC{
-	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black},
-	basicstyle=\small]
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
 # Create object with fields and methods
 Account <- setRefClass("Account",
 	fields = list(balance = "numeric"),
