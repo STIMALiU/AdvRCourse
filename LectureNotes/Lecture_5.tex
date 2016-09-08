@@ -1,0 +1,700 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in 
+%tables
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{subfig}
+\usepackage[export]{adjustbox}
+\usepackage{wrapfig}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Lecture 5]{Advanced R Programming - Lecture 5} % The short title 
+%appears at the bottom of every slide, the full title is only on the title page
+
+\author{Leif Jonsson} % Your name
+\institute[STIMA LiU] % Your institution as it will appear on the bottom of 
+%every 
+%slide, may be shorthand to save space
+{
+Link\"{o}ping University \\ % Your institution for the title page
+\medskip
+\textit{leif.jonsson@ericsson.com\\leif.r.jonsson@liu.se} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\addtobeamertemplate{navigation symbols}{}{ \hspace{1em}    
+\usebeamerfont{footline}%
+	\insertframenumber / \inserttotalframenumber }
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Today} % Table of contents slide, comment this block out to remove 
+%it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\Huge{\centerline{Questions since last time?}}
+\end{frame}
+
+%------------------------------------------------
+\section{Input and output}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Input and output}
+	\begin{center}
+	\begin{figure}
+		\includegraphics[scale=0.4,valign=m]{figures/io}
+		\label{fig:io}
+	\end{figure}
+	Format, localization
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Input and output}
+	\begin{center}
+	\begin{figure}
+		\includegraphics[scale=0.4,valign=m]{figures/io}
+		\label{fig:io}
+	\end{figure}
+	Format, localization and encoding...... hell! \\~\\
+	\href{http://www.joelonsoftware.com/articles/Unicode.html}{The Absolute 
+	Minimum Every Software Developer Absolutely, Positively Must Know About 
+	Unicode and Character Sets (No Excuses!)}
+\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{"Formats"}
+	\begin{center}
+		\begin{figure}
+			\includegraphics[scale=0.4,valign=m]{figures/io-formats}
+			\label{fig:io}
+		\end{figure}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Localization}
+	\begin{table}[t]
+		\begin{center}
+			\begin{tabular}{ c c }
+				\includegraphics[scale=0.5]{figures/house} & 
+				\includegraphics[scale=0.5]{figures/globe} \\
+				own Computer & Cloud Storage \\
+				local network & web pages \\
+				local database & web scraping \\
+				& web APIs \\
+				& remote database \\
+			\end{tabular}
+		\end{center}
+		\caption{Local - Remote}
+	\end{table}
+\end{frame}
+
+
+%------------------------------------------------
+\section{Basic I/O}
+%------------------------------------------------
+
+\defverbatim[colored]\lstBasicIOI{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black}]
+	# Input simple data
+	read.table()
+	read.csv()
+	read.csv2()
+	
+	load()
+	
+	
+	# Output simple data
+	write.table()
+	write.csv()
+	write.csv2()
+	
+	save()
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{Files on your computer}
+	\lstBasicIOI
+\end{frame}
+
+\begin{frame}
+	\frametitle{More complex formats}
+	\begin{table}[t]
+		\begin{center}
+			\begin{tabular}{ l l }
+				\textbf{software/data} & 
+				\textbf{package} \\
+				Excel & XLConnect \\
+				SAS, SPSS, STATA, ... & foreign \\
+				XML & xml \\
+				JSON (GeoJSON) & rjsonio, RJSON \\
+				Documents & tm \\
+				Maps & sp \\
+				Images & raster \\
+			\end{tabular}
+		\end{center}
+		\caption{Format - R package}
+	\end{table}
+\end{frame}
+
+
+%------------------------------------------------
+\section{Cloud storage}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Cloud storage}
+	\begin{table}[t]
+		\begin{center}
+			\begin{tabular}{ c c c c c }
+				\includegraphics[scale=0.5]{figures/cloud} & 
+				\includegraphics[scale=0.6]{figures/fat-right-arrow} & 
+				\includegraphics[scale=0.5]{figures/paren-house} &
+				\includegraphics[scale=0.6]{figures/fat-right-arrow} & 
+				\includegraphics[scale=0.5]{figures/r-logo}	\\
+				\includegraphics[scale=0.5]{figures/r-logo} & 
+				\includegraphics[scale=0.6]{figures/fat-right-arrow} & 
+				\includegraphics[scale=0.5]{figures/paren-house} &
+				\includegraphics[scale=0.6]{figures/fat-right-arrow} & 
+				\includegraphics[scale=0.5]{figures/cloud}	\\
+			\end{tabular}
+		\end{center}
+		\caption{Local - Remote}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Why?}
+	\begin{center}
+		Robust  \\~\\
+		
+		Backups  \\~\\
+		
+		Cloud computing  \\~\\
+		
+		... but how about safety? \\~\\
+		
+		... and can be tricky in the beginning \\~\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Localization}
+	\begin{table}[t]
+		\begin{center}
+			\begin{tabular}{ l c c }
+				Arbitrary data & & Structured data \\
+				\includegraphics[scale=0.5]{figures/amazon-logo} & & 
+				\includegraphics[scale=0.5]{figures/globe} \\
+				& & \\
+				\multicolumn{1}{r}{\includegraphics[scale=0.4]{figures/dropbox-logo}}
+				 & 
+				\includegraphics[scale=0.4]{figures/github-logo} &  \\
+			\end{tabular}
+		\end{center}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{API Packages}
+	\begin{table}[t]
+		\begin{center}
+			\begin{tabular}{ l l }
+				\textbf{Remote} & 
+				\textbf{package} \\
+				\hline
+				General & downloader \\
+				GitHub & repmis, downloader \\
+				Dropbox & rdrop \\
+				Amazon & RAmazonS3 \\
+				Google Docs & googlesheets \\
+			\end{tabular}
+		\end{center}
+	\end{table}
+\end{frame}
+
+%------------------------------------------------
+\section{web API:s}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{web API:s}
+	\begin{center}
+		application program interface using http  \\~\\
+		"contract to 'get data' online"  \\~\\
+		more and more common  \\~\\
+		\textbf{examples:}  \\~\\
+		github \\~\\
+		Riksdagen \\~\\
+		Statistics Sweden \\~\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{RESTful}
+	\begin{center}
+		\textbf{Basic principles:} \\~\\
+		Data is returned (JSON / XML) \\~\\
+		Each specific data has its own URI \\~\\
+		Communication is based on HTTP verbs \\~\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Hypertext Transfer Protocol (http)}
+	\begin{center}
+		\begin{figure}
+			\includegraphics[scale=0.4,valign=m]{figures/http1-url-structure}
+			\label{fig:io}
+		\end{figure}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Hypertext Transfer Protocol (http)}
+	\begin{center}
+		\begin{figure}
+			\includegraphics[scale=0.4,valign=m]{figures/http1-req-res-details}
+			\label{fig:io}
+		\end{figure}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Verbs}
+	\begin{table}[t]
+		\begin{center}
+			\begin{tabular}{ l l }
+				\textbf{Verb} & 
+				\textbf{Description} \\
+				\hline
+				GET & Get "data" from server. \\
+				POST & Post "data" to server (to get something) \\
+				PUT & Update "data" on server \\
+				DELETE & Delete resource on server \\
+			\end{tabular}
+		\end{center}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Status codes}
+	\begin{table}[t]
+		\begin{center}
+			\begin{tabular}{ l l }
+				\textbf{Code} & 
+				\textbf{Description} \\
+				\hline
+				1XX & Information from server \\
+				2XX & Yay! Gimme' data! \\
+				3XX & Redirections \\
+				4XX & You failed \\
+				5XX & Server failed \\
+			\end{tabular}
+		\end{center}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Example REST API's}
+	\begin{center}
+		\href{http://www.linkoping.se/open/data/Luftkvalitet/}{Link\"{o}ping 
+		Luftkvalitet API}
+		 \\~\\
+		\href{https://developers.google.com/maps/documentation/geocoding/intro}{Google
+		 Map Geocode API} \\~\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Common API formats}
+	\begin{center}
+		\textbf{JavaScript Object Notation (JSON)} \\
+		Think of named lists in R \\
+		R Packages: RJSONIO, rjsonlite \\~\\
+		
+		\textbf{Extensible Markup Language (XML)} \\
+		Older format (using nodes) \\
+		xpath \\
+		R Packages: XML
+	\end{center}
+\end{frame}
+
+\defverbatim[colored]\lstJSON{
+	\begin{lstlisting}[language=PHP,basicstyle=\ttfamily\small,keywordstyle=\color{black}]
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25,
+  "address": {
+  	"streetAddress": "21 2nd Street",
+  	"city": "New York",
+  	"state": "NY",
+  	"postalCode": "10021"
+  },
+  "phoneNumber": [
+  	{ "type": "home", "number": "212 555" },
+	{ "type": "fax", "number": "646 555" }
+  ],
+  "newSubscription": false,
+  "companyName": null
+}
+\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{JSON}
+	\lstJSON
+\end{frame}
+
+
+\defverbatim[colored]\lstXML{
+	\begin{lstlisting}[language=xml,basicstyle=\ttfamily\tiny,keywordstyle=\color{red}]
+<?xml version="1.0" encoding="utf-8"?>
+<wikimedia>
+<projects>
+<project name="Wikipedia" launch="2001-01-05">
+<editions>
+<edition language="English">en.wikipedia.org</edition>
+<edition language="German">de.wikipedia.org</edition>
+<edition language="French">fr.wikipedia.org</edition>
+<edition language="Polish">pl.wikipedia.org</edition>
+<edition language="Spanish">es.wikipedia.org</edition>
+</editions>
+</project>
+<project name="Wiktionary" launch="2002-12-12">
+<editions>
+<edition language="English">en.wiktionary.org</edition>
+<edition language="French">fr.wiktionary.org</edition>
+<edition language="Vietnamese">vi.wiktionary.org</edition>
+<edition language="Turkish">tr.wiktionary.org</edition>
+<edition language="Spanish">es.wiktionary.org</edition>
+</editions>
+</project>
+</projects>
+</wikimedia>
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{XML}
+	\lstXML
+\end{frame}
+
+%------------------------------------------------
+\section{web scraping}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{web scraping}
+	\begin{center}
+		Unstructured http(s) data \\~\\
+		
+		Often HTML format \\~\\
+		
+		Spiders / scraping / web crawlers \\~\\
+		
+		Basics behind search engines
+	\end{center}
+\end{frame}
+
+\defverbatim[colored]\lstHTML{
+	\begin{lstlisting}[language=html,basicstyle=\ttfamily\small,keywordstyle=\color{red}]
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>This is a title</title>
+  </head>
+  <body>
+    <p>Hello world!</p>
+  </body>
+</html>
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{HTML}
+	\lstHTML
+\end{frame}
+
+\begin{frame}
+	\frametitle{(har)rvest}
+		\begin{wrapfigure}{r}{0.3\textwidth}
+			\begin{center}
+				\includegraphics[width=0.25\textwidth]{figures/spider_man}
+			\end{center}
+			\caption{Spiderman}
+		\end{wrapfigure}
+		\textbf{JavaScript Object Notation (JSON)} \\
+		Simplify spider activity \\~\\
+		Download data \\
+		Parse data \\
+		
+		Follow links \\
+		Fill out forms \\
+		Store crawling history
+\end{frame}
+
+\begin{frame}
+	\frametitle{Difficulties and bad spiders}
+	\begin{wrapfigure}{r}{0.3\textwidth}
+		\begin{center}
+			\includegraphics[width=0.40\textwidth]{figures/spider_enemies}
+		\end{center}
+		\caption{Bad spiders}
+	\end{wrapfigure}
+	Scraping is fragile! \\
+	Difficulties and bad spiders \\
+	www.domain.se/robot.txt \\
+	Politeness \\~\\
+	robot traps \\
+	javascript \\
+	delays \\
+\end{frame}
+
+%------------------------------------------------
+\section{Shiny}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Shiny?}
+	\begin{center}
+		Interactive dashboards made easy \\~\\
+		\includegraphics[width=0.10\textwidth]{figures/RStudio-Ball} \\~\\
+		online or local \\~\\
+		R as ''backend'' \\~\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Shiny?}
+	\begin{center}
+	\href{https://www.rstudio.com/products/shiny/shiny-user-showcase/}{Shiny 
+		Examples}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{How it works}
+	\begin{center}
+		Application \\~\\
+		Reactive \\~\\
+		modify using HTML \\~\\
+	\end{center}
+			
+	\texttt{MyAppName/server.R} \\
+	\texttt{MyAppName/ui.R}  \\~\\
+	
+	\begin{center}
+		server.R define working directory
+	\end{center}
+\end{frame}
+
+\defverbatim[colored]\lstShiny{
+	\begin{lstlisting}[language=C,basicstyle=\ttfamily\small,keywordstyle=\color{red}]
+	library(shiny)
+	# Examples with code
+	runExample("01_hello")
+	runExample("03_reactivity")
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{Shiny Example}
+	\lstShiny
+\end{frame}
+
+\begin{frame}
+	\frametitle{Publish Shiny}
+	\begin{table}[t]
+		\begin{center}
+			\begin{tabular}{ c c }
+				\includegraphics[width=0.15\textwidth]{figures/house}  & 
+				\begin{tabular}[x]{@{}c@{}}locally\\zip-file in cloud \\github 
+				(see 
+					runGithub() ) \end{tabular} \\
+			\end{tabular}
+		\end{center}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Publish Shiny}
+	\begin{table}[t]
+	\begin{center}
+		\begin{tabular}{ c c }
+			\includegraphics[width=0.15\textwidth]{figures/house}  & 
+			\begin{tabular}[x]{@{}c@{}}locally\\zip-file in cloud \\github (see 
+			runGithub() ) \end{tabular} \\
+			\includegraphics[width=0.15\textwidth]{figures/globe}  & 
+			\begin{tabular}[x]{@{}c@{}}your own server \\
+				shinyapps.io \end{tabular} \\
+			\end{tabular}
+	\end{center}
+\end{table}
+\end{frame}
+
+%------------------------------------------------
+\section{Relational Databases}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Relational Databases}
+	\begin{center}
+		Structured datasbase in tables \\~\\
+		local or online \\~\\
+		query language for I/O \\~\\
+		effective for big data \\~\\
+		difficult to design \\~\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[width=0.90\textwidth]{figures/Relational_model_concepts}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[width=0.75\textwidth]{figures/relational_schema_with_many}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{A good database}
+	\begin{center}
+		Can be difficult to design \\
+		No duplicates \\
+		No redundancies \\
+		Easy to query \\
+		Easy to update \\
+		"Normal forms" \\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Using databases from R}
+	\begin{table}[t]
+		\begin{center}
+			\begin{tabular}{ l l }
+				\textbf{Database system} & 
+				\textbf{R package} \\
+				ODBC (Microsoft Access) & RODBC \\
+				PostgreSQL & RPostgresql \\
+				Oracle & ROracle \\
+				MySQL & RMySql \\
+				MongoDB & rmongodb \\
+			\end{tabular}
+		\end{center}
+		\caption{Database - R package}
+	\end{table}
+\end{frame}
+
+%------------------- THE END ---------------------------------------------------
+
+\begin{frame}
+\Huge{\centerline{The End... for today.}}
+\Huge{\centerline{Questions?}}
+\Huge{\centerline{See you next time!}}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\end{document} 
