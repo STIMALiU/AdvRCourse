@@ -517,7 +517,7 @@ The packages will be assigned to other groups to try your package out and
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced R programming/AdvRCourse/Litterature/courselitterature"
+bibfiles "References"
 options "plain"
 
 \end_inset

@@ -894,7 +894,7 @@ Turn in a the adress to your github repo with the package using LISAM.
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced R programming/AdvRCourse/Litterature/courselitterature"
+bibfiles "References"
 options "plain"
 
 \end_inset
