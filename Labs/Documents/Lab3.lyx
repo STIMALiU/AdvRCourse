@@ -225,8 +225,8 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced
- R programming/AdvRCourseTeacher/Labs/exercise_solutions/"
+solution_path <- "/Users/eralljn/workspace/AdvRCourseTeacher/Labs/exercise_solut
+ions/"
 \end_layout
 
 \begin_layout Plain Layout
@@ -307,7 +307,7 @@ target "https://en.wikipedia.org/wiki/Euclidean_algorithm"
 \begin_layout Standard
 Below is an example of the 
 \family typewriter
-euclidan()
+euclidean()
 \family default
  function.
 \end_layout
@@ -323,12 +323,12 @@ status open
 
 \begin_layout Plain Layout
 
-euclidian(123612, 13892347912) 
+euclidean(123612, 13892347912) 
 \end_layout
 
 \begin_layout Plain Layout
 
-euclidian(100, 1000)
+euclidean(100, 1000)
 \end_layout
 
 \begin_layout Plain Layout
@@ -942,7 +942,7 @@ Turn in a the adress to your github repo with the package using LISAM.
 \begin_layout Standard
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
-bibfiles "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced R programming/AdvRCourse/Litterature/courselitterature"
+bibfiles "References"
 options "plain"
 
 \end_inset
