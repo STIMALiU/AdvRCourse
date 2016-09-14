@@ -398,6 +398,7 @@ concentrate rather on explaining to humans what we want the computer to do.\\
 		\begin{table}
 			\begin{tabular}{l l}
 				\texttt{geom} & Special \texttt{aes} \\
+				\hline
 				\texttt{geom\_point} & point shape, point size \\
 				\texttt{geom\_line} & line type, line size \\
 				\texttt{geom\_bar} & y min, y max, fill color, outline color \\
@@ -417,7 +418,7 @@ concentrate rather on explaining to humans what we want the computer to do.\\
 	Nile$years <- 1871:1970
 	Nile$period <- "- 1900" 
 	Nile$period[Nile$years >= 1900] <- "1900 - 1945"
-	Nile$period[Nile$years > 1945] <- "1945 + " 
+	Nile$period[Nile$years > 1945] <- "1945 +" 
 	Nile$period <- as.factor(Nile$period)
 	\end{lstlisting}
 }
