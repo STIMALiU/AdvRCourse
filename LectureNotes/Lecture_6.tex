@@ -361,7 +361,16 @@ for(i in 1:N)
 	\frametitle{Determine complexity}
 	\begin{centering}
 		\begin{tabular}{p{4.5cm} p{4.5cm}}
-			\usebox{\listboxIV} & O(M * N) \\
+			\usebox{\listboxIV} & O ? \\
+		\end{tabular} 
+	\end{centering} 
+\end{frame}
+
+\begin{frame}
+	\frametitle{Determine complexity}
+	\begin{centering}
+		\begin{tabular}{p{4.5cm} p{4.5cm}}
+			\usebox{\listboxIV} & O(N * M) \\
 		\end{tabular} 
 	\end{centering} 
 \end{frame}
@@ -552,11 +561,12 @@ for(i in 1:N)
 	\frametitle{Improvements}
 	\begin{center}
 		\begin{enumerate}
-			\item Look for existing solutions.
-			\item Do less work.
-			\item Vectorise.
-			\item Parallelize.
-			\item Avoid copies.
+			\item Look for existing solutions
+			\item Do less work
+			\item Vectorise
+			\item Parallelize
+			\item Avoid copies
+			\item Find smarter algorithms 
 		\end{enumerate}
 	\end{center}
 \end{frame}
@@ -594,8 +604,8 @@ for(i in 1:N)
 		Low overhead (startup) \\~\\
 		
 		\textbf{Cons} \\
-		Do not work with windows \\
-		Only multicore \\
+		Does not work on Windows \\
+		Only multi core \\
 	\end{center}
 \end{frame}
 
@@ -651,8 +661,8 @@ for(i in 1:N)
 \defverbatim[colored]\lstRFac{
 \begin{lstlisting}[language=R,basicstyle=\ttfamily,keywordstyle=\color{black}]
 	fr <- function(n) {
-		if (n < 2) return(n)
-		f(n-1) + f(n-2)
+	  if (n < 2) return(n)
+	  f(n-1) + f(n-2)
 	}
 	
 	
