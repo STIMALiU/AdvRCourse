@@ -449,9 +449,12 @@ for(i in 1:N)
 \begin{frame}
 	\frametitle{Theoretical limits}
 	\begin{center}
-		Strong scaling: Amdahl's law \\~\\
+		\textbf{Strong scaling: Amdahl's law} \\
+		Deals with \emph{fixed problem size, increasing resources}\\~\\
 		
-		Weak scaling: Gustafsons law \\~\\
+		\textbf{Weak scaling: Gustafsons law} \\
+		Deals with \emph{increasing size problem along with increasing 
+			resources}
 	\end{center}
 \end{frame}
 
@@ -465,7 +468,8 @@ for(i in 1:N)
 		\begin{tabular}{ l }
 		$f_s$ = serial fraction of code \\
 		$f_p$ = parallel fraction of code \\
-		$P$ = number of cores \\
+		$P$ = number of cores \\~\\
+		For a \textit{fixed size problem}!
 		\end{tabular}
 	\end{center}
 \end{frame}
