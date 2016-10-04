@@ -1,0 +1,740 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in 
+%tables
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{subfig}
+\usepackage[export]{adjustbox}
+\usepackage{wrapfig}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Lecture 7]{Advanced R Programming - Lecture 7} % The short title 
+%appears at the bottom of every slide, the full title is only on the title page
+
+\author{Leif Jonsson} % Your name
+\institute[STIMA LiU] % Your institution as it will appear on the bottom of 
+%every 
+%slide, may be shorthand to save space
+{
+Link\"{o}ping University \\ % Your institution for the title page
+\medskip
+\textit{leif.jonsson@ericsson.com\\leif.r.jonsson@liu.se} % Your email address
+}
+\date{\today} % Date, can be changed to a custom date
+
+\addtobeamertemplate{navigation symbols}{}{ \hspace{1em}    
+\usebeamerfont{footline}%
+	\insertframenumber / \inserttotalframenumber }
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Today} % Table of contents slide, comment this block out to remove 
+%it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\Huge{\centerline{Questions since last time?}}
+\end{frame}
+
+%------------------------------------------------
+\section{Machine Learning}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Machine learning?}
+	\begin{center}
+	Automatically detect patterns in data
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Machine learning?}
+	\begin{center}
+		Automatically detect patterns in data\\~\\
+		Predict future observation
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Machine learning?}
+	\begin{center}
+		Automatically detect patterns in data\\~\\
+		Predict future observation\\~\\
+		Decision making under uncertainty
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Types of Machine learning}
+	\begin{center}
+		Supervised learning
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Types of Machine learning}
+	\begin{center}
+		Supervised learning\\~\\
+		Unsupervised learning
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Types of Machine learning}
+	\begin{center}
+		Supervised learning\\~\\
+		Unsupervised learning\\~\\
+		Reinforcement learning
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Supervised learning}
+	\begin{center}
+		(also called predictive learning)\\~\\
+		response variable\\~\\
+		covariates/features\\~\\
+		training set\\~\\
+		$D = (x_i,y_i)_{(i=1)}^N$
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Supervised learning types}
+	\begin{center}
+		If $y_i$ is categorical:\\
+		classification\\~\\
+		If $y_i$ is real:\\
+		regression
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Unsupervised learning}
+	\begin{center}
+		(also called knowledge discovery)\\~\\
+		dimensionality reduction\\~\\
+		latent variable modeling\\~\\
+		$D = (x_i)_{(i=1)}^N$ \\~\\
+		clustering, PCA, discovering of graph structures\\~\\
+		data visualization\\~\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Curse of dimensionality}
+	\begin{center}
+		The more variables the larger distance between datapoints\\~\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Curse of dimensionality}
+	\begin{center}
+		The more variables the larger distance between datapoints\\~\\
+		\begin{figure}
+			\includegraphics[scale=0.2,valign=m]{figures/Curse-of-dimensionality}
+			\label{fig:dim-curse}
+		\end{figure}
+		\href{http://www.newsnshit.com/curse-of-dimensionality-interactive-demo/}
+		{source}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Bias and variance in ML}
+	\begin{center}
+		\begin{figure}
+			\includegraphics[scale=0.3,valign=m]{figures/data-bias-variance}
+			\label{fig:bias-var}
+		\end{figure}
+		\medskip
+		Underfit = high bias, low variance\\
+		Overfit = low bias, high variance
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Model selection}
+	\begin{center}
+		bias and variance - tradeoff\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Model selection}
+	\begin{center}
+		bias and variance - tradeoff\\~\\
+		hyper parameters
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Model selection}
+	\begin{center}
+		bias and variance - tradeoff\\~\\
+		hyper parameters\\~\\
+		generalization error
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Model selection}
+	\begin{center}
+		bias and variance - tradeoff\\~\\
+		hyper parameters\\~\\
+		generalization error\\~\\
+		validation set/cross validation
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Predictive modeling pipeline}
+	\begin{center}
+		\begin{enumerate}
+			\item Set aside data for test (estimate generalization error)
+			\item Set aside data for validation (if hyperparams)
+			\item Run algorithms
+			\item Find best/optimal hyperparameters (on validation set)
+			\item Choose final model
+			\item Estimate generalization error on test set
+		\end{enumerate}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{No free lunch theorem}
+	\begin{center}
+		different models work in different domains
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{No free lunch theorem}
+	\begin{center}
+		different models work in different domains\\~\\
+		accuracy-complexity-intepratability tradeoff
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{No free lunch theorem}
+	\begin{center}
+		different models work in different domains\\~\\
+		accuracy-complexity-intepratability tradeoff
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{No free lunch theorem}
+	\begin{center}
+		different models work in different domains\\~\\
+		accuracy-complexity-intepratability tradeoff\\~\\
+		...but more data always wins
+	\end{center}
+\end{frame}
+
+%------------------------------------------------
+\section{Supervised learning in R}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{the caret package}
+	\begin{center}
+		package for supervised learning
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{the caret package}
+	\begin{center}
+		package for supervised learning\\~\\
+		does not contain methods - a framework
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{the caret package}
+	\begin{center}
+		package for supervised learning\\~\\
+		does not contain methods - a framework\\~\\
+		compare methods on hold-out-data
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{the caret package}
+	\begin{center}
+		package for supervised learning\\~\\
+		does not contain methods - a framework\\~\\
+		compare methods on hold-out-data\\~\\
+		\href{http://topepo.github.io/caret/}{http://topepo.github.io/caret/}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{the caret package}
+	\begin{center}
+		package for supervised learning\\~\\
+		does not contain methods - a framework\\~\\
+		compare methods on hold-out-data\\~\\
+		\href{http://topepo.github.io/caret/}{http://topepo.github.io/caret/}\\~\\
+		specific algorithms are part of other courses
+	\end{center}
+\end{frame}
+
+%------------------------------------------------
+\section{Probability in R}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{the caret package}
+	\begin{center}
+	\begin{table}
+		\begin{tabular}{l | l | l}
+			\textbf{Prefix} & \textbf{Description} & \textbf{Example}\\
+			\hline
+			r & Random draw & rnorm \\
+			\hline
+			d & Density function & dbinom \\
+			\hline
+			q & Quantile function & qbeta \\
+			\hline
+			p & CDF & pgamma \\
+		\end{tabular}
+	\end{table}
+\end{center}
+\end{frame}
+
+%------------------------------------------------
+\section{Big data}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Big data}
+	Big data is like teenage sex:
+	everyone talks about it,
+	nobody really knows how to do it,
+	everyone thinks everyone else is doing it,
+	so everyone claims they are doing it...\\
+	- Dan Ariely
+\end{frame}
+
+\begin{frame}
+	\frametitle{Big data is relative...}
+	\begin{center}
+		... to computational complexity\\~\\
+		$O(N):10^{12}$
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Big data is relative...}
+	\begin{center}
+		... to computational complexity\\~\\
+		$O(N):10^{12}$\\
+		$O(N^2):10^{6}$
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Big data is relative...}
+	\begin{center}
+		... to computational complexity\\~\\
+		$O(N):10^{12}$\\
+		$O(N^2):10^{6}$\\
+		$O(N^3):10^{4}$\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Big data is relative...}
+	\begin{center}
+		... to computational complexity\\~\\
+		$O(N) : 10^{12}$\\
+		$O(N^2) : 10^{6}$\\
+		$O(N^3) : 10^{4}$\\
+		$O(2^N) : 50$\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Big data is relative...}
+	\begin{center}
+		... to computational complexity\\~\\
+		$O(N) : 10^{12}$\\
+		$O(N^2) : 10^{6}$\\
+		$O(N^3) : 10^{4}$\\
+		$O(2^N) : 50$\\~\\
+		We need algorithms that scales!
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Big data is relative...}
+	\begin{center}
+		... to computational complexity\\~\\
+		$O(P^2 * N) : \text{Linear regression}$
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Big data is relative...}
+	\begin{center}
+		... to computational complexity\\~\\
+		$O(P^2 * N) : \text{Linear regression}$\\
+		$O(N^3) : \text{Gaussian processes}$
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Big data is relative...}
+	\begin{center}
+		... to computational complexity\\~\\
+		$O(P^2 * N) : \text{Linear regression}$\\
+		$O(N^3) : \text{Gaussian processes}$\\
+		$O(N^2) / O(N^3) : \text{Support vector machines}$\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Big data is relative...}
+	\begin{center}
+		... to computational complexity\\~\\
+		$O(P^2 * N) : \text{Linear regression}$\\
+		$O(N^3) : \text{Gaussian processes}$\\
+		$O(N^2) / O(N^3) : \text{Support vector machines}$\\
+		$O(T(P * N * log(N)) : \text{Random forests}$\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Big data is relative...}
+	\begin{center}
+		... to computational complexity\\~\\
+		$O(P^2 * N) : \text{Linear regression}$\\
+		$O(N^3) : \text{Gaussian processes}$\\
+		$O(N^2) / O(N^3) : \text{Support vector machines}$\\
+		$O(T(P * N * log(N)) : \text{Random forests}$\\
+		$O(I * N) : \text{Topic models}$\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Big data in R}
+	\begin{center}
+		R stores data in RAM\\~\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Big data in R}
+	\begin{center}
+		R stores data in RAM\\~\\
+		integers\\
+		4 bytes\\
+		numerics\\
+		8 bytes\\~\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Big data in R}
+	\begin{center}
+		R stores data in RAM\\~\\
+		integers\\
+		4 bytes\\
+		numerics\\
+		8 bytes\\~\\
+		A matrix with 100m rows and 5 cols with numerics \\
+		$100000000 * 5 * 8 / (1024^3) \approx 3.8$
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{How to handle}
+	\begin{center}
+		Handle chunkwise\\
+		Subsampling\\
+		More hardware\\
+		C++/Java backend (dplyr)\\
+		Reduce data in memory\\
+		Database backend\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{If not enough}
+	\begin{center}
+		Spark and SparkR\\~\\
+		Fast cluster computations  for ML /STATS\\~\\
+		\href{https://www.youtube.com/watch?v=_Ss1Cm6WO-I}
+		{introduction to Spark}	\\
+	\end{center}
+\end{frame}
+
+%------------------------------------------------
+\section{Data munging}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Tidy data}
+	\begin{center}
+		Theoretical approach to data handling\\~\\
+		\textbf{Tidy} data and \textbf{messy} data\\~\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Tidy data}
+	\begin{center}
+		\begin{enumerate}
+			\item Each variable forms a column
+			\item Each observation forms a row
+			\item Each type of observational unit forms a table
+		\end{enumerate}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Tidy data}
+	\begin{center}
+		\begin{enumerate}
+			\item Each variable forms a column
+			\item Each observation forms a row
+			\item Each type of observational unit forms a table
+		\end{enumerate}
+		\medskip
+		Examples: \texttt{iris} and \texttt{faithful}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Why tidy?}
+	\begin{center}
+		80 \% of Big Data work is data munging\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Why tidy?}
+	\begin{center}
+		80 \% of Big Data work is data munging\\~\\
+		Analysis and visualization is based on tidy data
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Why tidy?}
+	\begin{center}
+		80 \% of Big Data work is data munging\\~\\
+		Analysis and visualization is based on tidy data\\~\\
+		Performant code
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Why tidy?}
+	\begin{center}
+		80 \% of Big Data work is data munging\\~\\
+		Analysis and visualization is based on tidy data\\~\\
+		Performant code \\~\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Data analysis pipeline}
+	\begin{center}
+		Messy data $\rightarrow$ Tidy data $\rightarrow$ Analysis
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Messy data}
+	\begin{center}
+		\begin{enumerate}
+			\item Column headers are values, not variable names. 
+			(\texttt{AirPassengers})
+		\end{enumerate}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Messy data}
+	\begin{center}
+		\begin{enumerate}
+			\item Column headers are values, not variable names. 
+			(\texttt{AirPassengers})
+			\item Multiple variables are stored in one column. (\texttt{mtcars})
+		\end{enumerate}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Messy data}
+	\begin{center}
+		\begin{enumerate}
+			\item Column headers are values, not variable names. 
+			(\texttt{AirPassengers})
+			\item Multiple variables are stored in one column. (\texttt{mtcars})
+			\item Variables are stored in both rows and columns. 
+			(\texttt{crimetab})
+		\end{enumerate}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Messy data}
+	\begin{center}
+		\begin{enumerate}
+			\item Column headers are values, not variable names. 
+			(\texttt{AirPassengers})
+			\item Multiple variables are stored in one column. (\texttt{mtcars})
+			\item Variables are stored in both rows and columns. 
+			(\texttt{crimetab})
+			\item Multiple types of observational units are stored in the same 
+			table.
+		\end{enumerate}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Messy data}
+	\begin{center}
+		\begin{enumerate}
+			\item Column headers are values, not variable names. 
+			(\texttt{AirPassengers})
+			\item Multiple variables are stored in one column. (\texttt{mtcars})
+			\item Variables are stored in both rows and columns. 
+			(\texttt{crimetab})
+			\item Multiple types of observational units are stored in the same 
+			table.
+			\item A single observational unit is stored in multiple tables.
+		\end{enumerate}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{dplyr}
+	\begin{center}
+		\begin{enumerate}
+			Verbs for handling data\\~\\
+			Highly optimized C++ code (backend)\\~\\
+			Handling larger datasets in R\\
+			(no copy-on-modify)
+		\end{enumerate}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{dplyr+tidyr}
+	\begin{center}
+		\href{https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf}
+			{the cheatsheet}
+	\end{center}
+\end{frame}
+
+%------------------- THE END ---------------------------------------------------
+
+\begin{frame}
+\Huge{\centerline{The End... for today.}}
+\Huge{\centerline{Questions?}}
+\Huge{\centerline{See you next time!}}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\end{document} 
