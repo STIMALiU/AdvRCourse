@@ -128,6 +128,251 @@ Link\"{o}ping University \\ % Your institution for the title page
 \end{frame}
 
 %------------------------------------------------
+\section{Data munging}
+%------------------------------------------------
+
+\begin{frame}
+	\frametitle{Tidy data}
+	\begin{center}
+		Theoretical approach to data handling\\~\\
+		\textbf{Tidy} data and \textbf{messy} data\\~\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Tidy data}
+	\begin{center}
+		\begin{enumerate}
+			\item Each variable forms a column
+			\item Each observation forms a row
+			\item Each type of observational unit forms a table
+		\end{enumerate}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Tidy data}
+	\begin{center}
+		\begin{enumerate}
+			\item Each variable forms a column
+			\item Each observation forms a row
+			\item Each type of observational unit forms a table
+		\end{enumerate}
+		\medskip
+		Examples: \texttt{iris} and \texttt{faithful}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Why tidy?}
+	\begin{center}
+		80 \% of Big Data work is data munging\\
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Why tidy?}
+	\begin{center}
+		80 \% of Big Data work is data munging\\~\\
+		Analysis and visualization is based on tidy data
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Why tidy?}
+	\begin{center}
+		80 \% of Big Data work is data munging\\~\\
+		Analysis and visualization is based on tidy data\\~\\
+		Performant code
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Data analysis pipeline}
+	\begin{center}
+		Messy data $\rightarrow$ Tidy data $\rightarrow$ Analysis
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Messy data}
+	\begin{center}
+		\begin{enumerate}
+			\item Column headers are values, not variable names. 
+			(\texttt{AirPassengers})
+		\end{enumerate}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Messy data}
+	\begin{center}
+		\begin{enumerate}
+			\item Column headers are values, not variable names. 
+			(\texttt{AirPassengers})
+			\item Multiple variables are stored in one column. (\texttt{mtcars})
+		\end{enumerate}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Messy data}
+	\begin{center}
+		\begin{enumerate}
+			\item Column headers are values, not variable names. 
+			(\texttt{AirPassengers})
+			\item Multiple variables are stored in one column. (\texttt{mtcars})
+			\item Variables are stored in both rows and columns. 
+			(\texttt{crimetab})
+		\end{enumerate}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Messy data}
+	\begin{center}
+		\begin{enumerate}
+			\item Column headers are values, not variable names. 
+			(\texttt{AirPassengers})
+			\item Multiple variables are stored in one column. (\texttt{mtcars})
+			\item Variables are stored in both rows and columns. 
+			(\texttt{crimetab})
+			\item Multiple types of observational units are stored in the same 
+			table.
+		\end{enumerate}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Messy data}
+	\begin{center}
+		\begin{enumerate}
+			\item Column headers are values, not variable names. 
+			(\texttt{AirPassengers})
+			\item Multiple variables are stored in one column. (\texttt{mtcars})
+			\item Variables are stored in both rows and columns. 
+			(\texttt{crimetab})
+			\item Multiple types of observational units are stored in the same 
+			table.
+			\item A single observational unit is stored in multiple tables.
+		\end{enumerate}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{dplyr}
+	\begin{center}
+		\begin{enumerate}
+			Verbs for handling data\\~\\
+			Highly optimized C++ code (backend)\\~\\
+			Handling larger datasets in R\\
+			(no copy-on-modify)
+		\end{enumerate}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{dplyr+tidyr}
+	\begin{center}
+		\href{https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf}
+		{the cheatsheet}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Regular Expressions}
+	\begin{center}
+		Language for manipulating strings\\~\\
+		Find strings that match a pattern\\~\\
+		Extract patterns from strings\\~\\
+		Replace patterns in strings\\~\\
+		Component in many functions\\
+		(grep, gsub, stringr::, tidyr::)
+	\end{center}
+\end{frame}
+
+\defverbatim[colored]\lstRegexI{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\footnotesize,
+	keywordstyle=\color{black}, showstringspaces=false]
+> library(gapminder)
+> grep("we", gapminder$country)
+[1] 1465 1466 1467 1468 1469 1470 1471 1472 1473 1474 1475 1476 1693 1694 
+1695 1696 1697
+[18] 1698 1699 1700 1701 1702 1703 1704
+grep("we", gapminder$country, value=TRUE)
+[1] "Sweden"   "Sweden"   "Sweden"   "Sweden"   "Sweden"   
+"Sweden"  "Sweden"   "Sweden"  
+[9] "Sweden"   "Sweden"   "Sweden"   "Sweden"   "Zimbabwe" "Zimbabwe" 
+"Zimbabwe" "Zimbabwe"
+[17] "Zimbabwe" "Zimbabwe" "Zimbabwe" "Zimbabwe" "Zimbabwe" "Zimbabwe" 
+"Zimbabwe" "Zimbabwe"
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{Regex Examples - Finding matching}
+	\begin{center}
+		\lstRegexI
+	\end{center}
+\end{frame}
+
+\defverbatim[colored]\lstRegexII{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\footnotesize,
+	keywordstyle=\color{black}, showstringspaces=false]
+> strs <- c("The 13 Cats in the Hats are 17 years", "4 scores and 7 beers 
+ago")
+> str_extract_all(strs, "[a-z]+")
+[[1]]
+[1] "he"    "ats"   "in"    "the"   "ats"   "are"   "years"
+[[2]]
+[1] "scores" "and"    "beers"  "ago"   
+> str_extract(strs, "[a-z]+")
+[1] "he"     "scores"
+> str_extract(strs, "[0-9]+")
+[1] "13" "4" 
+> str_extract_all(strs, "[0-9]+")
+[[1]]
+[1] "13" "17"
+[[2]]
+[1] "4" "7"
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{Regex Examples - Extraction}
+	\begin{center}
+		\lstRegexII
+	\end{center}
+\end{frame}
+
+\defverbatim[colored]\lstRegexIII{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\tiny,
+	keywordstyle=\color{black}, showstringspaces=false]
+	> library(gapminder)
+	> # Create artificial column with numeric data in text
+	> rnds <- ceiling(runif(nrow(gapminder),80,200))
+	> gapminder$country <- paste(gapminder$country, rnds, " population")
+	> tdy <- gapminder %>% separate(country, into = c("Count", "CPop"), sep 
+	="\\d+")
+	> head(tdy)
+	# A tibble: 6 <U+00D7> 7
+	Count            CPop          continent  year lifeExp      pop gdpPercap
+	<chr>            <chr>          <fctr> <int>   <dbl>    <int>     <dbl>
+	1 Afghanistan    population      Asia  1952  28.801  8425333  779.4453
+	2 Afghanistan    population      Asia  1957  30.332  9240934  820.8530
+	3 Afghanistan    population      Asia  1962  31.997 10267083  853.1007
+	4 Afghanistan    population      Asia  1967  34.020 11537966  836.1971
+	\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{Regex Examples - Tidyr separate}
+	\begin{center}
+		\lstRegexIII
+	\end{center}
+\end{frame}
+
+%------------------------------------------------
 \section{Machine Learning}
 %------------------------------------------------
 
@@ -582,169 +827,6 @@ Link\"{o}ping University \\ % Your institution for the title page
 		Fast cluster computations  for ML /STATS\\~\\
 		\href{https://www.youtube.com/watch?v=_Ss1Cm6WO-I}
 		{introduction to Spark}	\\
-	\end{center}
-\end{frame}
-
-%------------------------------------------------
-\section{Data munging}
-%------------------------------------------------
-
-\begin{frame}
-	\frametitle{Tidy data}
-	\begin{center}
-		Theoretical approach to data handling\\~\\
-		\textbf{Tidy} data and \textbf{messy} data\\~\\
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Tidy data}
-	\begin{center}
-		\begin{enumerate}
-			\item Each variable forms a column
-			\item Each observation forms a row
-			\item Each type of observational unit forms a table
-		\end{enumerate}
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Tidy data}
-	\begin{center}
-		\begin{enumerate}
-			\item Each variable forms a column
-			\item Each observation forms a row
-			\item Each type of observational unit forms a table
-		\end{enumerate}
-		\medskip
-		Examples: \texttt{iris} and \texttt{faithful}
-	\end{center}
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Why tidy?}
-	\begin{center}
-		80 \% of Big Data work is data munging\\
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Why tidy?}
-	\begin{center}
-		80 \% of Big Data work is data munging\\~\\
-		Analysis and visualization is based on tidy data
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Why tidy?}
-	\begin{center}
-		80 \% of Big Data work is data munging\\~\\
-		Analysis and visualization is based on tidy data\\~\\
-		Performant code
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Why tidy?}
-	\begin{center}
-		80 \% of Big Data work is data munging\\~\\
-		Analysis and visualization is based on tidy data\\~\\
-		Performant code \\~\\
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Data analysis pipeline}
-	\begin{center}
-		Messy data $\rightarrow$ Tidy data $\rightarrow$ Analysis
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Messy data}
-	\begin{center}
-		\begin{enumerate}
-			\item Column headers are values, not variable names. 
-			(\texttt{AirPassengers})
-		\end{enumerate}
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Messy data}
-	\begin{center}
-		\begin{enumerate}
-			\item Column headers are values, not variable names. 
-			(\texttt{AirPassengers})
-			\item Multiple variables are stored in one column. (\texttt{mtcars})
-		\end{enumerate}
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Messy data}
-	\begin{center}
-		\begin{enumerate}
-			\item Column headers are values, not variable names. 
-			(\texttt{AirPassengers})
-			\item Multiple variables are stored in one column. (\texttt{mtcars})
-			\item Variables are stored in both rows and columns. 
-			(\texttt{crimetab})
-		\end{enumerate}
-	\end{center}
-\end{frame}
-
-
-\begin{frame}
-	\frametitle{Messy data}
-	\begin{center}
-		\begin{enumerate}
-			\item Column headers are values, not variable names. 
-			(\texttt{AirPassengers})
-			\item Multiple variables are stored in one column. (\texttt{mtcars})
-			\item Variables are stored in both rows and columns. 
-			(\texttt{crimetab})
-			\item Multiple types of observational units are stored in the same 
-			table.
-		\end{enumerate}
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Messy data}
-	\begin{center}
-		\begin{enumerate}
-			\item Column headers are values, not variable names. 
-			(\texttt{AirPassengers})
-			\item Multiple variables are stored in one column. (\texttt{mtcars})
-			\item Variables are stored in both rows and columns. 
-			(\texttt{crimetab})
-			\item Multiple types of observational units are stored in the same 
-			table.
-			\item A single observational unit is stored in multiple tables.
-		\end{enumerate}
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{dplyr}
-	\begin{center}
-		\begin{enumerate}
-			Verbs for handling data\\~\\
-			Highly optimized C++ code (backend)\\~\\
-			Handling larger datasets in R\\
-			(no copy-on-modify)
-		\end{enumerate}
-	\end{center}
-\end{frame}
-
-\begin{frame}
-	\frametitle{dplyr+tidyr}
-	\begin{center}
-		\href{https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf}
-			{the cheatsheet}
 	\end{center}
 \end{frame}
 
