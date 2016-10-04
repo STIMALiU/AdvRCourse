@@ -561,6 +561,58 @@ for(i in 1:N)
 	\end{center}
 \end{frame}
 
+\defverbatim[colored]\lstProf{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\footnotesize,keywordstyle=\color{black}]
+Rprof(tmp <- tempfile(), 
+  line.profiling = TRUE, 
+  memory.profiling = TRUE)
+test_data <- pxweb::get_pxweb_data(
+   url = 
+     "http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy",
+   dims = list(Region = c('*'), 
+     Civilstand = c('*'), 
+     Alder = c('*'), 
+     Kon = c('*'), 
+     ContentsCode = c('*'),
+     Tid = as.character(1970)),
+   clean = TRUE)
+Rprof()
+summaryRprof(tmp, lines = "show", memory = "both")
+	\end{lstlisting}
+}
+
+\defverbatim[colored]\lstProfRes{
+	\begin{lstlisting}[language=R,basicstyle=\ttfamily\tiny,keywordstyle=\color{black}]
+$by.self
+                               self.time self.pct total.time total.pct mem.total
+get_pxweb_data.R#102              1.96     39.2       1.96      39.2     579.2
+get_pxweb_data_internal.R#42      1.16     23.2       1.16      23.2     405.0
+get_pxweb_data.R#56               0.52     10.4       0.52      10.4      31.3
+get_pxweb_data.R#80               0.38      7.6       0.38       7.6      29.1
+get_pxweb_data.R#82               0.32      6.4       0.32       6.4      40.7
+get_pxweb_data_internal.R#48      0.26      5.2       0.26       5.2      73.2
+get_pxweb_data_internal.R#74      0.26      5.2       0.26       5.2      29.8
+get_pxweb_data.R#83               0.08      1.6       0.08       1.6      17.2
+api_catalogue.R#75                0.02      0.4       0.02       0.4       0.0
+get_pxweb_data_internal.R#44      0.02      0.4       0.02       0.4      12.6
+get_pxweb_data_internal.R#71      0.02      0.4       0.02       0.4      16.0
+\end{lstlisting}
+}
+
+\begin{frame}
+	\frametitle{Profiling}
+	\begin{center}
+		\lstProf
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Profiling}
+	\begin{center}
+		\lstProfRes
+	\end{center}
+\end{frame}
+
 \begin{frame}
 	\frametitle{Improvements}
 	\begin{center}
