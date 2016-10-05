@@ -291,6 +291,30 @@ Link\"{o}ping University \\ % Your institution for the title page
 	\end{center}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Regular Expressions - Syntax}
+	\begin{center}
+		fruit \textless- c("apple", "banana", "pear", "pineapple")
+			\begin{table}
+				\begin{tabular}{p{1.5cm} | p{4.5cm} | p{2cm}}
+					\textbf{Symbol} & \textbf{Description} & \textbf{Example}\\
+					\hline
+					? & The preceding item is optional and will be matched at 
+					most once & grep("pi?",fruit) \\
+					\hline
+					* & The preceding item will be matched zero or more times & 
+					grep("pi*",fruit) \\
+					\hline
+					+ & The preceding item will be matched one or more times & 
+					grep("pi+",fruit) \\
+					\hline
+					{n} & The preceding item is matched exactly n times & 
+					grep("p\{2\}",fruit) \\
+				\end{tabular}
+			\end{table}
+	\end{center}
+\end{frame}
+
 \defverbatim[colored]\lstRegexI{
 	\begin{lstlisting}[language=R,basicstyle=\ttfamily\footnotesize,
 	keywordstyle=\color{black}, showstringspaces=false]
@@ -624,7 +648,7 @@ ago")
 %------------------------------------------------
 
 \begin{frame}
-	\frametitle{the caret package}
+	\frametitle{Probability Functions}
 	\begin{center}
 	\begin{table}
 		\begin{tabular}{l | l | l}
@@ -809,7 +833,7 @@ ago")
 \end{frame}
 
 \begin{frame}
-	\frametitle{How to handle}
+	\frametitle{How to deal with large data sets}
 	\begin{center}
 		Handle chunkwise\\
 		Subsampling\\
