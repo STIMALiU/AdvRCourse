@@ -1077,6 +1077,22 @@ Examination
 
 \begin_layout Standard
 Turn in a the adress to your github repo with the package using LISAM.
+ To pass the lab you need to:
+\end_layout
+
+\begin_layout Enumerate
+Have the R package up (with yhe implemnted function) on GitHub with a Travis
+ CI pass/fail badge.
+\end_layout
+
+\begin_layout Enumerate
+The test suites for the implemented function(s) should be included in the
+ package.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The package should build without warnings on Travis CI.
 \end_layout
 
 \begin_layout Standard
