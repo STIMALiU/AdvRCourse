@@ -1081,8 +1081,7 @@ Turn in a the adress to your github repo with the package using LISAM.
 \end_layout
 
 \begin_layout Enumerate
-Have the R package up (with yhe implemnted function) on GitHub with a Travis
- CI pass/fail badge.
+Have the R package up on GitHub with a Travis CI pass/fail badge.
 \end_layout
 
 \begin_layout Enumerate

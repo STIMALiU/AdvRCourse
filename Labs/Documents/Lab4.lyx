@@ -305,38 +305,13 @@ Remember to commit your changes continously to github during the lab.
 \end_layout
 
 \begin_layout Section
-Create a package and write unit tests 
+Create a package on Github and Travis 
 \end_layout
 
 \begin_layout Standard
-Start out by creating your new package on github.
- As a first step implement tests for your (not yet) written function 
-\family typewriter
-linreg()
-\family default
- and the methods 
-\family typewriter
-coefficients()
-\family default
-, 
-\family typewriter
-resid()
-\family default
- and 
-\family typewriter
-pred()
-\family default
-.
- Use a well known dataset (such as iris or fathful) and use the 
-\family typewriter
-lm()
-\family default
- function to fit a linear model and create unit tests that check that your
- function return the same values as 
-\family typewriter
-lm()
-\family default
-.
+Start out by creating your new package on github and Travis CI.
+ See lab 3 for details.
+ 
 \end_layout
 
 \begin_layout Section
@@ -760,6 +735,20 @@ should return a similar printout as printed for lm objects, but you only
 \end_layout
 
 \begin_layout Section
+Add unit test suites to your package
+\end_layout
+
+\begin_layout Standard
+Add unit tests found at 
+\family typewriter
+https://github.com/STIMALiU/AdvRCourse/tree/master/Testsuites
+\family default
+ for your package depending on the OO system you are using.
+ See lab 3 for details.
+ 
+\end_layout
+
+\begin_layout Section
 Write a vignette on how to use your package
 \end_layout
 
@@ -889,6 +878,21 @@ Examination
 
 \begin_layout Standard
 Turn in a the adress to your github repo with the package using LISAM.
+ To pass the lab you need to:
+\end_layout
+
+\begin_layout Enumerate
+Have the R package up on GitHub with a Travis CI pass/fail badge.
+\end_layout
+
+\begin_layout Enumerate
+The test suites for the implemented function(s) should be included in the
+ package.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The package should build without warnings on Travis CI.
 \end_layout
 
 \begin_layout Standard
