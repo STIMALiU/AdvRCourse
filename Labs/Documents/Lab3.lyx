@@ -573,7 +573,11 @@ yourpackagename
 \family default
 .
  You can choose the name of the package freely.
- Remove the read-and-delete-me file that was created.
+ Remove the 
+\family typewriter
+read-and-delete-me
+\family default
+ file that was created.
 \end_layout
 
 \begin_layout Enumerate
@@ -601,8 +605,11 @@ key "wickham2015r"
 \end_layout
 
 \begin_layout Enumerate
-In your R-Studio session configure the (package) build tools by Build ->
- Configure build tools.
+In your R-Studio session configure the (package) build tools by 
+\series bold
+Build -> Configure build tools
+\series default
+.
 \begin_inset Separator latexpar
 \end_inset
 
@@ -639,8 +646,11 @@ Build & Reload
 
 .
  You have created your own package.
- Clear the global environment and try that your functions is now in your
- searchpath.
+ Clear the global environment, load the package with 
+\family typewriter
+library()
+\family default
+ and try that your functions is now in your searchpath.
  
 \end_layout
 
@@ -717,9 +727,104 @@ Document the package
 \end_layout
 
 \begin_layout Enumerate
-Commit the documentation to github.
+Commit the documentation to GitHub.
 \end_layout
 
+\begin_layout Subsection
+Put the package on Travis CI
+\end_layout
+
+\begin_layout Standard
+To be able to follow and check the package efficiently we are going to put
+ the package both on Github (for version control) and Travis CI for continous
+ integration.
+ Travis will build the R package automatically every time you push new code
+ to the GitHub repository and inform you if the package is working (Green)
+ or Failing (Red).
+\end_layout
+
+\begin_layout Enumerate
+Create an account on Travis CI and connect it to your github account: 
+\family typewriter
+https://travis-ci.org/
+\end_layout
+
+\begin_layout Enumerate
+Mark your repository you want to be built on Travis (the package in this
+ lab).
+\end_layout
+
+\begin_layout Enumerate
+Add a 
+\family typewriter
+.travis.yml
+\family default
+ file with the following content (this will build an/your R package and
+ save installed R packages used):
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+language: r 
+\end_layout
+
+\begin_layout Plain Layout
+
+cache: packages
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+More information on how you can handle Travis builds can be found here:
+ 
+\family typewriter
+https://docs.travis-ci.com/user/languages/r/
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Commit the 
+\family typewriter
+.travis.yml
+\family default
+ file and push it to GitHub.
+ Now Travis should try to build your packages.
+ If your package fails, correct the bugs until the package passes.
+\end_layout
+
+\begin_layout Enumerate
+Add a Travis build badge (markdown) to the repository README file (at the
+ top) so it is easy to see if your package is passing or failing.
+ More information can be found here:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\family typewriter
+https://docs.travis-ci.com/user/status-images/
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 Include the dataset 
 \family typewriter
@@ -772,11 +877,12 @@ A reference to the wikipedia page
 \end_layout
 
 \begin_layout Subsection
-Write unit tests for your package
+Include the test suite in your package
 \end_layout
 
 \begin_layout Standard
-The last step is to write uinit tests for your package.
+The last step is to include unit tests for your package (later you will
+ write unit tests yourself).
  See chapter 
 \begin_inset Quotes eld
 \end_inset
@@ -800,25 +906,59 @@ key "testthat"
 \end_inset
 
 .
+ Unit tests should be designed in a way that it is possible to introduce
+ a bug in the code and you will find out that we have introduced that bug.
 \end_layout
 
-\begin_layout Standard
-The tests should be designed in a way that it is possible to introduce a
- bug in the code and you will find out that we have introduced that bug.
+\begin_layout Enumerate
+Set up the testthat framework for your package with use_
+\family typewriter
+testthat()
+\family default
+ in the 
+\family typewriter
+devtools
+\family default
+ package.
 \end_layout
 
+\begin_layout Enumerate
+Add the test suite for the 
+\family typewriter
+dijkstra()
+\family default
+ (if implemented) and 
+\family typewriter
+euclidean()
+\family default
+ found at:
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
+
+\family typewriter
+https://github.com/STIMALiU/AdvRCourse/tree/master/Testsuites
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
 Run 
 \begin_inset Quotes eld
 \end_inset
 
-test package
+Test package
 \begin_inset Quotes erd
 \end_inset
 
  under the Build tab in R-Studio to check that your functions passes all
  tests.
  Commit and push your tests to github.
+\end_layout
+
+\begin_layout Enumerate
+If your functions do not pass the tests, find your bug and try again.
+ You're not done until all tests passes.
 \end_layout
 
 \begin_layout Subsection
@@ -899,7 +1039,7 @@ devtools:install_github("[yourusername/repo]", subdir="your subdirectory")
 Create a release of your package (ex.
  v.
  1.0) on github.
- Now you're done!
+ 
 \end_layout
 
 \begin_layout Section
