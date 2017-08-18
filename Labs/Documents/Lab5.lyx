@@ -295,19 +295,24 @@ target "https://github.com/MansMeg/AdvRCourse/raw/master/Labs/Documents/Lab3.pdf
 \series default
 \color inherit
  for details on how to setup a package.
+ Put your package on github and build the packages using Travis CI.
  Think about the naming of your package.
  
 \end_layout
 
+\begin_layout Subsection
+Write the R code
+\end_layout
+
 \begin_layout Standard
-Read about the package and discuss whcih functions you should have to access
+Read about the package and discuss which functions you should have to access
  the data in the API.
  There are often limits and configurations for a given API you need to access.
  
 \end_layout
 
 \begin_layout Standard
-In genreal it is good to have as few functions as possible theat are exported
+In general it is good to have as few functions as possible that are exported
  in the package.
  But behind these functions you may need to have more functionality not
  accessed by the users of your package.
@@ -315,12 +320,11 @@ In genreal it is good to have as few functions as possible theat are exported
 \end_layout
 
 \begin_layout Subsection
-Write the R code and unit tests
+Write unit tests
 \end_layout
 
 \begin_layout Standard
-Implement functions to connect to the API and download data to the R session.
- Do also write a unit test suite for your public functions in the package.
+Write a unit test suite for the functions in the package.
  Examples of test can be:
 \end_layout
 
@@ -504,14 +508,22 @@ Examination
 \begin_layout Standard
 Turn in a the adress to your github repo with the package (and Shiny application
 ) using LISAM.
- 
+ To pass the lab you need to:
 \end_layout
 
-\begin_layout Standard
-The packages will be assigned to other groups to try your package out and
- return eventual problems as bugs using the issue tracker.
- The teacher will the decide if there are any bugs or corrections that is
- needed to correct to get the lab to pass.
+\begin_layout Enumerate
+Have the R package up on GitHub with a Travis CI pass/fail badge.
+\end_layout
+
+\begin_layout Enumerate
+The test suites for the implemented function(s) should be included in the
+ package.
+ You should have written these tests yourselves and should include at least
+ 10 different unit test in one test suite.
+\end_layout
+
+\begin_layout Enumerate
+The package should build without warnings (pass) on Travis CI.
 \end_layout
 
 \begin_layout Standard
