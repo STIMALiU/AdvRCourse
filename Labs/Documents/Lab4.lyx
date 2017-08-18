@@ -892,7 +892,7 @@ The test suites for the implemented function(s) should be included in the
 \end_layout
 
 \begin_layout Enumerate
-The package should build without warnings on Travis CI.
+The package should build without warnings (pass) on Travis CI.
 \end_layout
 
 \begin_layout Standard
