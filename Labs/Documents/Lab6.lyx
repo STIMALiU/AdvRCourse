@@ -254,7 +254,7 @@ The knapsack package
 \end_layout
 
 \begin_layout Standard
-Start out by creating a new package on github, see lab 3 
+Start out by creating a new package on github and Travis CI, see lab 3 
 \series bold
 \color blue
 
@@ -675,13 +675,33 @@ How long time does it takes to run the algorithm for
 \end_layout
 
 \begin_layout Subsection
-Implement test suite for your functions
+Implement a test suite for your package
 \end_layout
 
 \begin_layout Standard
-Implement a test suite for your functions so that you now know that is working
- correctly.
- 
+Add the testsuites for the 
+\family typewriter
+greedy_knapsack()
+\family default
+ and 
+\family typewriter
+brute_force_knapsack()
+\family default
+ that are found here:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+https://github.com/STIMALiU/AdvRCourse/blob/master/Testsuites/
+\end_layout
+
+\begin_layout Standard
+Based on these test suites, write your own test suite for 
+\family typewriter
+knapsack_dynamic(x, W)
+\family default
+ by copying unit test from the other test suites.
 \end_layout
 
 \begin_layout Subsection
@@ -752,6 +772,11 @@ target "http://adv-r.had.co.nz/Rcpp.html"
 \series default
 \color inherit
 .
+ To setup a package that contain C++ code, use the 
+\family typewriter
+Rcpp.package.skeleton()
+\family default
+ to setup your package.
 \end_layout
 
 \begin_layout Standard
@@ -898,14 +923,32 @@ Examination
 
 \begin_layout Standard
 Turn in a the adress to your github repo with the package using LISAM.
+ To pass the lab you need to:
+\end_layout
+
+\begin_layout Enumerate
+Have the R package up on GitHub with a Travis CI pass/fail badge.
+\end_layout
+
+\begin_layout Enumerate
+Test suites should be included in the package for 
+\family typewriter
+greedy_knapsack()
+\family default
+, 
+\family typewriter
+brute_force_knapsack()
+\family default
+ and 
+\family typewriter
+knapsack_dynamic(x, W)
+\family default
+.
  
 \end_layout
 
-\begin_layout Standard
-The packages will be assigned to other groups to try your package out and
- return eventual problems as bugs using the issue tracker.
- The teacher will the decide if there are any bugs or corrections that is
- needed to correct to get the lab to pass.
+\begin_layout Enumerate
+The package should build without warnings (pass) on Travis CI.
 \end_layout
 
 \begin_layout Standard
