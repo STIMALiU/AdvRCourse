@@ -551,8 +551,15 @@ Write a simple test suite for your
 \family typewriter
 ridgereg()
 \family default
- and associated methods.
- 
+ that test that you get similar coefficients as 
+\family typewriter
+lm.ridge()
+\family default
+ in package 
+\family typewriter
+MASS
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -885,14 +892,24 @@ Examination
 
 \begin_layout Standard
 Turn in a the adress to your github repo with the package using LISAM.
- 
+ To pass the lab you need to:
 \end_layout
 
-\begin_layout Standard
-The packages will be assigned to other groups to try your package out and
- return eventual problems as bugs using the issue tracker.
- The teacher will the decide if there are any bugs or corrections that is
- needed to correct to get the lab to pass.
+\begin_layout Enumerate
+Have the R package up on GitHub with a Travis CI pass/fail badge.
+\end_layout
+
+\begin_layout Enumerate
+Test suites should be included in the package that test that you get similar
+ coefficients as 
+\family typewriter
+lm.ridge()
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+The package should build without warnings (pass) on Travis CI.
 \end_layout
 
 \begin_layout Standard
