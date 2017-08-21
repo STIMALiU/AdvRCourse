@@ -13,7 +13,7 @@
   \fancyhead[L]{
     LINK\"OPING UNIVERSITY\\
     STIMA\\
-    Department of computer and information sciences
+    Department of Computer and Information Science
   }
   \fancyhead[R]{Advanced R programming}
 }
@@ -70,7 +70,7 @@ knitr
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\suppress_date false
+\suppress_date true
 \justification true
 \use_refstyle 0
 \index Index
@@ -99,11 +99,47 @@ knitr
 \begin_body
 
 \begin_layout Title
+732A94 Advanced R Programming
+
+\begin_inset Newline newline
+\end_inset
+
 Computer lab 7
 \end_layout
 
+
 \begin_layout Author
-Måns Magnusson
+Krzysztof Bartoszek 
+\begin_inset Newline newline
+\end_inset
+
+(designed by Leif Jonsson and Måns Magnusson)
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+29 September 2017
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+
+Seminar date: 
+\series bold 
+11 October 08:15   
+\series default
+(P18)
+
+\begin_inset Newline newline
+\end_inset
+
+Lab deadline: 
+\series bold
+15 October 23:59
+
+
 \end_layout
 
 \begin_layout Standard
@@ -201,8 +237,8 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced
- R programming/AdvRCourseTeacher/Labs/exercise_solutions/"
+solution_path <- "../exercise_solutions/"
+#"/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced R programming/AdvRCourseTeacher/Labs/exercise_solutions/"
 \end_layout
 
 \begin_layout Plain Layout
@@ -314,7 +350,7 @@ The hyperparameter that we will tune to find the best model is the
 \end_inset
 
  parameters.
- Unlike the linear regression situation, the different scaling of the covariates
+ Unlike the linear regression situation, different scalings of the covariates
  in 
 \begin_inset Formula $\mathbf{X}$
 \end_inset
@@ -351,7 +387,7 @@ Computations using least squares
 \end_layout
 
 \begin_layout Standard
-The simple way to calculate the different is to use ordinary linear algebra
+The simple way to calculate the different coefficients and values is to use ordinary linear algebra
  and calculate: 
 \end_layout
 
@@ -427,6 +463,11 @@ target "http://math.stackexchange.com/questions/299481/qr-factorization-for-ridg
 
 \series default
 \color inherit
+\begin_inset Newline newline
+\end_inset
+\family typewriter
+ http://math.stackexchange.com/questions/299481/qr-factorization-for-ridge-regression
+\family default
 .
 \end_layout
 
@@ -606,6 +647,10 @@ target "https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheats
 
 \series default
 \color inherit
+
+\family typewriter
+ https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+\family default
  for more information how to data munge using 
 \family typewriter
 dplyr
@@ -708,6 +753,10 @@ target "http://topepo.github.io/caret/Linear_Regression.html"
 
 \series default
 \color inherit
+
+\family typewriter
+ http://topepo.github.io/caret/Linear_Regression.html
+\family default
 .
 \end_layout
 
@@ -739,6 +788,13 @@ target "http://topepo.github.io/caret/custom_models.html"
 
 \series default
 \color inherit
+
+\begin_inset Newline newline
+\end_inset
+
+\family typewriter
+ http://topepo.github.io/caret/custom_models.html
+\family default
 .
  
 \end_layout
@@ -760,13 +816,19 @@ caret
 \begin_inset CommandInset href
 LatexCommand href
 name "here"
-target "6. https://cran.r-project.org/web/packages/caret/vignettes/caret.pdf"
+target "https://cran.r-project.org/web/packages/caret/vignettes/caret.pdf"
 
 \end_inset
 
 
 \series default
 \color inherit
+\begin_inset Newline newline
+\end_inset
+
+\family typewriter
+ https://cran.r-project.org/web/packages/caret/vignettes/caret.pdf
+\family default
  and 
 \series bold
 \color blue
@@ -781,6 +843,12 @@ target "http://topepo.github.io/caret/training.html"
 
 \series default
 \color inherit
+\begin_inset Newline newline
+\end_inset
+
+\family typewriter
+ http://topepo.github.io/caret/training.html
+\family default
 .
 \end_layout
 
@@ -802,7 +870,7 @@ Create a new vignette called flight_delay where you try to predict the delay
 ridgereg()
 \family default
  function.
- If the data is to large, you can scale it down a bit, but the purpose is
+ If the data is too large, you can scale it down a bit, but the purpose is
  to try to do predictions using larger datasets.
  
 \end_layout
@@ -818,7 +886,7 @@ nycflights13
 
 \begin_layout Enumerate
 Add extra weather data from the weather dataset and create interaction effects
- you think can be of interest for the prediction.
+ you think could be of interest for the prediction.
 \end_layout
 
 \begin_layout Enumerate
@@ -845,8 +913,13 @@ target "https://heuristically.wordpress.com/2013/07/12/calculate-rmse-and-mae-in
 
 \series default
 \color inherit
+
+\family typewriter
+ https://heuristically.wordpress.com/2013/07/12/calculate-rmse-and-mae-in-r-and-sas/
+\family default
+
 ) on the validation set.
- Try to find a optimal value for 
+ Try to find an optimal value for 
 \begin_inset Formula $\lambda$
 \end_inset
 
@@ -889,6 +962,7 @@ Show your vignette/analysis.
 \begin_layout Subsection
 Examination
 \end_layout
+
 
 \begin_layout Standard
 Turn in a the adress to your github repo with the package using LISAM.

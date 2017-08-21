@@ -95,13 +95,16 @@ This lab should be done individually
 \end_layout
 
 \begin_layout Itemize
-It is ok to discuss the problems with each other, but to copy code is 
+It is OK to discuss the problems with each other, but to copy code is 
 \series bold
 NOT
 \series default
  allowed.
 \end_layout
 
+\begin_layout Itemize
+Significant collaborations/discussions should be acknowledged in the solution file.
+\end_layout
 \begin_layout Itemize
 The lab should be turned in through 
 \series bold
@@ -111,7 +114,11 @@ LISAM
 \family typewriter
 .R
 \family default
- file.
+ file.  In case of problems it may be emailed to 
+\family typewriter
+krzysztof.bartoszek@liu.se
+\family default 
+.
 \end_layout
 
 \begin_layout Itemize
@@ -141,18 +148,7 @@ liuid
 
 \end_deeper
 \begin_layout Itemize
-The deadline for the lab be found at the course 
-\series bold
-\color blue
-
-\begin_inset CommandInset href
-LatexCommand href
-name "webpage"
-target "http://www.ida.liu.se/~732A50/info/courseinfo.en.shtml"
-
-\end_inset
-
-
+The deadline for the lab is on the lab's title page.
 \end_layout
 
 \begin_layout Standard

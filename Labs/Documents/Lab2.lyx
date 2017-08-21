@@ -13,14 +13,14 @@
   \fancyhead[L]{
     LINK\"OPING UNIVERSITY\\
     STIMA\\
-    Department of computer and information sciences
+    Department of Computer and Information Science
   }
-  \fancyhead[R]{Advanced R programming}
+  \fancyhead[R]{Advanced R Programming}
 }
 %The remaining pages
 
 \fancyhead[RO,LE]{}
-\fancyhead[C]{Advanced R programming}
+\fancyhead[C]{Advanced R Programming}
 \fancyhead[LO,RE]{}
 
  
@@ -70,7 +70,7 @@ knitr
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\suppress_date false
+\suppress_date true
 \justification true
 \use_refstyle 0
 \index Index
@@ -99,11 +99,35 @@ knitr
 \begin_body
 
 \begin_layout Title
+732A94 Advanced R Programming
+
+\begin_inset Newline newline
+\end_inset
+
 Computer lab 2
 \end_layout
 
 \begin_layout Author
-Leif Jonsson
+Krzysztof Bartoszek 
+\begin_inset Newline newline
+\end_inset
+
+(designed by Leif Jonsson and Måns Magnusson)
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+30 August 2017 (PC1, PC2)
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+
+Lab deadline: 
+\series bold
+8 September 23:59
 \end_layout
 
 \begin_layout Standard
@@ -207,8 +231,8 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path <- "/Users/eralljn/workspace/AdvRCourseTeacher/Labs/exercise_solut
-ions/"
+solution_path <- "../exercise_solutions/"
+## "/Users/eralljn/workspace/AdvRCourseTeacher/Labs/exercise_solutions/"
 \end_layout
 
 \begin_layout Plain Layout
@@ -280,9 +304,10 @@ lab_path <-
 \end_layout
 
 \begin_layout Plain Layout
-
-"https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/lab2.yml"
+"https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/lab2.yml"
 \end_layout
+#"../Tests/lab2.yml"
+#"https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/lab2.yml"
 
 \begin_layout Plain Layout
 
@@ -1378,7 +1403,7 @@ m2(1:100)
 \end_layout
 
 \begin_layout Standard
-In markov chain monte carlo methods we often want to use counters for the
+In Markov chain Monte Carlo methods we often want to use counters for the
  sampling algorithms.
  Create a counter factory that creats a closure with a counter.
  The factory should take two arguments, thin and burnin.

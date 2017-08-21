@@ -12,15 +12,15 @@
   \fancyhf{} % clear all header and footer fields
   \fancyhead[L]{
     LINK\"OPING UNIVERSITY\\
-    Avdelningen för Statistik\\
-    Institutionen för datavetenskap
+    STIMA\\
+    Department of Computer and Information Science
   }
-  \fancyhead[R]{Programming i R}
+  \fancyhead[R]{Advanced R programming}
 }
 %The remaining pages
 
 \fancyhead[RO,LE]{}
-\fancyhead[C]{Programming i R}
+\fancyhead[C]{Advanced R programming}
 \fancyhead[LO,RE]{}
 
  
@@ -70,7 +70,7 @@ knitr
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\suppress_date false
+\suppress_date true
 \justification true
 \use_refstyle 0
 \index Index
@@ -99,11 +99,36 @@ knitr
 \begin_body
 
 \begin_layout Title
+732A94 Advanced R Programming
+
+\begin_inset Newline newline
+\end_inset
+
 Computer lab 1
 \end_layout
 
 \begin_layout Author
-Leif Jonsson
+Krzysztof Bartoszek 
+\begin_inset Newline newline
+\end_inset
+
+(designed by Leif Jonsson and Måns Magnusson)
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+29 August 2017 (PC1, PC2)
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+
+Lab deadline: 
+\series bold
+5 September 23:59
+
 \end_layout
 
 \begin_layout Standard
@@ -207,8 +232,10 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path <- "/Users/eralljn/workspace/AdvRCourseTeacher/Labs/exercise_solut
-ions/"
+solution_path <- 
+"../exercise_solutions/"
+#"/Users/eralljn/workspace/AdvRCourseTeacher/Labs/exercise_solutions/"
+#"https://raw.githubusercontent.com/STIMALiU/AdvRCourseTeacher/master/Labs/exercise_solutions/"
 \end_layout
 
 \begin_layout Plain Layout
@@ -266,14 +293,13 @@ library(markmyassignment)
 \end_layout
 
 \begin_layout Plain Layout
-
 lab_path <-
 \end_layout
 
 \begin_layout Plain Layout
-
-"https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/lab1.yml"
+"https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/lab1.yml"
 \end_layout
+#"../Tests/lab1.yml"
 
 \begin_layout Plain Layout
 
@@ -486,10 +512,12 @@ name "here"
 target "https://en.wikipedia.org/wiki/Dot_product#Algebraic_definition"
 
 \end_inset
-
-
 \series default
 \color inherit
+
+
+\family typewriter
+ https://en.wikipedia.org/wiki/Dot_product#Algebraic_definition
 .
 \end_layout
 
@@ -588,7 +616,7 @@ N
 \begin_inset Formula $e$
 \end_inset
 
- to the fifth decimal place.
+ to the fifth decimal place. Try to make a comment about the order of summation.
 \end_layout
 
 \begin_layout Standard
@@ -885,8 +913,20 @@ add_elements_to_matrix(A = mat, x = -2, i = 1:3, j = 2:3)
 \end_layout
 
 \end_inset
+\begin_layout Standard
 
+Without the last example is the described functionality of the function clear? Are 
+there other possible interpretations when 
+\family typewriter
+i 
+\family default
+and 
+\family typewriter
+j 
+\family default
+are vectors? This is to make you think about code documentation.
 
+\end_layout
 \end_layout
 
 \begin_layout Section
@@ -1203,7 +1243,7 @@ var.name
 \end_layout
 
 \begin_layout Standard
-Se below for an example of the function.
+See below for an example of the function.
 \end_layout
 
 \begin_layout Standard

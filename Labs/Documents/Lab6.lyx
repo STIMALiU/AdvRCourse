@@ -13,7 +13,7 @@
   \fancyhead[L]{
     LINK\"OPING UNIVERSITY\\
     STIMA\\
-    Department of computer and information sciences
+    Department of Computer and Information Science
   }
   \fancyhead[R]{Advanced R programming}
 }
@@ -70,7 +70,7 @@ knitr
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\suppress_date false
+\suppress_date true
 \justification true
 \use_refstyle 0
 \index Index
@@ -99,11 +99,47 @@ knitr
 \begin_body
 
 \begin_layout Title
+732A94 Advanced R Programming
+
+\begin_inset Newline newline
+\end_inset
+
 Computer lab 6
 \end_layout
 
+
 \begin_layout Author
-Måns Magnusson
+Krzysztof Bartoszek 
+\begin_inset Newline newline
+\end_inset
+
+(designed by Leif Jonsson and Måns Magnusson)
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+20 September 2017
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+
+Seminar date: 
+\series bold 
+4 October 10:15   
+\series default
+(P18)
+
+\begin_inset Newline newline
+\end_inset
+
+Lab deadline: 
+\series bold
+8 October 23:59
+
+
 \end_layout
 
 \begin_layout Standard
@@ -201,8 +237,8 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path <- "/Users/eralljn/workspace/AdvRCourseTeacher/Labs/exercise_solut
-ions/"
+solution_path <- "../exercise_solutions/"
+# "/Users/eralljn/workspace/AdvRCourseTeacher/Labs/exercise_solutions/"
 \end_layout
 
 \begin_layout Plain Layout
@@ -254,20 +290,7 @@ The knapsack package
 \end_layout
 
 \begin_layout Standard
-Start out by creating a new package on github and Travis CI, see lab 3 
-\series bold
-\color blue
-
-\begin_inset CommandInset href
-LatexCommand href
-name "here"
-target "https://github.com/MansMeg/AdvRCourse/raw/master/Labs/Documents/Lab3.pdf"
-
-\end_inset
-
-
-\series default
-\color inherit
+Start out by creating a new package on github, see lab 3 
  for details on how to setup a package.
  
 \end_layout
@@ -295,8 +318,11 @@ The package will contain three different functions for solving what is called
 .
  The goal is to find the knapsack with the largest value of the elements
  added to the knapsack.
- To solve this problem is NP which means that (most researchers belive)
- there are no polynomial time algorithm to solve this problem.
+This problem is NP-hard, meaning that it is "at least as hard
+as the hardest problem in NP" (https://en.wikipedia.org/wiki/NP-hardness). NP is a (fundamental) class of problems 
+for which there are (currently) no polynomial time algorithms to solve them.
+It is an open (Millennium Prize) problem, whether it is or is not possible to solve these problems
+in polynomial time. 
 \end_layout
 
 \begin_layout Standard
@@ -314,6 +340,12 @@ target "https://en.wikipedia.org/wiki/Knapsack_problem"
 
 \series default
 \color inherit
+
+\begin_inset Newline newline
+\end_inset
+\family typewriter
+ https://en.wikipedia.org/wiki/Knapsack_problem
+\family default
 .
 \end_layout
 
@@ -536,7 +568,7 @@ Question
 \end_layout
 
 \begin_layout Standard
-How long time does it takes to run the algorithm for 
+How much time does it takes to run the algorithm for 
 \begin_inset Formula $n=16$
 \end_inset
 
@@ -574,6 +606,12 @@ target "https://en.wikipedia.org/wiki/Knapsack_problem#0.2F1_knapsack_problem"
 
 \series default
 \color inherit
+
+\begin_inset Newline newline
+\end_inset
+\family typewriter
+ https://en.wikipedia.org/wiki/Knapsack_problem#0.2F1_knapsack_problem
+\family default
 .
  Implement this function as 
 \family typewriter
@@ -594,7 +632,7 @@ Question
 \end_layout
 
 \begin_layout Standard
-How long time does it takes to run the algorithm for 
+How much time does it takes to run the algorithm for 
 \begin_inset Formula $n=500$
 \end_inset
 
@@ -629,6 +667,10 @@ target "https://en.wikipedia.org/wiki/Knapsack_problem#Greedy_approximation_algo
 
 \series default
 \color inherit
+
+\family typewriter
+ https://en.wikipedia.org/wiki/Knapsack_problem#Greedy_approximation_algorithm
+\family default
 .
  Below is an example on how the function should work.
 \end_layout
@@ -667,7 +709,7 @@ Question
 \end_layout
 
 \begin_layout Standard
-How long time does it takes to run the algorithm for 
+How much time does it takes to run the algorithm for 
 \begin_inset Formula $n=1000000$
 \end_inset
 
@@ -724,6 +766,10 @@ target "http://adv-r.had.co.nz/Profiling.html"
 
 \series default
 \color inherit
+
+\family typewriter
+ http://adv-r.had.co.nz/Profiling.html
+\family default
 .
  Use the package 
 \family typewriter
@@ -737,7 +783,7 @@ Question
 \end_layout
 
 \begin_layout Standard
-How large performance gain could you get by trying to improving your code?
+What performance gain could you get by trying to improving your code?
 \end_layout
 
 \begin_layout Subsection
@@ -771,12 +817,11 @@ target "http://adv-r.had.co.nz/Rcpp.html"
 
 \series default
 \color inherit
-.
- To setup a package that contain C++ code, use the 
+
 \family typewriter
-Rcpp.package.skeleton()
+ http://adv-r.had.co.nz/Rcpp.html
 \family default
- to setup your package.
+.
 \end_layout
 
 \begin_layout Standard
@@ -807,7 +852,7 @@ Question
 \end_layout
 
 \begin_layout Standard
-How large performance gain could you get by using 
+What performance gain could you get by using 
 \family typewriter
 Rcpp
 \family default
@@ -860,7 +905,7 @@ Question
 \end_layout
 
 \begin_layout Standard
-How large performance gain could you get by parallelizing brute force search?
+What performance gain could you get by parallelizing brute force search?
 \end_layout
 
 \begin_layout Subsection

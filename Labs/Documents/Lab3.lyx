@@ -13,7 +13,7 @@
   \fancyhead[L]{
     LINK\"OPING UNIVERSITY\\
     STIMA\\
-    Department of computer and information sciences
+    Department of Computer and Information Science
   }
   \fancyhead[R]{Advanced R programming}
 }
@@ -70,7 +70,7 @@ knitr
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\suppress_date false
+\suppress_date true
 \justification true
 \use_refstyle 0
 \index Index
@@ -99,11 +99,47 @@ knitr
 \begin_body
 
 \begin_layout Title
+732A94 Advanced R Programming
+
+\begin_inset Newline newline
+\end_inset
+
 Computer lab 3
 \end_layout
 
 \begin_layout Author
-Måns Magnusson
+Krzysztof Bartoszek 
+\begin_inset Newline newline
+\end_inset
+
+(designed by Leif Jonsson and Måns Magnusson)
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+4 September 2017
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+
+Seminar date: 
+\series bold 
+19 September 08:15   
+\series default
+(P18)
+
+\begin_inset Newline newline
+\end_inset
+
+
+Lab deadline: 
+\series bold
+22 September 23:59
+
+
 \end_layout
 
 \begin_layout Standard
@@ -205,7 +241,7 @@ Git
 
 \begin_layout Standard
 This lab will be a walkthrough on how to create a package.
- This is not the only way to do this but one way that work for most.
+ This is not the only way to do this but one way that works for most.
  
 \end_layout
 
@@ -225,8 +261,8 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path <- "/Users/eralljn/workspace/AdvRCourseTeacher/Labs/exercise_solut
-ions/"
+solution_path <- "../exercise_solutions/"
+#"/Users/eralljn/workspace/AdvRCourseTeacher/Labs/exercise_solutions/"
 \end_layout
 
 \begin_layout Plain Layout
@@ -268,7 +304,7 @@ Write the R code
 \end_layout
 
 \begin_layout Standard
-In this first R package we will implement two famous algorithms, the euclidian
+In this first R package we will implement two famous algorithms, the Euclidian
  algorithm to find the greates common divisor of two integers and Dijkstra's
  shortest path algorithm in a graph.
  For both these algorithms you will have pseudocode for the algoritm, so
@@ -296,9 +332,15 @@ target "https://en.wikipedia.org/wiki/Euclidean_algorithm"
 
 \end_inset
 
+\begin_inset Newline newline
+\end_inset
+
 
 \series default
 \color inherit
+\family typewriter
+ https://en.wikipedia.org/wiki/Euclidean_algorithm
+\family default
 .
  Assert that the arguments are numeric scalars or integers.
  
@@ -366,6 +408,12 @@ target "https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
 
 \series default
 \color inherit
+
+
+\family typewriter
+ (https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm)
+
+\family default
 .
  If you're not very familiar with graphs, vertices and edges, see 
 \series bold
@@ -381,6 +429,12 @@ target "https://en.wikipedia.org/wiki/Graph_(mathematics)"
 
 \series default
 \color inherit
+
+
+\family typewriter
+ (https://en.wikipedia.org/wiki/Graph_(mathematics) )
+
+\family default
  wikipedia page for a fast introduction.
 \end_layout
 
@@ -573,11 +627,7 @@ yourpackagename
 \family default
 .
  You can choose the name of the package freely.
- Remove the 
-\family typewriter
-read-and-delete-me
-\family default
- file that was created.
+ Remove the read-and-delete-me file that was created.
 \end_layout
 
 \begin_layout Enumerate
@@ -605,11 +655,8 @@ key "wickham2015r"
 \end_layout
 
 \begin_layout Enumerate
-In your R-Studio session configure the (package) build tools by 
-\series bold
-Build -> Configure build tools
-\series default
-.
+In your R-Studio session configure the (package) build tools by Build ->
+ Configure build tools.
 \begin_inset Separator latexpar
 \end_inset
 
@@ -646,11 +693,8 @@ Build & Reload
 
 .
  You have created your own package.
- Clear the global environment, load the package with 
-\family typewriter
-library()
-\family default
- and try that your functions is now in your searchpath.
+ Clear the global environment and try that your functions is now in your
+ searchpath.
  
 \end_layout
 
@@ -755,6 +799,11 @@ Mark your repository you want to be built on Travis (the package in this
 \end_layout
 
 \begin_layout Enumerate
+Mark your repository you want to be built on Travis (the package in this
+ lab).
+\end_layout
+
+\begin_layout Enumerate
 Add a 
 \family typewriter
 .travis.yml
@@ -795,6 +844,9 @@ cache: packages
 
 \begin_layout Standard
 More information on how you can handle Travis builds can be found here:
+
+\begin_inset Newline newline
+\end_inset
  
 \family typewriter
 https://docs.travis-ci.com/user/languages/r/
@@ -825,6 +877,8 @@ https://docs.travis-ci.com/user/status-images/
 \end_layout
 
 \end_deeper
+
+
 \begin_layout Subsection
 Include the dataset 
 \family typewriter
@@ -999,7 +1053,6 @@ key "wickham2015r"
  for details.
  
 \end_layout
-
 \begin_layout Enumerate
 Push your final package to github and test that it is possible to install
  your package using the following code in R.
@@ -1031,16 +1084,18 @@ devtools:install_github("[yourusername/repo]", subdir="your subdirectory")
 
 \end_inset
 
-
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
 Create a release of your package (ex.
  v.
- 1.0) on github.
+ 1.0) on GitHub.
  
 \end_layout
+
+
+
 
 \begin_layout Section
 Seminar and examination
@@ -1093,6 +1148,7 @@ The test suites for the implemented function(s) should be included in the
 \begin_layout Enumerate
 The package should build without warnings (pass) on Travis CI.
 \end_layout
+
 
 \begin_layout Standard
 \begin_inset CommandInset bibtex

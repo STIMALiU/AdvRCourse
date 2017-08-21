@@ -13,7 +13,7 @@
   \fancyhead[L]{
     LINK\"OPING UNIVERSITY\\
     STIMA\\
-    Department of computer and information sciences
+    Department of Computer and Information Science
   }
   \fancyhead[R]{Advanced R programming}
 }
@@ -70,7 +70,7 @@ knitr
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\suppress_date false
+\suppress_date true
 \justification true
 \use_refstyle 0
 \index Index
@@ -98,12 +98,49 @@ knitr
 
 \begin_body
 
+
 \begin_layout Title
+732A94 Advanced R Programming
+
+\begin_inset Newline newline
+\end_inset
+
 Computer lab 5
 \end_layout
 
+
 \begin_layout Author
-Måns Magnusson
+Krzysztof Bartoszek 
+\begin_inset Newline newline
+\end_inset
+
+(designed by Leif Jonsson and Måns Magnusson)
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+18 September 2017
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+
+Seminar date: 
+\series bold 
+3 October 08:15   
+\series default
+(P18)
+
+\begin_inset Newline newline
+\end_inset
+
+Lab deadline: 
+\series bold
+6 October 23:59
+
+
 \end_layout
 
 \begin_layout Standard
@@ -201,8 +238,8 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced
- R programming/AdvRCourseTeacher/Labs/exercise_solutions/"
+solution_path <- "../exercise_solutions/"
+#"/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced R programming/AdvRCourseTeacher/Labs/exercise_solutions/"
 \end_layout
 
 \begin_layout Plain Layout
@@ -253,20 +290,12 @@ In this lab we will will create a package to connect to a web API using
 
 \begin_layout Standard
 The API needs to be accepted by the teacher before you start.
- In 
-\series bold
-\color blue
-
-\begin_inset CommandInset href
-LatexCommand href
-name "this document"
-target "https://github.com/MansMeg/AdvRCourse/blob/master/Labs/Documents/API_projects.pdf"
-
-\end_inset
-
-
-\series default
-\color inherit
+ In the document 
+ \begin_inset Newline newline
+ \end_inset
+\family typewriter
+ 732A94_AdvancedRHT2017_Lab05_API_projects.pdf
+\family default
  you can find API:s suggestions to implement as an R package.
 \end_layout
 
@@ -281,22 +310,23 @@ Create a package
 
 \begin_layout Standard
 Start out by creating a new package on github see lab 3 
-\series bold
-\color blue
-
-\begin_inset CommandInset href
-LatexCommand href
-name "here"
-target "https://github.com/MansMeg/AdvRCourse/raw/master/Labs/Documents/Lab3.pdf"
-
-\end_inset
-
-
-\series default
-\color inherit
  for details on how to setup a package.
- Put your package on github and build the packages using Travis CI.
  Think about the naming of your package.
+ 
+\end_layout
+
+\begin_layout Standard
+Read about the package and discuss whcih functions you should have to access
+ the data in the API.
+ There are often limits and configurations for a given API you need to access.
+ 
+\end_layout
+
+\begin_layout Standard
+In genreal it is good to have as few functions as possible theat are exported
+ in the package.
+ But behind these functions you may need to have more functionality not
+ accessed by the users of your package.
  
 \end_layout
 
@@ -318,7 +348,6 @@ In general it is good to have as few functions as possible that are exported
  accessed by the users of your package.
  
 \end_layout
-
 \begin_layout Subsection
 Write unit tests
 \end_layout
@@ -349,7 +378,6 @@ Testing that the function allways return a given value for a specific set
 See chapter 
 \begin_inset Quotes eld
 \end_inset
-
 Testing
 \begin_inset Quotes erd
 \end_inset
@@ -370,6 +398,7 @@ key "testthat"
 
  for details.
 \end_layout
+
 
 \begin_layout Subsection
 Documentation and vignettes

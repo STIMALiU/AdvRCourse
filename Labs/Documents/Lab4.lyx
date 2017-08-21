@@ -13,7 +13,7 @@
   \fancyhead[L]{
     LINK\"OPING UNIVERSITY\\
     STIMA\\
-    Department of computer and information sciences
+    Department of Computer and Information Science
   }
   \fancyhead[R]{Advanced R programming}
 }
@@ -70,7 +70,7 @@ knitr
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\suppress_date false
+\suppress_date true
 \justification true
 \use_refstyle 0
 \index Index
@@ -99,12 +99,49 @@ knitr
 \begin_body
 
 \begin_layout Title
+732A94 Advanced R Programming
+
+\begin_inset Newline newline
+\end_inset
+
 Computer lab 4
 \end_layout
 
 \begin_layout Author
-Måns Magnusson
+Krzysztof Bartoszek 
+\begin_inset Newline newline
+\end_inset
+
+(designed by Leif Jonsson and Måns Magnusson)
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+5 September 2017
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+
+Seminar date: 
+\series bold 
+20 September 08:15   
+\series default
+(P18)
+
+\begin_inset Newline newline
+\end_inset
+
+Lab deadline: 
+\series bold
+24 September 23:59
+
+
 \end_layout
+
+
 
 \begin_layout Standard
 \begin_inset ERT
@@ -201,8 +238,8 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path <- "/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced
- R programming/AdvRCourseTeacher/Labs/exercise_solutions/"
+solution_path <- "../exercise_solutions/"
+#"/Users/manma97/Dropbox/Doktorandstudier/Undervisning/Advanced R programming/AdvRCourseTeacher/Labs/exercise_solutions/"
 \end_layout
 
 \begin_layout Plain Layout
@@ -526,6 +563,12 @@ target "http://www.stats.ox.ac.uk/~konis/Rcourse/qr.pdf"
 
 \end_inset
 
+\begin_inset Newline newline
+\end_inset
+
+\family typewriter
+ http://www.stats.ox.ac.uk/~konis/Rcourse/qr.pdf 
+\family default
  and 
 \begin_inset CommandInset href
 LatexCommand href
@@ -533,6 +576,13 @@ name "here"
 target "http://sites.stat.psu.edu/~jls/stat511/lectures/lec17.pdf"
 
 \end_inset
+
+\begin_inset Newline newline
+\end_inset
+
+\family typewriter
+ http://sites.stat.psu.edu/~jls/stat511/lectures/lec17.pdf
+\family default
 
  for detailed information how to estimate 
 \begin_inset Formula $\hat{\beta}$
@@ -567,7 +617,7 @@ You now have done the calculations and stored them in an object with class
 linreg
 \family default
 .
- The next step is to implement differnt 
+ The next step is to implement different 
 \begin_inset Quotes eld
 \end_inset
 
@@ -576,7 +626,7 @@ methods
 \end_inset
 
  for your object.
- These implementations can be don in either the S3 object oriented system
+ These implementations can be done in either the S3 object oriented system
  or (*) the RC objected oriented system.
 \end_layout
 
@@ -824,7 +874,7 @@ Create a
 theme()
 \family default
  for Linköping university.
- The guidelines can be found 
+ The guidelines can be found in the pdf 
 \series bold
 \color blue
 
@@ -838,6 +888,13 @@ target "http://www.liu.se/insidan/kommunikationsstod/grafiskprofil/start/1.63507
 
 \series default
 \color inherit
+
+\begin_inset Newline newline
+\end_inset
+
+\family typewriter
+ http://www.liu.se/insidan/kommunikationsstod/grafiskprofil/start/1.635075/LiU_Grafisk_manual_150520.pdf
+\family default
  (unfortunately only in Swedish).
  You can implement as much as you like (adding logotype, typesetting etc.)
  but as a minimum the colors should be used that are the colors mentioned

@@ -118,6 +118,11 @@ contribute equally much
 \end_layout
 
 \begin_layout Itemize
+Other significant collaborations/discussions should be acknowledged in the solution.
+\end_layout
+
+
+\begin_layout Itemize
 Commit continously your addition and changes.
 \end_layout
 
@@ -133,18 +138,7 @@ In the lab some functions can be marked with an *.
 \end_layout
 
 \begin_layout Itemize
-The deadline for the lab can be found on the 
-\series bold
-\color blue
-
-\begin_inset CommandInset href
-LatexCommand href
-name "webpage"
-target "http://www.ida.liu.se/~732A94/"
-
-\end_inset
-
-
+The deadline for the lab is on the lab's title page.
 \end_layout
 
 \begin_layout Itemize
@@ -153,9 +147,12 @@ The lab should be turned in as a url to the repository containing the package
 \series bold
 LISAM
 \series default
+.  This should also include name, github user names and liuid of the students 
+behind the project. In case of problems the url may be emailed to 
+\family typewriter
+krzysztof.bartoszek@liu.se
+\family default 
 .
- This should also include name, github user names and liuid of the students
- behind the project.
 \end_layout
 
 \begin_layout Standard
