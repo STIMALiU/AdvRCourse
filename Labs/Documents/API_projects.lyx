@@ -52,7 +52,7 @@ knitr
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\suppress_date false
+\suppress_date true
 \justification true
 \use_refstyle 0
 \index Index
@@ -81,11 +81,47 @@ knitr
 \begin_body
 
 \begin_layout Title
-API R projects 
+732A94 Advanced R Programming
+
+\begin_inset Newline newline
+\end_inset
+
+Computer lab 5: API R projects 
 \end_layout
 
+
 \begin_layout Author
-Måns Magnusson
+Krzysztof Bartoszek 
+\begin_inset Newline newline
+\end_inset
+
+(designed by Leif Jonsson and Måns Magnusson)
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+18 September 2017
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+\begin_inset Newline newline
+\end_inset
+
+Seminar date: 
+\series bold 
+3 October 08:15   
+\series default
+(P18)
+
+\begin_inset Newline newline
+\end_inset
+
+Lab deadline: 
+\series bold
+6 October 23:59
+
+
 \end_layout
 
 \begin_layout Standard
@@ -94,7 +130,7 @@ Below are some API that can be used as a part of the assignment to implement
  In connection to each API there is a short description and the difficulty
  of implementation is indicated using one, two or three stars with one star
  (simpler) to three stars (difficult).
- Some projects is about implementing XML parsers for more complex XML files
+ Some projects are about implementing XML parsers for more complex XML files
  of interest.
 \end_layout
 
@@ -115,8 +151,12 @@ target "http://apikatalogen.se/api"
 
 \series default
 \color inherit
-.
- If you choose any of these other than the ones listed below you need to
+
+\family typewriter
+ (http://apikatalogen.se/api)
+
+\family default 
+. If you choose any of these other than the ones listed below you need to
  confirm your choice with the teacher, the only restriction is that the
  API should not already have an R package.
 \end_layout
@@ -148,7 +188,12 @@ target "http://www.val.se/val/val2014/statistik/index.html"
 
 \series default
 \color inherit
+\family typewriter
+ http://www.val.se/val/val2014/statistik/index.html
+\family default
+
 .
+
 \end_layout
 
 \begin_layout Paragraph*
@@ -173,7 +218,13 @@ target "https://developers.google.com/maps/documentation/geocoding/intro"
 
 \series default
 \color inherit
+\begin_inset Newline newline
+\end_inset
+\family typewriter
+ https://developers.google.com/maps/documentation/geocoding/intro
+\family default
 .
+
 \end_layout
 
 \begin_layout Paragraph*
@@ -197,6 +248,11 @@ target "http://www.kolada.se/appspecific/rka/download/api/Kolada-API-test.html"
 
 \series default
 \color inherit
+\begin_inset Newline newline
+\end_inset
+\family typewriter
+ http://www.kolada.se/appspecific/rka/download/api/Kolada-API-test.html
+\family default
 .
 \end_layout
 
@@ -221,6 +277,10 @@ target "http://data.riksdagen.se/"
 
 \series default
 \color inherit
+
+\family typewriter
+ http://data.riksdagen.se/
+\family default
 .
  
 \end_layout
@@ -255,7 +315,11 @@ target "https://en.wikipedia.org/wiki/Elasticsearch"
 
 \series default
 \color inherit
-).
+
+\family typewriter
+ https://en.wikipedia.org/wiki/Elasticsearch
+\family default
+.
  As with the Riksdagen API the documents need to be stored in the 
 \family typewriter
 tm
@@ -275,6 +339,10 @@ target "http://www.protokollen.net/#/"
 
 \series default
 \color inherit
+
+\family typewriter
+ http://www.protokollen.net/#/
+\family default
  and api information can be found 
 \series bold
 \color blue
@@ -282,13 +350,16 @@ target "http://www.protokollen.net/#/"
 \begin_inset CommandInset href
 LatexCommand href
 name "here"
-target " https://github.com/rotsee/protokollen/blob/master/README-database-api.md"
+target "https://github.com/rotsee/protokollen/blob/master/README-database-api.md"
 
 \end_inset
 
 
 \series default
 \color inherit
+\family typewriter
+ https://github.com/rotsee/protokollen/blob/master/README-database-api.md
+\family default
 .
 \end_layout
 
@@ -318,6 +389,10 @@ target "http://spraakbanken.gu.se/swe/resurser/corpus"
 
 \series default
 \color inherit
+\family typewriter
+ http://spraakbanken.gu.se/swe/resurser/corpus
+\family default
+
 .
 \end_layout
 
@@ -327,8 +402,7 @@ target "http://spraakbanken.gu.se/swe/resurser/corpus"
 
 \begin_layout Standard
 Historical map in geoJSON format.
- Need to handle spatial data, see spatial.ly form more information on geographica
-l data.
+ Need to handle spatial data, see spatial.ly for more information on geographical data.
  More information can be found 
 \series bold
 \color blue
@@ -343,6 +417,9 @@ target "http://www.thenmap.net/"
 
 \series default
 \color inherit
+\family typewriter
+ http://www.thenmap.net/
+\family default
 .
 \end_layout
 
