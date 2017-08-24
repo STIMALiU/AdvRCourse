@@ -15,3 +15,8 @@ script:
   - Rscript -e 'devtools::check("YourPackageName")'
 
 https://github.com/travis-ci/travis-ci/issues/5775
+
+4) There might be a bug (esp. Linux) in devtools:install_github :
+https://github.com/RevolutionAnalytics/RRO/issues/37
+so you may also try:
+devtools::install_git("git://github.com/YourUserName/YourRepo.git", branch = "master",subdir="YourSubDir")
