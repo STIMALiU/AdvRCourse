@@ -16,18 +16,16 @@ test_that("Assignment: calculate_elements()", {
                             info = "The function arguments are not named correctly.")
 
   # Expect self contained
-  expect_self_contained(calculate_elements, 
-                        info = "'calculate_elements' contains variables not defined in the function")
+  expect_function_self_contained(calculate_elements, 
+                                 info = "'calculate_elements' contains variables not defined in the function")
 
   # Test cases (arguments)
   x1 <- matrix(1:6, ncol=2)
   x2 <- matrix(1:2, ncol=2)
 
   # Expect to run
-  expect_that(calculate_elements(A = x1), condition = not(throws_error()), 
-              info = "'calculate_elements()' throws an error.")
-  expect_that(calculate_elements(A = x2), condition = not(throws_error()), 
-              info = "'calculate_elements()' throws an error.")
+  expect_silent(calculate_elements(A = x1))
+  expect_silent(calculate_elements(A = x2))
   
   # Run functions
   test_res1 <- calculate_elements(A = x1)

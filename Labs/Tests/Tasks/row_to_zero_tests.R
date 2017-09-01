@@ -16,8 +16,8 @@ test_that("Assignment: row_to_zero()", {
                             info = "The function arguments are not named correctly.")
 
   # Expect self contained
-  expect_self_contained(row_to_zero, 
-                        info = "'row_to_zero' contains variables not defined in the function")
+  expect_function_self_contained(row_to_zero, 
+                                 info = "'row_to_zero' contains variables not defined in the function")
 
   # Test cases (arguments)
   x1 <- matrix(1:6, ncol=2) 
@@ -26,10 +26,8 @@ test_that("Assignment: row_to_zero()", {
   i2 <- 1
 
   # Expect to run
-  expect_that(row_to_zero(A = x1, i = i1), condition = not(throws_error()), 
-              info = "'row_to_zero()' throws an error.")
-  expect_that(row_to_zero(A = x2, i = i2), condition = not(throws_error()), 
-              info = "'row_to_zero()' throws an error.")
+  expect_silent(row_to_zero(A = x1, i = i1))
+  expect_silent(row_to_zero(A = x2, i = i2))
   
   # Run functions
   test_res1 <- row_to_zero(A = x1, i = i1)

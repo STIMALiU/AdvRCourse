@@ -16,14 +16,13 @@ test_that("Assignment: my_magic_matrix()", {
 #                            info = "The function arguments are not named correctly.")
 
   # Expect self contained
-  expect_self_contained(my_magic_matrix, 
-                        info = "'my_magic_matrix' contains variables not defined in the function")
+  expect_function_self_contained(my_magic_matrix, 
+                                 info = "'my_magic_matrix' contains variables not defined in the function")
 
   # Test cases (arguments)
 
   # Expect to run
-  expect_that(my_magic_matrix(), condition = not(throws_error()), 
-              info = "'my_magic_matrix()' throws an error.")
+  expect_silent(my_magic_matrix())
   
   # Run functions
   test_res1 <- my_magic_matrix()

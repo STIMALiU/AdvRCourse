@@ -16,17 +16,15 @@ test_that("Assignment: sum_numeric_parts()", {
                             info = "The function arguments are not named correctly.")
 
   # Expect self contained
-  expect_self_contained(sum_numeric_parts, 
-                        info = "'sum_numeric_parts' contains variables not defined in the function")
+  expect_function_self_contained(sum_numeric_parts, 
+                                 info = "'sum_numeric_parts' contains variables not defined in the function")
 
   # Test cases (arguments)
   x1 <- list(1:10, 3:5, matrix(1:4, ncol=2))
 
 
   # Expect to run
-  expect_that(sum_numeric_parts(x = x1), 
-              condition = not(throws_error()), 
-              info = "'sum_numeric_parts()' throws an error.")
+  expect_silent(sum_numeric_parts(x = x1))
 
   # Run functions
   test_res1 <- sum_numeric_parts(x = x1)

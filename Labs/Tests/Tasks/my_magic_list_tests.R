@@ -14,15 +14,13 @@ test_that("Assignment: my_magic_list()", {
   # Expect arguments
 
   # Expect self contained
-  expect_self_contained(my_magic_list, 
-                        info = "'my_magic_list' contains variables not defined in the function")
+  expect_function_self_contained(my_magic_list, 
+                                 info = "'my_magic_list' contains variables not defined in the function")
 
   # Test cases (arguments)
 
   # Expect to run
-  expect_that(my_magic_list(), 
-              condition = not(throws_error()), 
-              info = "'my_magic_list()' throws an error.")
+  expect_silent(my_magic_list())
 
   # Run functions
   test_res1 <- my_magic_list()

@@ -7,8 +7,8 @@ test_that("dot_prod()", {
               info = "Object dot_prod() is missing.")
   expect_that(dot_prod, is_a("function"),
               info = "dot_prod is not a function.")
-  expect_self_contained(object = dot_prod,
-                        "dot_prod() contains undefined variables.")
+  expect_function_self_contained(object = dot_prod,
+                                 "dot_prod() contains undefined variables.")
   expect_that(all(names(formals(dot_prod)) %in% c("a", "b")), condition=is_true(),
               info = "The argument names are incorrect.")
   expect_that(is.numeric(dot_prod(a=1:3, b=4:6)), condition=is_true(),

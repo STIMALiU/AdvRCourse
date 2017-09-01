@@ -16,8 +16,8 @@ test_that("Assignment: add_median_variable()", {
                             info = "The function arguments are not named correctly.")
 
   # Expect self contained
-  expect_self_contained(add_median_variable, 
-                        info = "'add_median_variable' contains variables not defined in the function")
+  expect_function_self_contained(add_median_variable, 
+                                 info = "'add_median_variable' contains variables not defined in the function")
 
   # Test cases (arguments)
   data("ChickWeight")
@@ -25,9 +25,7 @@ test_that("Assignment: add_median_variable()", {
   j1 <- 1
 
   # Expect to run
-  expect_that(add_median_variable(df = df1, j = j1), 
-              condition = not(throws_error()), 
-              info = "'add_median_variable()' throws an error.")
+  expect_silent(add_median_variable(df = df1, j = j1))
 
   # Run functions
   test_res1 <- add_median_variable(df = df1, j = j1)

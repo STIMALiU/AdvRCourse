@@ -16,8 +16,8 @@ test_that("Assignment: filter_my_vector()", {
                             info = "The function arguments are not named correctly.")
 
   # Expect self contained
-  expect_self_contained(filter_my_vector, 
-                        info = "'filter_my_vector' contains variables not defined in the function")
+  expect_function_self_contained(filter_my_vector, 
+                                 info = "'filter_my_vector' contains variables not defined in the function")
 
   # Test cases (arguments)
   x1 <- c(2, 9, 2, 4, 102)
@@ -26,10 +26,8 @@ test_that("Assignment: filter_my_vector()", {
   leq2 <- 8
 
   # Expect to run
-  expect_that(filter_my_vector(x = x1, leq = leq1), condition = not(throws_error()), 
-              info = "'filter_my_vector()' throws an error.")
-  expect_that(filter_my_vector(x = x2, leq = leq2), condition = not(throws_error()), 
-              info = "'filter_my_vector()' throws an error.")
+  expect_silent(filter_my_vector(x = x1, leq = leq1))
+  expect_silent(filter_my_vector(x = x2, leq = leq2))
   
   # Run functions
   test_res1 <- filter_my_vector(x = x1, leq = leq1)

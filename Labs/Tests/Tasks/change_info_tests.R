@@ -16,8 +16,8 @@ test_that("Assignment: change_info()", {
                             info = "The function arguments are not named correctly.")
 
   # Expect self contained
-  expect_self_contained(change_info, 
-                        info = "'change_info' contains variables not defined in the function")
+  expect_function_self_contained(change_info, 
+                                 info = "'change_info' contains variables not defined in the function")
 
   # Test cases (arguments)
   x1 <- list(info="testinfo1")
@@ -26,12 +26,8 @@ test_that("Assignment: change_info()", {
   text2 <- "new info"
   
   # Expect to run
-  expect_that(change_info(x = x1, text = text1), 
-              condition = not(throws_error()), 
-              info = "'change_info()' throws an error.")
-  expect_that(change_info(x = x2, text = text2), 
-              condition = not(throws_error()), 
-              info = "'change_info()' throws an error.")
+  expect_silent(change_info(x = x1, text = text1))
+  expect_silent(change_info(x = x2, text = text2))
 
   # Run functions
   test_res1 <- change_info(x = x1, text = text1)

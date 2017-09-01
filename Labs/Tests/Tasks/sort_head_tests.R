@@ -16,8 +16,8 @@ test_that("Assignment: sort_head()", {
                             info = "The function arguments are not named correctly.")
 
   # Expect self contained
-  expect_self_contained(sort_head, 
-                        info = "'sort_head' contains variables not defined in the function")
+  expect_function_self_contained(sort_head, 
+                                 info = "'sort_head' contains variables not defined in the function")
 
   # Test cases (arguments)
   data("ChickWeight")
@@ -26,9 +26,7 @@ test_that("Assignment: sort_head()", {
   n1 <- 3
   
   # Expect to run
-  expect_that(sort_head(df = df1, var.name = var.name1, n = n1), 
-              condition = not(throws_error()), 
-              info = "'sort_head()' throws an error.")
+  expect_silent(sort_head(df = df1, var.name = var.name1, n = n1))
 
   # Run functions
   test_res1 <- sort_head(df = df1, var.name = var.name1, n = n1)

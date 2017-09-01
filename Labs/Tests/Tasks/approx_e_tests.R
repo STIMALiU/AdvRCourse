@@ -7,8 +7,8 @@ test_that("Kontroll av approx_e.", {
               info = "Object approx_e() is missing")
   expect_that(approx_e, is_a("function"),
               info = "approx_e is not a function.")
-  expect_self_contained(object = approx_e,
-                        "approx_e() contains undefined variables.")
+  expect_function_self_contained(object = approx_e,
+                                 "approx_e() contains undefined variables.")
   expect_that(all(names(formals(approx_e)) %in% c("N")), condition=is_true(),
               info = "Arguments in approx_e are missing or misspelled.")
   expect_equal(is.numeric(approx_e(2)), TRUE,

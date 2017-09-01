@@ -14,15 +14,13 @@ test_that("Assignment: my_data.frame()", {
   # Expect arguments
 
   # Expect self contained
-  expect_self_contained(my_data.frame, 
-                        info = "'my_data.frame' contains variables not defined in the function")
+  expect_function_self_contained(my_data.frame, 
+                                 info = "'my_data.frame' contains variables not defined in the function")
 
   # Test cases (arguments)
 
   # Expect to run
-  expect_that(my_data.frame(), 
-              condition = not(throws_error()), 
-              info = "'my_data.frame()' throws an error.")
+  expect_silent(my_data.frame())
 
   # Run functions
   test_res1 <- my_data.frame()

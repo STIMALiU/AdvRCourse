@@ -23,8 +23,7 @@ test_that("Assignment: my_num_vector()", {
   
 
   # Expect to run
-  expect_that(my_num_vector(), condition = not(throws_error()), 
-              info = "'my_num_vector()' throws an error.")
+  expect_silent(my_num_vector())
   
   # Run functions
   test_res1 <- my_num_vector()

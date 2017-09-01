@@ -16,8 +16,8 @@ test_that("Assignment: analyze_columns()", {
                             info = "The function arguments are not named correctly.")
 
   # Expect self contained
-  expect_self_contained(analyze_columns, 
-                        info = "'analyze_columns' contains variables not defined in the function")
+  expect_function_self_contained(analyze_columns, 
+                                 info = "'analyze_columns' contains variables not defined in the function")
 
   # Test cases (arguments)
   data("ChickWeight")
@@ -26,12 +26,8 @@ test_that("Assignment: analyze_columns()", {
   j2 <- 2:1
 
   # Expect to run
-  expect_that(analyze_columns(df = df1, j = j1), 
-              condition = not(throws_error()), 
-              info = "'analyze_columns()' throws an error.")
-  expect_that(analyze_columns(df = df1, j = j2), 
-              condition = not(throws_error()), 
-              info = "'analyze_columns()' throws an error.")
+  expect_silent(analyze_columns(df = df1, j = j1))
+  expect_silent(analyze_columns(df = df1, j = j2))
 
   # Run functions
   test_res1 <- analyze_columns(df = df1, j = j1)

@@ -16,17 +16,15 @@ test_that("Assignment: add_note()", {
                             info = "The function arguments are not named correctly.")
 
   # Expect self contained
-  expect_self_contained(add_note, 
-                        info = "'add_note' contains variables not defined in the function")
+  expect_function_self_contained(add_note, 
+                                 info = "'add_note' contains variables not defined in the function")
 
   # Test cases (arguments)
   x1 <- list(info="testinfo1")
   note1 <- "new info"
 
   # Expect to run
-  expect_that(add_note(x = x1, note = note1), 
-              condition = not(throws_error()), 
-              info = "'add_note()' throws an error.")
+  expect_silent(add_note(x = x1, note = note1))
 
   # Run functions
   test_res1 <- add_note(x = x1, note = note1)
