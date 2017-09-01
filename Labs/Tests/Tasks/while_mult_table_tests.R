@@ -36,7 +36,7 @@ test_that("Assignment: while_mult_table()", {
 
   
   # Expect assertions
-  expect_error(while_mult_table(from=1:3, to="world"),
+  expect_error(suppressWarnings(while_mult_table(from=1:3, to="world")),
               info = "'while_mult_table()' do not throw an error with erroneous inputs.")
 
   # Run functions
