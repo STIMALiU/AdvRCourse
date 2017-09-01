@@ -4,52 +4,52 @@ description : "Advanced R programming, computer lab 1"
 tasks:
   my_num_vector:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/my_num_vector_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/my_num_vector_tests.R
   filter_my_vector:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/filter_my_vector_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/filter_my_vector_tests.R
   dot_prod:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/dot_prod_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/dot_prod_tests.R
   approx_e:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/approx_e_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/approx_e_tests.R
   my_magic_matrix:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/my_magic_matrix_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/my_magic_matrix_tests.R
   calculate_elements:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/calculate_elements_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/calculate_elements_tests.R
   row_to_zero:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/row_to_zero_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/row_to_zero_tests.R
   add_elements_to_matrix:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/add_elements_to_matrix_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/add_elements_to_matrix_tests.R
   my_magic_list:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/my_magic_list_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/my_magic_list_tests.R
   change_info:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/change_info_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/change_info_tests.R
   add_note:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/add_note_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/add_note_tests.R
   sum_numeric_parts:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/sum_numeric_parts_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/sum_numeric_parts_tests.R
   my_data.frame:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/my_data.frame_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/my_data.frame_tests.R
   sort_head:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/sort_head_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/sort_head_tests.R
   add_median_variable:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/add_median_variable_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/add_median_variable_tests.R
   analyze_columns:
     url: 
-      - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/Tasks/analyze_columns_tests.R
+      - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/Tasks/analyze_columns_tests.R
 mandatory:
   url:
-    - https://raw.githubusercontent.com/MansMeg/AdvRCourse/master/Labs/Tests/mandatory.R
+    - https://raw.githubusercontent.com/STIMALiU/AdvRCourse/master/Labs/Tests/mandatory.R

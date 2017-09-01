@@ -16,8 +16,8 @@ test_that("Assignment: add_elements_to_matrix()", {
                             info = "The function arguments are not named correctly.")
 
   # Expect self contained
-  expect_self_contained(add_elements_to_matrix, 
-                        info = "'add_elements_to_matrix' contains variables not defined in the function")
+  expect_function_self_contained(add_elements_to_matrix, 
+                                 info = "'add_elements_to_matrix' contains variables not defined in the function")
 
   # Test cases (arguments)
   A1 <- matrix(1:9, ncol=3) 
@@ -30,12 +30,8 @@ test_that("Assignment: add_elements_to_matrix()", {
   x2 <- -3
 
   # Expect to run
-  expect_that(add_elements_to_matrix(A = A1, i = i1, j = j1, x = x1), 
-              condition = not(throws_error()), 
-              info = "'add_elements_to_matrix()' throws an error.")
-  expect_that(add_elements_to_matrix(A = A2, i = i2, j = j2, x = x2), 
-              condition = not(throws_error()), 
-              info = "'add_elements_to_matrix()' throws an error.")
+  expect_silent(add_elements_to_matrix(A = A1, i = i1, j = j1, x = x1))
+  expect_silent(add_elements_to_matrix(A = A2, i = i2, j = j2, x = x2))
   
   # Run functions
   test_res1 <- add_elements_to_matrix(A = A1, i = i1, j = j1, x = x1)
