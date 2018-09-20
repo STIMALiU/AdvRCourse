@@ -20,7 +20,7 @@ test_that("print() works", {
   linreg_mod <- linreg(Petal.Length~Sepal.Width+Sepal.Length, data=iris)
 
   expect_output(print(linreg_mod),"linreg\\(formula = Petal\\.Length ~ Sepal\\.Width \\+ Sepal\\.Length, data = iris\\)")
-  expect_output(print(linreg_mod)," \\(Intercept\\)   Sepal\\.Width  Sepal\\.Length")
+  expect_output(print(linreg_mod),"( )*\\(Intercept\\)( )*Sepal\\.Width( )*Sepal\\.Length")
 })
 
 test_that("pred() works", {
