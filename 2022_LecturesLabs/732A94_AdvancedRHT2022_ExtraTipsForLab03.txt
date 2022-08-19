@@ -1,0 +1,44 @@
+1) setwd("./YourPackageName") if you get error : Error: Could not find package root.
+
+2) Esp. with Linux you might need to change https upload to ssh upload:
+https://github.com/akonwi/git-plus/issues/502
+https://github.com/kemayo/sublime-text-git/issues/176
+
+you need to edit the file:
+Project_dir/.git/config
+
+3) If R creates the R package inside a subdirectory of the repository, and if you are using Travis, in the .travis.yml file you need to add:
+
+install:
+  - Rscript -e 'install.packages(c("devtools","roxygen2","testthat"));devtools::install_deps("YourPackageName")'
+script:
+  - Rscript -e 'devtools::check("YourPackageName")'
+
+https://github.com/travis-ci/travis-ci/issues/5775
+
+4) There might be a bug (esp. Linux) in devtools:install_github :
+https://github.com/RevolutionAnalytics/RRO/issues/37
+so you may also try:
+devtools::install_git("git://github.com/YourUserName/YourRepo.git", branch = "master",subdir="YourSubDir", build_vignettes = TRUE)
+
+
+5) Travis badge:
+Good:
+# AdvancedRlab5
+[![Build Status](https://travis-ci.org/yourgithubaccount/AdvancedRlab3.svg?branch=master)](https://travis-ci.org/yourgithubaccount/AdvancedRlab3)
+
+Bad:
+# lab5
+![Build Status](https://travis-ci.org/yourgithubaccount/lab3.svg?branch=master)
+
+6) GitHub Actions badge:
+Good:
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/yourgithubaccount/reponame/workflows/R-CMD-check/badge.svg)](https://github.com/yourgithubaccount/reponame/actions)
+<!-- badges: end -->
+
+Bad:
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/yourgithubaccount/reponame/workflows/R-CMD-check/badge.svg)]
+<!-- badges: end -->
