@@ -1,0 +1,5 @@
+;eyes_brown;eyes_blue;eyes_gray;eyes_green
+hair_black;68;20;15;5
+hair_brown;119;84;54;29
+hair_red;26;17;14;14
+hair_blonde;7;94;10;16
