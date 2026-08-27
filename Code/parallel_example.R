@@ -14,7 +14,7 @@ euclidian <- function(a, b){
 a <- 1:1000
 
 # Serial calculation:
-res1 <- lapply(a, euclidian, b=33)
+res <- lapply(a, euclidian, b=33)
 print(unlist(res))
 
 # Check the number of cores on the computer
