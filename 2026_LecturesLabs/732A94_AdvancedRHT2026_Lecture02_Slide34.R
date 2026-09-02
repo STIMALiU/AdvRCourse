@@ -15,7 +15,6 @@ print(x)
 print(obj_address(x))
 
 print("==========================")
-## on R-3.3.1 or earlier (?) try manually typing the below code
 y<-1:10
 print(y)
 print(obj_address(y))
