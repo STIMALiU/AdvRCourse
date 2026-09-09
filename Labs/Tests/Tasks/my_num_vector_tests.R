@@ -30,7 +30,7 @@ test_that("Assignment: my_num_vector()", {
     
   ## Expect results
   # Expect class
-  expect_is(test_res1, "numeric", 
+  expect_true(is.numeric(test_res1), 
             info = "'my_num_vector()' do not return a numeric vector.")
   
   # Expect dimensions

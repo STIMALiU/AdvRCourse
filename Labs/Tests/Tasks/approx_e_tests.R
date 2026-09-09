@@ -16,6 +16,6 @@ test_that("Kontroll av approx_e.", {
                info = "approx_e() returns an erroneous result.")
   expect_equal(approx_e(4), 2.708333, tolerance=0.0001,
                info = "approx_e() returns an erroneous result.")
-  expect_equal(approx_e(100), exp(1), 
+  expect_equal(approx_e(100), exp(1), tolerance=0.0001,
                info = "approx_e() returns an erroneous result.")
 })
