@@ -27,13 +27,16 @@ test_that("Assignment: sheldon_game()", {
   #            info = paste0("'sheldon_game' contains the code '", not_allowed, "' that is not allowed."))
 
   # Test cases (arguments)
-  player1 <- c("rock", "spock")
-  player2 <- c("lizard", "spock")
+  player1 <- c("rock", "spock", "paper", "scissors", "lizard")
+  player2 <- c("lizard", "spock", "paper", "scissors", "rock")
 
   # Expect to run
   expect_silent(suppressWarnings(suppressMessages(sheldon_game(player1 = player1[1], player2 = player2[1]))))
   expect_silent(suppressWarnings(suppressMessages(sheldon_game(player1 = player1[2], player2 = player2[2]))))
-  
+  expect_silent(suppressWarnings(suppressMessages(sheldon_game(player1 = player1[3], player2 = player2[3]))))
+  expect_silent(suppressWarnings(suppressMessages(sheldon_game(player1 = player1[4], player2 = player2[4]))))
+  expect_silent(suppressWarnings(suppressMessages(sheldon_game(player1 = player1[5], player2 = player2[5]))))
+
   # Expect assertions
   expect_error(sheldon_game(player1 = 1, player2 = 3), 
               info = "'sheldon_game()' do not throw an error with erroneous inputs.")
@@ -41,6 +44,14 @@ test_that("Assignment: sheldon_game()", {
   # Run functions
   test_res1 <- sheldon_game(player1 = player1[1], player2 = player2[1])
   test_res2 <- sheldon_game(player1 = player1[2], player2 = player2[2])
+  test_res3 <- sheldon_game(player1 = player1[3], player2 = player2[3])
+  test_res4 <- sheldon_game(player1 = player1[4], player2 = player2[4])
+  test_res5 <- sheldon_game(player1 = player1[5], player2 = player2[5])
+  test_res6 <- sheldon_game(player1 = player1[1], player2 = player2[5])
+  test_res7 <- sheldon_game(player1 = player1[2], player2 = player2[1])
+  test_res8 <- sheldon_game(player1 = player1[2], player2 = player2[3])
+  test_res9 <- sheldon_game(player1 = player1[3], player2 = player2[2])
+  test_res10 <- sheldon_game(player1 = player1[4], player2 = player2[5])
 
   ## Expect results
   # Expect class
@@ -53,17 +64,26 @@ test_that("Assignment: sheldon_game()", {
   expect_true(length(test_res1) == 1, 
               info = "'sheldon_game()' do not return an object with correct dimensions.")
 
-  # Expect names
-#   expect_true(all(names(test_res1) == c("weight", "Time",  "correlation_matrix")), 
-#               info = "'sheldon_game()' do not return an object with correct (ordered) variable names.")
-#   expect_true(all(names(test_res2) == c("Time", "weight", "correlation_matrix")), 
-#               info = "'sheldon_game()' do not return an object with correct (ordered) variable names.")  
-#   expect_true(all(names(test_res1[[1]]) %in% c("mean", "median", "sd")), 
-#               info = "'sheldon_game()' do not return an object with correct (ordered) variable names.")
-  
+
   # Expect results
   expect_true(tolower(test_res1) == "player 1 wins!", 
-              info = "'sheldon_game()' returns erroneous results.")
+              info = "'sheldon_game()' returns erroneous results. Player 1 should win with 'rock' against 'lizard'.")
   expect_true(tolower(test_res2) == "draw!", 
-              info = "'sheldon_game()' returns erroneous results.")
+              info = "'sheldon_game()' returns erroneous results. Should be draw with 'spock' against 'spock'.")
+  expect_true(tolower(test_res3) == "draw!", 
+              info = "'sheldon_game()' returns erroneous results. Should be draw with 'paper' against 'paper'.")
+  expect_true(tolower(test_res4) == "draw!", 
+              info = "'sheldon_game()' returns erroneous results. Should be draw with 'scissors' against 'scissors'.")
+  expect_true(tolower(test_res5) == "player 2 wins!", 
+              info = "'sheldon_game()' returns erroneous results. Player 2 should win with 'rock' against 'lizard'.")
+  expect_true(tolower(test_res6) == "draw!", 
+              info = "'sheldon_game()' returns erroneous results. Should be draw with 'rock' against 'rock'.")
+  expect_true(tolower(test_res7) == "player 2 wins!", 
+              info = "'sheldon_game()' returns erroneous results. Player 2 should win with 'spock' against 'lizard'.")
+  expect_true(tolower(test_res8) == "player 2 wins!", 
+              info = "'sheldon_game()' returns erroneous results. Player 2 should win with 'paper' against 'spock'.")
+  expect_true(tolower(test_res9) == "player 1 wins!", 
+              info = "'sheldon_game()' returns erroneous results. Player 1 should win with 'paper' against 'spock'.")
+  expect_true(tolower(test_res10) == "player 2 wins!", 
+              info = "'sheldon_game()' returns erroneous results. Player 2 should win with 'rock' against 'scissors'.")
 })
