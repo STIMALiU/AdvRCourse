@@ -1,6 +1,3 @@
-
-context("brute_force_knapsack")
-
 suppressWarnings(RNGversion(min(as.character(getRversion()),"3.5.3")))
 set.seed(42, kind = "Mersenne-Twister", normal.kind = "Inversion")
 n <- 2000

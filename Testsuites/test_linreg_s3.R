@@ -1,5 +1,3 @@
-context("linreg")
-
 data("iris")
 
 test_that("lenreg rejects errounous input", {

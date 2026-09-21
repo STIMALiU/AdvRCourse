@@ -1,5 +1,3 @@
-context("linreg")
-
 data("iris")
 
 Polygon <- setRefClass("Polygon", fields = c("sides"))
