@@ -29,7 +29,7 @@ test_that("Assignment: trial_division_factorization()", {
 #   }
   
   # Test cases (arguments)
-  x <- list(2^5, 3*5*7*11*13*17*23*29)
+  x <- list(2^5, 3*5*7*11*13*17*23*29, 2*101)
 
   # Expect to run
   for(i in seq_along(x)){
@@ -54,7 +54,7 @@ test_that("Assignment: trial_division_factorization()", {
   }
 
   # Expect dimensions
-  dim_res <- list(5,8)
+  dim_res <- list(5,8,2)
   for (i in seq_along(test_res)){
     expect_true(all(length(test_res[[i]]) == dim_res[[i]]), 
                 info = "'trial_division_factorization()' do not return an object with correct dimensions.")
@@ -71,7 +71,7 @@ test_that("Assignment: trial_division_factorization()", {
 #   }
 
   # Expect results
-  result_list1 <- list(c(2,2,2,2,2), c(3, 5, 7, 11, 13, 17, 23, 29))
+  result_list1 <- list(c(2,2,2,2,2), c(3, 5, 7, 11, 13, 17, 23, 29), c(2, 101))
   for (i in seq_along(test_res)){
     expect_true(all(test_res[[i]] == result_list1[[i]]), 
                 info = "'trial_division_factorization()' returns erroneous results.")

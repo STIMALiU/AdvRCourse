@@ -72,7 +72,10 @@ test_that("Assignment: mcmc_counter_factory()", {
     for(j in 1:10){
       test_res[[i]]()
     }
-    expect_true(all(unlist(test_res[[i]]()) == result_list1[[i]]), 
+    res_i <- test_res[[i]]()
+    expect_true(all(unlist(res_i) == result_list1[[i]]), 
                 info = "'mcmc_counter_factory()' returns erroneous results.")
+    expect_true(identical(names(res_i), c("iteration", "store_sample", "samples")), 
+                info = "The counter should return a list named 'iteration', 'store_sample' and 'samples'.")
   }
 })
